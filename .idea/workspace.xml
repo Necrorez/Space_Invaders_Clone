@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fec1fe01-5ee4-4a7f-95e8-4f246d189732" name="Changes" comment="" />
+    <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/OPProject.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/com/company/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/com/company/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="1y8AN22wc7ypbL3EndwxY2N3Nyl" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1yOuQq2M61QQ6qCy5140kkYXG0m" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -19,11 +48,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fec1fe01-5ee4-4a7f-95e8-4f246d189732" name="Changes" comment="" />
-      <created>1631622801681</created>
+      <changelist id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="" />
+      <created>1632134945637</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1631622801681</updated>
+      <updated>1632134945637</updated>
     </task>
     <servers />
   </component>
