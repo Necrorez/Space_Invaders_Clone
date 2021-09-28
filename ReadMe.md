@@ -1,5 +1,5 @@
 # T120B516 Objektinis programų projektavimas
 
-## Komanda: SpaceX05 
+Komanda: **SpaceX05** 
 
-## Projektas: Space Invaders klonas 
+Projektas: **Space Invaders klonas** 

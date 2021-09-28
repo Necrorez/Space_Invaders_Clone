@@ -12,32 +12,54 @@ import java.util.concurrent.Executors;
 
 public class Server
 {
-    ArrayList<PrintWriter> clientOutStream;
-
+    // TODO: add more stuff
     public class Game implements Runnable{
-        BufferedReader reader;
-        Socket socket;
-        public Game(Socket clientSocket){
-            try{
-                socket = clientSocket;
-                InputStreamReader isReader = new InputStreamReader(socket.getInputStream());
-                reader = new BufferedReader(isReader);
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+        Socket socket1;
+        Socket socket2;
+        public Game(Socket socket1,Socket socket2){
+            this.socket1=socket1;
+            this.socket2=socket2;
         }
 
         @Override
         public void run() {
-            String data;
             try {
-                clientOutStream.forEach(client-> System.out.println(client));
-                while ((data = reader.readLine()) != null) {
-                    sendData(data);
+                BufferedReader reader1 = new BufferedReader(new InputStreamReader(socket1.getInputStream())); //Set input Stream
+                PrintWriter writer1 = new PrintWriter(socket1.getOutputStream());
+                BufferedReader reader2 = new BufferedReader(new InputStreamReader(socket2.getInputStream()));
+                PrintWriter writer2 = new PrintWriter(socket2.getOutputStream());
+                writer1.println("START");
+                writer2.println("START");
+                writer1.flush();
+                writer2.flush();
+                boolean stop = false;
+                while (!stop){
+                    String player1 = reader1.readLine();
+                    String player2 = reader2.readLine();
+                    String[] p1 = player1.split(" ");
+                    String[] p2 = player2.split(" ");
+                    if (p1[0].equals("QUIT") || p2[0].equals("QUIT")){  //Check if player exited
+                        player1 = player2 = "QUIT"; //Send input to client to exit
+                        stop = true;
+                    }
+                    else if (p1[0].equals("BEGIN")){ //Check if both player are connected
+                        player1 = player2 = "BEGIN";
+                    }
+                    else if (p1[0].equals("MOVE")){ //check if player wants to move
+                        String temp = player1;
+                        player1 = player2;
+                        player2 = temp;
 
+                    }
+                    writer1.println(player1);//Send data to player 1
+                    writer2.println(player2);
+                    writer1.flush();
+                    writer2.flush();
                 }
+
+
             } catch (Exception ex) {
-                ex.printStackTrace();
+                System.out.println("player did something");
             }
         }
     }
@@ -47,35 +69,19 @@ public class Server
     }
 
     public void start(){
-        clientOutStream = new ArrayList<PrintWriter>();
         try {
-            ServerSocket serverSocket = new ServerSocket(4444);
+            ServerSocket serverSocket = new ServerSocket(4000);
             while (true){
-                Socket clientSocket = serverSocket.accept();
-                PrintWriter writer = new PrintWriter(clientSocket.getOutputStream());
-                clientOutStream.add(writer);
-                Thread t = new Thread(new Game(clientSocket));
+                Game game = new Game(serverSocket.accept(),serverSocket.accept());
+                Thread t = new Thread(game);
                 t.start();
-                System.out.println("Player Connected");
             }
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public void sendData(String data){
-        Iterator<PrintWriter> writerIterator = clientOutStream.iterator();
-        while (writerIterator.hasNext()){
-            try {
-                System.out.println("sending");
-                PrintWriter writer = writerIterator.next();
-                writer.println(data);
-                writer.flush();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-    }
+
 }
 
 
