@@ -1,5 +1,8 @@
 package SpaceX05;
 
+import SpaceX05.Aliens.Squid;
+import SpaceX05.Factory.AliensFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -14,6 +17,16 @@ import java.net.Socket;
 public class GameCanvas extends JPanel implements Runnable,Commons {
     private Dimension d;
     private Player player1, player2;
+    private Alien alien1;
+    private Alien alien2;
+    private Alien alien3;
+    private Alien alien4;
+    private Alien alien5;
+    private Alien alien6;
+    private Alien alien7;
+    private Alien alien8;
+    private Alien alien9;
+
     private final int nplayers;
     private int deaths = 0;
     private int direction = -1;
@@ -45,9 +58,22 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     public boolean gameStart(){
 
         // TODO: Set up enemy spawner
+        AliensFactory factory = new AliensFactory();
+
+        alien1 = factory.factoryMethod("Squid",100,100);
+        alien2 = factory.factoryMethod("Squid",120,100);
+        alien3 = factory.factoryMethod("Squid",140,100);
+        alien4 = factory.factoryMethod("Crab",100,120);
+        alien5 = factory.factoryMethod("Crab",120,120);
+        alien6 = factory.factoryMethod("Crab",140,120);
+        alien7 = factory.factoryMethod("Ufo",100,140);
+        alien8 = factory.factoryMethod("Ufo",120,140);
+        alien9 = factory.factoryMethod("Ufo",140,140);
+
 
         // Set up player input and socket
         player1 = new Player("/SpaceX05/Images/player.png",false);
+
         player2 = null;
 
         if (nplayers == 2){
@@ -102,11 +128,30 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         if (ingame1 || ingame2) {
 
             g.drawLine(0, GROUND, BOARD_WIDTH, GROUND);
+            drawAliens(g);
             drawPlayers(g);
+
         }
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
+    }
+
+    public  void drawAliens(Graphics g){
+
+        g.drawImage(alien1.getImage(), alien1.PosX, alien1.PosY, this);
+        g.drawImage(alien2.getImage(), alien2.PosX, alien2.PosY, this);
+        g.drawImage(alien2.getImage(), alien3.PosX, alien3.PosY, this);
+
+        g.drawImage(alien4.getImage(), alien4.PosX, alien4.PosY, this);
+        g.drawImage(alien5.getImage(), alien5.PosX, alien5.PosY, this);
+        g.drawImage(alien6.getImage(), alien6.PosX, alien6.PosY, this);
+
+        g.drawImage(alien7.getImage(), alien7.PosX, alien7.PosY, this);
+        g.drawImage(alien8.getImage(), alien8.PosX, alien8.PosY, this);
+        g.drawImage(alien9.getImage(), alien9.PosX, alien9.PosY, this);
+
+
     }
 
     public void drawPlayers(Graphics g) {
