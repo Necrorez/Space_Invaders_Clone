@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Player extends Sprite implements Commons {
     private final int START_Y = 280;
-    private final int START_X = 270;
+    private final int START_X = 50;
 
     private String player;
     private int width;
