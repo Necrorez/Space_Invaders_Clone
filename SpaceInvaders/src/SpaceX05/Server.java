@@ -1,4 +1,8 @@
 package SpaceX05;
+import SpaceX05.Observer.ClientListener;
+import SpaceX05.Observer.ServerCaster;
+import SpaceX05.Observer.ServerCommandObserver;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,10 +32,10 @@ public class Server
                 PrintWriter writer1 = new PrintWriter(socket1.getOutputStream());
                 BufferedReader reader2 = new BufferedReader(new InputStreamReader(socket2.getInputStream()));
                 PrintWriter writer2 = new PrintWriter(socket2.getOutputStream());
-                writer1.println("START");
-                writer2.println("START");
-                writer1.flush();
-                writer2.flush();
+                var clientListener = new ServerCaster();
+                clientListener.addObserver(new ClientListener(writer1));
+                clientListener.addObserver(new ClientListener(writer2));
+                clientListener.notifyPlayers("START");
                 boolean stop = false;
                 while (!stop){
                     String player1 = reader1.readLine();
@@ -39,11 +43,13 @@ public class Server
                     String[] p1 = player1.split(" ");
                     String[] p2 = player2.split(" ");
                     if (p1[0].equals("QUIT") || p2[0].equals("QUIT")){  //Check if player exited
-                        player1 = player2 = "QUIT"; //Send input to client to exit
+                        clientListener.notifyPlayers("QUIT");
                         stop = true;
+                        continue;
                     }
                     else if (p1[0].equals("BEGIN")){ //Check if both player are connected
-                        player1 = player2 = "BEGIN";
+                        clientListener.notifyPlayers("BEGIN");
+                        continue;
                     }
                     else if (p1[0].equals("MOVE")){ //check if player wants to move
                         String temp = player1;
@@ -57,7 +63,7 @@ public class Server
                     writer2.flush();
                 }
 
-
+/// update player stuff
             } catch (Exception ex) {
                 System.out.println("player did something");
             }
