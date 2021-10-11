@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/DefensiveCrab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/DefensiveSquid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/DefensiveUfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/OffensiveCrab.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/OffensiveSquid.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/OffensiveUfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/DefensiveAliensFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/OffensiveAliensFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Images/OffensiveCrab.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Images/OffensiveSquid.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Images/OffensiveUFO.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/OPProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OPProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/Crab.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/BalancedCrab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/Squid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/BalancedSquid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/Ufo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/BalancedUfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Commons.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Commons.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/AliensFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/BalancedAliensFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/AbstractFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/GameCanvas.java" afterDir="false" />
-    </list>
+    <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
