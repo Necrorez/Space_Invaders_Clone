@@ -1,7 +1,8 @@
 package SpaceX05;
 
-import SpaceX05.Aliens.Squid;
-import SpaceX05.Factory.AliensFactory;
+import SpaceX05.Factory.BalancedAliensFactory;
+import SpaceX05.Factory.DefensiveAliensFactory;
+import SpaceX05.Factory.OffensiveAliensFactory;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
@@ -64,16 +65,41 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         context2 = new ShootingContext(new BasicShot());
 
         // TODO: Set up enemy spawner
-        AliensFactory factory = new AliensFactory();
+        BalancedAliensFactory balanced = new BalancedAliensFactory();
+        DefensiveAliensFactory defensive = new DefensiveAliensFactory();
+        OffensiveAliensFactory offensive = new OffensiveAliensFactory();
         aliens = new ArrayList();
         int i;
+        int id = 0;
         for (i = 0; i<3; i++){
-                Alien alien = factory.factoryMethod("Squid",100 + 20 * i,100);
-                Alien alien1 = factory.factoryMethod("Crab",100 + 20 * i,120);
-                Alien alien2 = factory.factoryMethod("Ufo",100 + 20 * i,140);
+                Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
+                id++;
+                Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
+                id++;
+                Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
+                id++;
+                Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
+                id++;
+                Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
+                id++;
+                Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
+                id++;
+                Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
+                id++;
+                Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
+                id++;
+                Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
+                id++;
+
                 aliens.add(alien);
                 aliens.add(alien1);
                 aliens.add(alien2);
+                aliens.add(alien3);
+                aliens.add(alien4);
+                aliens.add(alien5);
+                aliens.add(alien6);
+                aliens.add(alien7);
+                aliens.add(alien8);
 
         }
 

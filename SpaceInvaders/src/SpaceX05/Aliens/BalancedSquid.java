@@ -5,12 +5,12 @@ import SpaceX05.Alien;
 import javax.swing.*;
 import java.awt.*;
 
-public class Squid extends Alien {
+public class BalancedSquid extends Alien {
 
-  public Squid(String src,int id,int PosX, int PosY){
+  public BalancedSquid(String src, int id, int PosX, int PosY){
       this.id = id;
-      this.damagePoints = 5;
-      this.healthPoints=5;
+      this.damagePoints = 10;
+      this.healthPoints=10;
       this.PosX = PosX;
       this.PosY = PosY;
 

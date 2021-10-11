@@ -1,15 +1,16 @@
 package SpaceX05.Aliens;
+
 import SpaceX05.Alien;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Crab extends Alien {
+public class DefensiveSquid extends Alien {
 
-    public Crab(String src ,int id,int PosX, int PosY){
+    public DefensiveSquid(String src, int id, int PosX, int PosY){
         this.id = id;
         this.damagePoints = 5;
-        this.healthPoints=5;
+        this.healthPoints=15;
         this.PosX = PosX;
         this.PosY = PosY;
 
