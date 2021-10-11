@@ -1,19 +1,21 @@
-package SpaceX05.Shot;
+package SpaceX05.Strategy;
 
 import SpaceX05.Alien;
 import SpaceX05.Commons;
-import SpaceX05.Sprite;
+import SpaceX05.Shot;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class BasicShot  extends Sprite implements ShootingStrategy, Commons {
-    private String shot = "/Images/BasicShot.png";
+public class BasicShot  extends Shot implements ShootingStrategy, Commons {
+    private String shot = "/SpaceX05/Images/BasicShot.png";
     private final int H_SPACE = 6;
     private final int V_SPACE = 1;
 
+    public BasicShot(){
+    }
     public BasicShot(int x, int y){
         ImageIcon ii = new ImageIcon(this.getClass().getResource(shot));
         Image image = ii.getImage();
@@ -33,20 +35,33 @@ public class BasicShot  extends Sprite implements ShootingStrategy, Commons {
             Alien alien = (Alien) it.next();
             int alienX = alien.PosX;
             int alienY = alien.PosY;
-            if(X >= alienX && X <= (alienX + ALIEN_WIDTH)&& Y >= (alienY) && Y <= (alienY + ALIEN_HEIGHT)){
-                alien.die();
-                kills++;
-                die();
+            if (alien.isVisible() && isVisible()){
+                if(X >= alienX && X <= (alienX + ALIEN_WIDTH)&& Y >= (alienY) && Y <= (alienY + ALIEN_HEIGHT)){
+                    alien.die();
+                    this.die();
+                    kills++;
+                }
             }
+
         }
         int y = getY();
         y -=4;
         if (y<0){
-            die();
+            this.die();
         }else{
             setY(y);
         }
         return kills;
+    }
+
+    @Override
+    public int type() {
+        return 1;
+    }
+
+    @Override
+    public Shot returnShot(){
+        return this;
     }
 
 }

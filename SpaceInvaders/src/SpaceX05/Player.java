@@ -1,9 +1,10 @@
 package SpaceX05;
 
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Player extends Sprite implements Commons {
+public class Player extends Sprite implements Commons{
     private final int START_Y = 280;
     private final int START_X = 50;
 
@@ -62,6 +63,13 @@ public class Player extends Sprite implements Commons {
     }
     public void setDirection(int direction) {
         this.dx = direction;
+    }
+    public int getShoot() {
+        return shoot;
+    }
+
+    public void setShoot(int shoot) {
+        this.shoot = shoot;
     }
 
 }
