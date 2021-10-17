@@ -1,8 +1,13 @@
 package SpaceX05;
 
-import SpaceX05.Aliens.Squid;
-import SpaceX05.Factory.AliensFactory;
-
+import SpaceX05.AbstractFactory.BalancedAliensFactory;
+import SpaceX05.AbstractFactory.DefensiveAliensFactory;
+import SpaceX05.AbstractFactory.OffensiveAliensFactory;
+import SpaceX05.PowerUps.PowerUp;
+import SpaceX05.Strategy.BasicShot;
+import SpaceX05.Strategy.PowerShot;
+import SpaceX05.Strategy.ShootingContext;
+import SpaceX05.Factory.PowerUpFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -12,26 +17,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class GameCanvas extends JPanel implements Runnable,Commons {
     private Dimension d;
     private Player player1, player2;
-    private Alien alien1;
-    private Alien alien2;
-    private Alien alien3;
-    private Alien alien4;
-    private Alien alien5;
-    private Alien alien6;
-    private Alien alien7;
-    private Alien alien8;
-    private Alien alien9;
-
+    private PowerUp powerUp1;
+    private ArrayList aliens;
     private final int nplayers;
     private int deaths = 0;
     private int direction = -1;
     private boolean ingame1 = true, ingame2 = false; //player1 e player2
     private String message = "Game Over";
+
+    private Shot shot1;
+    private Shot shot2;
+    private ShootingContext context1;
+    private ShootingContext context2;
 
     private String HOST = "1ocalhost";
     private int PORT = 4000;
@@ -56,20 +60,57 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     }
 
     public boolean gameStart(){
+        // WHAT IS THIS: this a context strategy setup for shooting
+        shot1 = new BasicShot();
+        shot2 = new BasicShot();
+        context1 = new ShootingContext(new BasicShot());
+        context2 = new ShootingContext(new BasicShot());
 
         // TODO: Set up enemy spawner
-        AliensFactory factory = new AliensFactory();
+        BalancedAliensFactory balanced = new BalancedAliensFactory();
+        DefensiveAliensFactory defensive = new DefensiveAliensFactory();
+        OffensiveAliensFactory offensive = new OffensiveAliensFactory();
+        aliens = new ArrayList();
+        int i;
+        int id = 0;
+        for (i = 0; i<3; i++){
+                Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
+                id++;
+                Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
+                id++;
+                Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
+                id++;
+                Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
+                id++;
+                Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
+                id++;
+                Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
+                id++;
+                Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
+                id++;
+                Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
+                id++;
+                Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
+                id++;
 
-        alien1 = factory.factoryMethod("Squid",100,100);
-        alien2 = factory.factoryMethod("Squid",120,100);
-        alien3 = factory.factoryMethod("Squid",140,100);
-        alien4 = factory.factoryMethod("Crab",100,120);
-        alien5 = factory.factoryMethod("Crab",120,120);
-        alien6 = factory.factoryMethod("Crab",140,120);
-        alien7 = factory.factoryMethod("Ufo",100,140);
-        alien8 = factory.factoryMethod("Ufo",120,140);
-        alien9 = factory.factoryMethod("Ufo",140,140);
+                aliens.add(alien);
+                aliens.add(alien1);
+                aliens.add(alien2);
+                aliens.add(alien3);
+                aliens.add(alien4);
+                aliens.add(alien5);
+                aliens.add(alien6);
+                aliens.add(alien7);
+                aliens.add(alien8);
 
+        }
+
+        //powerup
+        PowerUpFactory factory = new PowerUpFactory();
+
+        powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
+        // powerUp1 = factory.factoryMethod("MovementSpeed",160,160) ;
+        // powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
 
         // Set up player input and socket
         player1 = new Player("/SpaceX05/Images/player.png",false);
@@ -111,11 +152,37 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         // player
         player1.update();
-        if (nplayers>1){
-            player2.update();
+        player2.update();
 
+        //Creating shots
+        if (!shot1.isVisible() && player1.getShoot() == 1) {
+            if (context1.whichType() == 1){
+                shot1 = new BasicShot(player1.getX(), player1.getY());
+                context1 = new ShootingContext((BasicShot)shot1);
+
+            }
+            if (context1.whichType() == 2){
+                shot1 = new PowerShot(player1.getX(), player1.getY());
+                context1 = new ShootingContext((PowerShot)shot1);
+
+            }
         }
-
+        if (nplayers>1){
+            if (!shot2.isVisible() && player2.getShoot() == 1) {
+                if (context2.whichType() == 1){
+                    shot2 = new BasicShot(player2.getX(), player2.getY());
+                    context2 = new ShootingContext((BasicShot)shot2);
+                }
+                if (context2.whichType() == 2){
+                    shot2 = new PowerShot(player2.getX(), player2.getY());
+                    context2 = new ShootingContext((PowerShot)shot2);
+                }
+            }
+        }
+        context1.executeShoot(aliens);
+        context2.executeShoot(aliens);
+        shot1 = context1.rShot();
+        shot2 = context2.rShot();
     }
 
     public void paint(Graphics g) {
@@ -130,6 +197,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             g.drawLine(0, GROUND, BOARD_WIDTH, GROUND);
             drawAliens(g);
             drawPlayers(g);
+            drawShot(g);
 
         }
 
@@ -137,20 +205,29 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         g.dispose();
     }
 
+    public void drawShot(Graphics g) {
+        if (shot1.isVisible()) {
+            g.drawImage(shot1.getImage(), shot1.getX(), shot1.getY(), this);
+        }
+        if (shot2.isVisible()) {
+            g.drawImage(shot2.getImage(), shot2.getX(), shot2.getY(), this);
+        }
+    }
+
     public  void drawAliens(Graphics g){
 
-        g.drawImage(alien1.getImage(), alien1.PosX, alien1.PosY, this);
-        g.drawImage(alien2.getImage(), alien2.PosX, alien2.PosY, this);
-        g.drawImage(alien2.getImage(), alien3.PosX, alien3.PosY, this);
+        Iterator it = aliens.iterator();
+        while (it.hasNext()){
+            Alien alien = (Alien) it.next();
+            if (alien.isVisible()){
+                g.drawImage(alien.getImage(), alien.PosX, alien.PosY, this);
+            }
+            if (alien.isDying()){
+                alien.die();
+                g.drawImage(powerUp1.getImage(),alien.PosX, alien.PosY,this);
 
-        g.drawImage(alien4.getImage(), alien4.PosX, alien4.PosY, this);
-        g.drawImage(alien5.getImage(), alien5.PosX, alien5.PosY, this);
-        g.drawImage(alien6.getImage(), alien6.PosX, alien6.PosY, this);
-
-        g.drawImage(alien7.getImage(), alien7.PosX, alien7.PosY, this);
-        g.drawImage(alien8.getImage(), alien8.PosX, alien8.PosY, this);
-        g.drawImage(alien9.getImage(), alien9.PosX, alien9.PosY, this);
-
+            }
+        }
 
     }
 
@@ -245,8 +322,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         String[] mes = action.split(" ");
         if (mes[0].equals("MOVE")) {
             int direction = Integer.parseInt(mes[1]);
+            int shoot = Integer.parseInt(mes[2]);
             player2.setDirection(direction);
-            System.out.println(player2.getX()+" "+player2.dx);
+            if (player2.getShoot() == 2){
+                context2 = new ShootingContext(new BasicShot());
+                shoot = 0;
+            }
+            if (player2.getShoot() == 3){
+                context2 = new ShootingContext(new PowerShot());
+                shoot = 0;
+            }
+            player2.setShoot(shoot);
         }
     }
 
@@ -262,6 +348,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
                 output.println("QUIT");
             }
+            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                player1.setShoot(1);
+            }
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                player1.setShoot(2);
+                context1 = new ShootingContext(new BasicShot());
+            }
+            if (e.getKeyCode() == KeyEvent.VK_D) {
+                player1.setShoot(3);
+                context1 = new ShootingContext(new PowerShot());
+            }
         }
         public void keyReleased(KeyEvent e) {
             if (ingame1) {
@@ -271,6 +368,15 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     player1.setLeft(0);
                 }
+                if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                    player1.setShoot(0);
+                }
+                if (e.getKeyCode() == KeyEvent.VK_S) {
+                    player1.setShoot(0);
+                }
+                if (e.getKeyCode() == KeyEvent.VK_D) {
+                    player1.setShoot(0);
+                }
             }
         }
 
@@ -278,7 +384,5 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     public boolean isWorked() {
         return worked;
     }
-    public boolean isIngame2() {
-        return ingame2;
-    }
+
 }
