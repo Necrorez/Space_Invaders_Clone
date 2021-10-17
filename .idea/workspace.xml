@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="" />
+    <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/tests/java/SpaceX05/BasicShotTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/apiguardian-api-1.1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-5.7.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-api-5.7.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-engine-5.7.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-jupiter-params-5.7.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-platform-commons-1.7.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/junit-platform-engine-1.7.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/opentest4j-1.2.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/OPProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OPProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/AbstractFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/AbstractFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/BalancedAliensFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/BalancedAliensFactory$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/BalancedAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/BalancedAliensFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/DefensiveAliensFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/DefensiveAliensFactory$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/DefensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/DefensiveAliensFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/OffensiveAliensFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/OffensiveAliensFactory$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/OffensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/OffensiveAliensFactory.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -38,14 +58,29 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="SpaceX05" />
+      <recent name="SpaceX05.Strategy" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BasicShotTest.shotTest">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
       <module name="OPProject" />
@@ -72,12 +107,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BasicShotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OPProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SpaceX05.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SpaceX05" />
+      <option name="MAIN_CLASS_NAME" value="SpaceX05.BasicShotTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BasicShotTest.shotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="OPProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SpaceX05.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="SpaceX05" />
+      <option name="MAIN_CLASS_NAME" value="SpaceX05.BasicShotTest" />
+      <option name="METHOD_NAME" value="shotTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="JUnit.BasicShotTest.shotTest" />
+      <item itemvalue="JUnit.BasicShotTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BasicShotTest.shotTest" />
+        <item itemvalue="JUnit.BasicShotTest" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
       </list>
@@ -104,6 +174,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
