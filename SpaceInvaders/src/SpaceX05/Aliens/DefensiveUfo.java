@@ -5,7 +5,7 @@ import SpaceX05.Alien;
 import javax.swing.*;
 import java.awt.*;
 
-public class DefensiveUfo extends Alien {
+public class DefensiveUfo extends Ufo {
 
     public DefensiveUfo(String src, int id, int PosX, int PosY){
         this.id = id;
@@ -20,4 +20,6 @@ public class DefensiveUfo extends Alien {
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());
     }
+    public int getDamage(){return this.damagePoints;}
+    public int getHealth() {return this.healthPoints;}
 }

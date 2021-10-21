@@ -1,5 +1,7 @@
 package SpaceX05;
 
+import SpaceX05.Aliens.*;
+import SpaceX05.Decorator.CrabDamagePointsDecorator;
 import SpaceX05.Factory.BalancedAliensFactory;
 import SpaceX05.Factory.DefensiveAliensFactory;
 import SpaceX05.Factory.OffensiveAliensFactory;
@@ -102,6 +104,15 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 aliens.add(alien8);
 
         }
+
+        //Decorator - for creating aliens on level 2..
+        Crab c = new OffensiveCrab(10, 10);
+        System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
+        Crab dmg = new CrabDamagePointsDecorator(c);
+        System.out.println("Added damage" + dmg.getDamage() + " " + dmg.getHealth());
+        dmg.setImage(3);
+        aliens.add(dmg);
+
 
 
         // Set up player input and socket
