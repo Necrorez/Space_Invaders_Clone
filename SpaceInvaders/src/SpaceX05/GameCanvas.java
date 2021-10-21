@@ -5,6 +5,8 @@ import SpaceX05.Factory.AliensFactory;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
+import SpaceX05.WallBuilder.Wall;
+import SpaceX05.WallBuilder.WallBlock;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +25,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Dimension d;
     private Player player1, player2;
     private ArrayList aliens;
+
     private final int nplayers;
     private int deaths = 0;
     private int direction = -1;
@@ -33,6 +36,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Shot shot2;
     private ShootingContext context1;
     private ShootingContext context2;
+
+    private ArrayList walls;
 
     private String HOST = "1ocalhost";
     private int PORT = 4000;
@@ -57,11 +62,34 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     }
 
     public boolean gameStart(){
-        // WHAT IS THIS: this a context strategy setup for shooting
+        // SET UP: this a context strategy setup for shooting
         shot1 = new BasicShot();
         shot2 = new BasicShot();
         context1 = new ShootingContext(new BasicShot());
         context2 = new ShootingContext(new BasicShot());
+
+
+        // SET UP: wall setup
+        Wall wall = new Wall.WallBuilder()
+                .color("Blue")
+                .placement(new int[][]{
+                        {0,0,1,0},
+                        {0,1,1,0},
+                        {1,1,1,1}})
+                .y(50)
+                .x(230)
+                .build();
+        walls=wall.getWall();
+        wall = new Wall.WallBuilder()
+                .color("Purple")
+                .placement(new int[][]{
+                        {1,0,1,1},
+                        {1,0,1,1},
+                        {1,1,1,1}})
+                .y(250)
+                .x(230)
+                .build();
+        walls.addAll(wall.getWall());
 
         // TODO: Set up enemy spawner
         AliensFactory factory = new AliensFactory();
@@ -164,6 +192,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             drawAliens(g);
             drawPlayers(g);
             drawShot(g);
+            drawWall(g);
 
         }
 
@@ -193,6 +222,14 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
         }
 
+    }
+
+    public void drawWall(Graphics g){
+        Iterator it = walls.iterator();
+        while (it.hasNext()){
+            WallBlock wall = (WallBlock) it.next();
+            g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
+        }
     }
 
     public void drawPlayers(Graphics g) {
