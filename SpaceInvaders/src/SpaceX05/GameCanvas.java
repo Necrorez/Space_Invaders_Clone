@@ -26,6 +26,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Player player1, player2;
     private PowerUp powerUp1;
     private ArrayList aliens;
+    private Alien alien0;
+    private Alien shallowcopy;
     private final int nplayers;
     private int deaths = 0;
     private int direction = -1;
@@ -105,20 +107,30 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         }
 
+        alien0 = balanced.spawnSquid("Crab", id,200,200);
+        id++;
+        shallowcopy = alien0.copyShallow();
+        shallowcopy.PosX=220;
+        shallowcopy.PosY=220;
+
         //powerup
         PowerUpFactory factory = new PowerUpFactory();
 
-        powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
+       // powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
         // powerUp1 = factory.factoryMethod("MovementSpeed",160,160) ;
-        // powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
+         powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
 
         // Set up player input and socket
-        player1 = new Player("/SpaceX05/Images/player.png",false);
+        player1 = new Player("/SpaceX05/Images/player.png",false,new Location());
 
         player2 = null;
 
         if (nplayers == 2){
-            player2 = new Player("/SpaceX05/Images/player2.png",true);
+           // player2 = player1.copyShallow();
+            player2 = player1.copyDeep();
+            player2.changeImg("/SpaceX05/Images/player2.png");
+            player2.controlled = true;
+            player2.setLoc(150,280);
             ingame2 = true;
             try {
                 socket = new Socket("localhost",4000);
@@ -217,6 +229,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     public  void drawAliens(Graphics g){
 
         Iterator it = aliens.iterator();
+        g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
+        g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
         while (it.hasNext()){
             Alien alien = (Alien) it.next();
             if (alien.isVisible()){
