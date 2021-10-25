@@ -1,12 +1,11 @@
 package SpaceX05.Aliens;
-import SpaceX05.Alien;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class BalancedCrab extends Crab {
 
-    private String crabImg ="/SpaceX05/Images/Crab.jpeg";
+    private String crabImg = "/Images/Crab.jpeg";
 
 
 

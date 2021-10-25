@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BasicShot  extends Shot implements ShootingStrategy, Commons {
-    private String shot = "/SpaceX05/Images/BasicShot.png";
+    private String shot = "/Images/BasicShot.png";
     private final int H_SPACE = 6;
     private final int V_SPACE = 1;
 

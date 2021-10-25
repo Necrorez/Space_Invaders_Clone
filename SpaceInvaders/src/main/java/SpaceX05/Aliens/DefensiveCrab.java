@@ -1,12 +1,11 @@
 package SpaceX05.Aliens;
-import SpaceX05.Alien;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class DefensiveCrab extends Crab {
 
-    private String crabImg ="/SpaceX05/Images/DefensiveCrab.jpg";
+    private String crabImg = "/Images/DefensiveCrab.jpg";
 
     public DefensiveCrab(String src , int id, int PosX, int PosY){
         //super(src, PosX, PosY);

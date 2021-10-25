@@ -4,11 +4,13 @@ import SpaceX05.Alien;
 import SpaceX05.Aliens.BalancedCrab;
 import SpaceX05.Aliens.BalancedSquid;
 import SpaceX05.Aliens.BalancedUfo;
+
+
 public class BalancedAliensFactory extends AbstractFactory {
 
-    private String squidImg ="/SpaceX05/Images/Squid.jpg";
-    private String crabImg ="/SpaceX05/Images/Crab.jpeg";
-    private String ufoImg ="/SpaceX05/Images/UFO.jpeg";
+    private String squidImg = "/Images/Squid.jpg";
+    private String crabImg = "/Images/Crab.jpeg";
+    private String ufoImg = "/Images/UFO.jpeg";
 
     @Override
     public Alien spawnCrab(String param, int alienId, int PosX, int PosY)

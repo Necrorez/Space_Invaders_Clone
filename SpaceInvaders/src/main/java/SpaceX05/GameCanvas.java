@@ -80,7 +80,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         context2 = new ShootingContext(new BasicShot());
 
 
+
         // SET UP: wall setup
+        walls = new ArrayList();
         Wall wall = new Wall.WallBuilder()
                 .color("Blue")
                 .placement(new int[][]{
@@ -90,7 +92,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 .y(50)
                 .x(230)
                 .build();
-        walls=wall.getWall();
+        walls.addAll(wall.getWall());
         wall = new Wall.WallBuilder()
                 .color("Purple")
                 .placement(new int[][]{
@@ -157,14 +159,14 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
          powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
 
         // Set up player input and socket
-        player1 = new Player("/SpaceX05/Images/player.png",false,new Location());
+        player1 = new Player("/Images/player.png",false,new Location());
 
         player2 = null;
 
         if (nplayers == 2){
            // player2 = player1.copyShallow();
             player2 = player1.copyDeep();
-            player2.changeImg("/SpaceX05/Images/player2.png");
+            player2.changeImg("/Images/player2.png");
             player2.controlled = true;
             player2.setLoc(150,280);
             ingame2 = true;

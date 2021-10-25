@@ -36,7 +36,7 @@ public class Wall {
             // second for...each loop access each element inside the row
             for(int data: innerArray) {
                 if(data == 1){
-                    WallBlock wallBlock = new WallBlock((y+j*offset),(x+i*offset), this.color);
+                    WallBlock wallBlock = new WallBlock((y+j*offset),(x+i*offset), "/Images/WallBlock.png");
                     wallBlocks.add(wallBlock);
                 }
                 j++;
@@ -57,9 +57,9 @@ public class Wall {
         public WallBuilder color(String c){
             String toSet = "";
             switch (c){
-                case "White": toSet = "/SpaceX05/Images/WallBlock.png"; break;
-                case "Blue": toSet= "/SpaceX05/Images/WallBlockBlue.png"; break;
-                case "Purple": toSet= "/SpaceX05/Images/WallBlockPurple.png"; break;
+                case "White": toSet = "/Images/WallBlock.png"; break;
+                case "Blue": toSet= "/Images/WallBlockBlue.png"; break;
+                case "Purple": toSet= "/Images/WallBlockPurple.png"; break;
                 default: throw new RuntimeException("Invalid entry");
             }
             this.color = toSet;

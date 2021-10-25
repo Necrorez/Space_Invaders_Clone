@@ -1,18 +1,13 @@
 package SpaceX05;
+
 import SpaceX05.Observer.ClientListener;
 import SpaceX05.Observer.ServerCaster;
-import SpaceX05.Observer.ServerCommandObserver;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.concurrent.Executors;
 
 public class Server
 {

@@ -5,9 +5,9 @@ import SpaceX05.Aliens.*;
 
 public class DefensiveAliensFactory extends AbstractFactory {
 
-    private String squidImg ="/SpaceX05/Images/DefensiveSquid.jpg";
-    private String crabImg ="/SpaceX05/Images/DefensiveCrab.jpg";
-    private String ufoImg ="/SpaceX05/Images/DefensiveUFO.jpg";
+    private String squidImg = "/Images/DefensiveSquid.jpg";
+    private String crabImg = "/Images/DefensiveCrab.jpg";
+    private String ufoImg = "/Images/DefensiveUFO.jpg";
 
     @Override
     public Alien spawnCrab(String param, int alienId, int PosX, int PosY)

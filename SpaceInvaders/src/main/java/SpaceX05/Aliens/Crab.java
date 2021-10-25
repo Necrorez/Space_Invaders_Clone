@@ -8,9 +8,9 @@ import java.awt.*;
 public class Crab extends Alien {
 
     private String crabImg;
-    private static final String crabImg1 ="/SpaceX05/Images/Crab.jpeg";
-    private static final String crabImg2 ="/SpaceX05/Images/DefensiveCrab.jpg";
-    private static final String crabImg3 ="/SpaceX05/Images/OffensiveCrab.jpg";
+    private static final String crabImg1 = "/Images/Crab.jpeg";
+    private static final String crabImg2 = "/Images/DefensiveCrab.jpg";
+    private static final String crabImg3 = "/Images/OffensiveCrab.jpg";
 
     public Crab(int PosX, int PosY) {
         this.PosX = PosX;

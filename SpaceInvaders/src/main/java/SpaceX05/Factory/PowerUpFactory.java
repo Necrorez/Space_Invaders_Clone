@@ -7,9 +7,9 @@ import SpaceX05.PowerUps.PowerUp;
 
 public class PowerUpFactory extends Factory {
     private int powerUpId = 0;
-    private String attackSpeedImg ="/SpaceX05/Images/PowerUps/AttackSpeed.png";
-    private String extraLifeImg ="/SpaceX05/Images/PowerUps/ExtraLife.png";
-    private String movementSpeedImg ="/SpaceX05/Images/PowerUps/MovementSpeed.png";
+    private String attackSpeedImg = "/Images/PowerUps/AttackSpeed.png";
+    private String extraLifeImg = "/Images/PowerUps/ExtraLife.png";
+    private String movementSpeedImg = "/Images/PowerUps/MovementSpeed.png";
 
     @Override
     public PowerUp factoryMethod(String param, int PosX, int PosY){

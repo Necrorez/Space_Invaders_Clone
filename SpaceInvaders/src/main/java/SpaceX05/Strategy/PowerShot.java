@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class PowerShot  extends Shot implements ShootingStrategy, Commons {
-    private String shot = "/SpaceX05/Images/PowerShot.png";
-    private String explosion = "/SpaceX05/Images/Explosion.png";
+    private String shot = "/Images/PowerShot.png";
+    private String explosion = "/Images/Explosion.png";
     private final int H_SPACE = 6;
     private final int V_SPACE = 1;
 
