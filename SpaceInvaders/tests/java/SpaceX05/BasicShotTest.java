@@ -1,7 +1,6 @@
 package SpaceX05;
 
 import SpaceX05.Aliens.DefensiveUfo;
-import SpaceX05.Factory.DefensiveAliensFactory;
 import SpaceX05.Strategy.BasicShot;
 import org.junit.jupiter.api.Test;
 

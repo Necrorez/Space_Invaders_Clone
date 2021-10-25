@@ -31,6 +31,7 @@ public class Crab extends Alien {
             case 3 -> this.crabImg = crabImg3;
         }
         ImageIcon ii = new ImageIcon(this.getClass().getResource(crabImg));
+
         Image image = ii.getImage();
         Image newimg = image.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
         ii = new ImageIcon(newimg);

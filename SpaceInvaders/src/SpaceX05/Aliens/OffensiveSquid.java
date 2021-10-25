@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class OffensiveSquid extends Squid {
 
+
     public OffensiveSquid(String src, int id, int PosX, int PosY){
         this.id = id;
         this.damagePoints = 15;
@@ -22,4 +23,5 @@ public class OffensiveSquid extends Squid {
     }
     public int getDamage(){return this.damagePoints;}
     public int getHealth() {return this.healthPoints;}
+
 }

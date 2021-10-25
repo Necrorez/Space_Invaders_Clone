@@ -7,3 +7,4 @@ public abstract class Ufo extends Alien {
     public abstract int getDamage();
     public abstract int getHealth();
 }
+

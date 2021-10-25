@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/Crab.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Aliens/Squid.java" afterDir="false" />
@@ -48,6 +49,9 @@
     <list id="b5dd98c5-5ecd-48d3-9e74-55c4a31be29b" name="Changes by K" comment="">
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Client.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="" />
+>>>>>>> origin/Saulius
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +60,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="JUnit5 Test Class" />
+=======
+>>>>>>> origin/Saulius
         <option value="Class" />
       </list>
     </option>
@@ -72,6 +79,7 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+<<<<<<< HEAD
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/SpaceInvaders/tests/java/SpaceX05/BasicShotTest.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Factory/DefensiveAliensFactory.java" root0="FORCE_HIGHLIGHTING" />
@@ -84,6 +92,8 @@
     <setting file="file://$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Strategy/PowerShot.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SpaceInvaders/src/SpaceX05/Strategy/ShootingContext.java" root0="FORCE_HIGHLIGHTING" />
   </component>
+=======
+>>>>>>> origin/Saulius
   <component name="ProjectId" id="1yOuQq2M61QQ6qCy5140kkYXG0m" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -94,6 +104,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+<<<<<<< HEAD
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -117,6 +128,20 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="SpaceX05" />
       <recent name="SpaceX05.Strategy" />
+=======
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/SpaceInvaders/src/SpaceX05" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\xsize\Space_Invaders112\SpaceInvaders\src\SpaceX05" />
+      <recent name="C:\Users\xsize\Space_Invaders112\SpaceInvaders\src\SpaceX05\Images" />
+>>>>>>> origin/Saulius
     </key>
   </component>
   <component name="RunManager" selected="Application.Client">
@@ -146,6 +171,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="BasicShotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OPProject" />
       <extension name="coverage">
@@ -182,13 +208,21 @@
       <item itemvalue="Application.Server" />
       <item itemvalue="JUnit.BasicShotTest.shotTest" />
       <item itemvalue="JUnit.BasicShotTest" />
+=======
+    <list>
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
+>>>>>>> origin/Saulius
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+<<<<<<< HEAD
         <item itemvalue="JUnit.BasicShotTest.shotTest" />
         <item itemvalue="JUnit.BasicShotTest" />
+=======
+>>>>>>> origin/Saulius
       </list>
     </recent_temporary>
   </component>
@@ -208,6 +242,7 @@
       <map>
         <entry key="MAIN">
           <value>
+<<<<<<< HEAD
             <State>
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
@@ -215,6 +250,9 @@
                 </map>
               </option>
             </State>
+=======
+            <State />
+>>>>>>> origin/Saulius
           </value>
         </entry>
       </map>
@@ -224,10 +262,13 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
+=======
+>>>>>>> origin/Saulius
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Space_Invaders_Clone$Client.ic" NAME="Client Coverage Results" MODIFIED="1633987524400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>SpaceX05.*</FILTER>

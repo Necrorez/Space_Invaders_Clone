@@ -1,16 +1,19 @@
 package SpaceX05;
 
-import SpaceX05.Aliens.*;
-import SpaceX05.Decorator.CrabDamagePointsDecorator;
-import SpaceX05.Factory.BalancedAliensFactory;
-import SpaceX05.Factory.DefensiveAliensFactory;
-import SpaceX05.Factory.OffensiveAliensFactory;
+
+import SpaceX05.AbstractFactory.BalancedAliensFactory;
+import SpaceX05.AbstractFactory.DefensiveAliensFactory;
+import SpaceX05.AbstractFactory.OffensiveAliensFactory;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
 import SpaceX05.WallBuilder.Wall;
 import SpaceX05.WallBuilder.WallBlock;
 
+
+import SpaceX05.PowerUps.PowerUp;
+
+import SpaceX05.Factory.PowerUpFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -27,8 +30,11 @@ import java.util.Iterator;
 public class GameCanvas extends JPanel implements Runnable,Commons {
     private Dimension d;
     private Player player1, player2;
-    private ArrayList aliens;
 
+    private PowerUp powerUp1;
+    private ArrayList aliens;
+    private Alien alien0;
+    private Alien shallowcopy;
     private final int nplayers;
     private int deaths = 0;
     private int direction = -1;
@@ -41,6 +47,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private ShootingContext context2;
 
     private ArrayList walls;
+
 
     private String HOST = "1ocalhost";
     private int PORT = 4000;
@@ -66,6 +73,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
     public boolean gameStart(){
         // SET UP: this a context strategy setup for shooting
+
         shot1 = new BasicShot();
         shot2 = new BasicShot();
         context1 = new ShootingContext(new BasicShot());
@@ -93,6 +101,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 .x(230)
                 .build();
         walls.addAll(wall.getWall());
+
 
         // TODO: Set up enemy spawner
         BalancedAliensFactory balanced = new BalancedAliensFactory();
@@ -133,23 +142,31 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         }
 
-        //Decorator - for creating aliens on level 2..
-        Crab c = new OffensiveCrab(10, 10);
-        System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
-        Crab dmg = new CrabDamagePointsDecorator(c);
-        System.out.println("Added damage" + dmg.getDamage() + " " + dmg.getHealth());
-        dmg.setImage(3);
-        aliens.add(dmg);
 
+        alien0 = balanced.spawnSquid("Crab", id,200,200);
+        id++;
+        shallowcopy = alien0.copyShallow();
+        shallowcopy.PosX=220;
+        shallowcopy.PosY=220;
 
+        //powerup
+        PowerUpFactory factory = new PowerUpFactory();
+
+       // powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
+        // powerUp1 = factory.factoryMethod("MovementSpeed",160,160) ;
+         powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
 
         // Set up player input and socket
-        player1 = new Player("/SpaceX05/Images/player.png",false);
+        player1 = new Player("/SpaceX05/Images/player.png",false,new Location());
 
         player2 = null;
 
         if (nplayers == 2){
-            player2 = new Player("/SpaceX05/Images/player2.png",true);
+           // player2 = player1.copyShallow();
+            player2 = player1.copyDeep();
+            player2.changeImg("/SpaceX05/Images/player2.png");
+            player2.controlled = true;
+            player2.setLoc(150,280);
             ingame2 = true;
             try {
                 socket = new Socket("localhost",4000);
@@ -197,6 +214,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 context1 = new ShootingContext((PowerShot)shot1);
 
             }
+
         }
         if (nplayers>1){
             if (!shot2.isVisible() && player2.getShoot() == 1) {
@@ -249,6 +267,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     public  void drawAliens(Graphics g){
 
         Iterator it = aliens.iterator();
+
+        g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
+        g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
         while (it.hasNext()){
             Alien alien = (Alien) it.next();
             if (alien.isVisible()){
@@ -256,6 +277,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
             if (alien.isDying()){
                 alien.die();
+
+                g.drawImage(powerUp1.getImage(),alien.PosX, alien.PosY,this);
+
             }
         }
 

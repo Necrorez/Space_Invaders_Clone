@@ -6,4 +6,5 @@ public abstract class Squid extends Alien {
 
     public abstract int getDamage();
     public abstract int getHealth();
+
 }

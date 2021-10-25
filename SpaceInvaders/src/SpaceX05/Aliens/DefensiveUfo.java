@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class DefensiveUfo extends Ufo {
 
+
     public DefensiveUfo(String src, int id, int PosX, int PosY){
         this.id = id;
         this.damagePoints = 5;
@@ -22,4 +23,5 @@ public class DefensiveUfo extends Ufo {
     }
     public int getDamage(){return this.damagePoints;}
     public int getHealth() {return this.healthPoints;}
+
 }
