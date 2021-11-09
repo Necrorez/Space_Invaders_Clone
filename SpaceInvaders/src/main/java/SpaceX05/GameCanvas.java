@@ -4,6 +4,10 @@ package SpaceX05;
 import SpaceX05.AbstractFactory.BalancedAliensFactory;
 import SpaceX05.AbstractFactory.DefensiveAliensFactory;
 import SpaceX05.AbstractFactory.OffensiveAliensFactory;
+import SpaceX05.Command.AlienMover;
+import SpaceX05.Command.DownCommand;
+import SpaceX05.Command.LeftCommand;
+import SpaceX05.Command.RightCommand;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
@@ -32,7 +36,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Player player1, player2;
 
     private PowerUp powerUp1;
-    private ArrayList aliens;
+    private ArrayList<Alien> aliens;
+
+    private AlienMover alienMoves;
+    private boolean sideMove = true;
+    private boolean dir;
+    private int alienDownMove = 10;
+    private int rightMostAlien = 0;
+    private int leftMostAlien = 400;
+    private int lowestAlien=0;
+
+
     private Alien alien0;
     private Alien shallowcopy;
     private final int nplayers;
@@ -109,7 +123,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         BalancedAliensFactory balanced = new BalancedAliensFactory();
         DefensiveAliensFactory defensive = new DefensiveAliensFactory();
         OffensiveAliensFactory offensive = new OffensiveAliensFactory();
-        aliens = new ArrayList();
+        aliens = new ArrayList<Alien>();
         int i;
         int id = 0;
         for (i = 0; i<3; i++){
@@ -151,6 +165,12 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         shallowcopy.PosX=220;
         shallowcopy.PosY=220;
 
+        //Comand
+
+        alienMoves = new AlienMover();
+        sideMove = true;
+        dir = true;
+
         //powerup
         PowerUpFactory factory = new PowerUpFactory();
 
@@ -168,7 +188,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             player2 = player1.copyDeep();
             player2.changeImg("/Images/player2.png");
             player2.controlled = true;
-            player2.setLoc(150,280);
+//            player2.setLoc(150,280);
             ingame2 = true;
             try {
                 socket = new Socket("localhost",4000);
@@ -234,6 +254,55 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         context2.executeShoot(aliens);
         shot1 = context1.rShot();
         shot2 = context2.rShot();
+        for (Alien alien:aliens) {
+            if (sideMove){
+                if (dir){
+                    alienMoves.run(new RightCommand(alien));
+                    if(alien.PosX>rightMostAlien){
+                        rightMostAlien = alien.PosX;
+                    }
+
+                }
+                else {
+                    alienMoves.run(new LeftCommand(alien));
+                    if(alien.PosX<leftMostAlien){
+                        leftMostAlien = alien.PosX;
+                    }
+                }
+            }
+            else {
+                alienMoves.run(new DownCommand(alien));
+                alienDownMove--;
+            }
+            if(alien.PosY > lowestAlien){
+                lowestAlien = alien.PosY;
+            }
+        }
+        if (sideMove){
+            if (dir){
+                if (rightMostAlien >= 320){
+                    dir = !dir;
+                    sideMove = false;
+                    alienDownMove = 10 * aliens.size();
+                }
+            }
+            else {
+                if (leftMostAlien <= 0){
+                    dir = !dir;
+                    sideMove = false;
+                    alienDownMove = 10*aliens.size();
+                }
+            }
+        }
+        else {
+            if (alienDownMove <= 0){
+                sideMove = true;
+                leftMostAlien =400;
+                rightMostAlien = 0;
+            }
+        }
+        if(lowestAlien>=300)
+            gameOver();
     }
 
     public void paint(Graphics g) {
