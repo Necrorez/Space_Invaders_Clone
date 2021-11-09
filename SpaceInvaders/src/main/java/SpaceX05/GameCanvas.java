@@ -281,14 +281,14 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         if (sideMove){
             if (dir){
                 if (rightMostAlien >= 320){
-                    dir = !dir;
+                    dir = false;
                     sideMove = false;
                     alienDownMove = 10 * aliens.size();
                 }
             }
             else {
                 if (leftMostAlien <= 0){
-                    dir = !dir;
+                    dir = true;
                     sideMove = false;
                     alienDownMove = 10*aliens.size();
                 }
@@ -301,7 +301,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 rightMostAlien = 0;
             }
         }
-        if(lowestAlien>=300)
+        if(lowestAlien>=270)
             gameOver();
     }
 
