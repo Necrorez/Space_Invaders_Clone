@@ -14,10 +14,8 @@ public class WallBlockTriangle extends Sprite   {
             case "Purple": toSet= "/Images/WallBlockPurpleTriangle.png"; break;
             default: throw new RuntimeException("Invalid entry");
         }
-
         ImageIcon ii = new ImageIcon(this.getClass().getResource(toSet));
         Image image = ii.getImage();
-
         Image newimg = image.getScaledInstance(10, 10,  java.awt.Image.SCALE_SMOOTH);
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());

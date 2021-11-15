@@ -4,6 +4,10 @@ package SpaceX05;
 import SpaceX05.AbstractFactory.BalancedAliensFactory;
 import SpaceX05.AbstractFactory.DefensiveAliensFactory;
 import SpaceX05.AbstractFactory.OffensiveAliensFactory;
+import SpaceX05.Adapter.BasicWall;
+import SpaceX05.Adapter.SquareWall;
+import SpaceX05.Adapter.TriangleWall;
+import SpaceX05.Adapter.WallAdapter;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
@@ -48,8 +52,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private ShootingContext context1;
     private ShootingContext context2;
 
-    private ArrayList wallsSquares;
-    private ArrayList wallsTriangles;
+    private  ArrayList walls;
 
     private String HOST = "1ocalhost";
     private int PORT = 4000;
@@ -83,9 +86,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
 
 
-        // SET UP: wall setup
-        wallsSquares = new ArrayList();
-        wallsTriangles = new ArrayList();
+
+        walls = new ArrayList();
         Wall wall = new Wall.WallBuilder()
                 .square(new WallBlockSquare("Blue"))
                 .placement(new int[][]{
@@ -95,7 +97,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 .y(50)
                 .x(230)
                 .build();
-        wallsSquares.addAll(wall.getWallSquare());
+        WallAdapter target = new SquareWall(wall.getWallSquare());
+        walls.addAll(target.getWall());
+
         wall = new Wall.WallBuilder()
                 .triangle(new WallBlockTriangle("Purple"))
                 .placement(new int[][]{
@@ -105,7 +109,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 .y(250)
                 .x(230)
                 .build();
-        wallsTriangles.addAll(wall.getWallTriangle());
+        target = new TriangleWall(wall.getWallTriangle());
+        walls.addAll(target.getWall());
 
 
         // TODO: Set up enemy spawner
@@ -291,16 +296,12 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     }
 
     public void drawWall(Graphics g){
-        Iterator it = wallsSquares.iterator();
+        Iterator it = walls.iterator();
         while (it.hasNext()){
-            WallBlockSquare wall = (WallBlockSquare) it.next();
+            BasicWall wall = (BasicWall) it.next();
             g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
         }
-        it = wallsTriangles.iterator();
-        while (it.hasNext()){
-            WallBlockTriangle wall = (WallBlockTriangle) it.next();
-            g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
-        }
+
     }
 
     public void drawPlayers(Graphics g) {

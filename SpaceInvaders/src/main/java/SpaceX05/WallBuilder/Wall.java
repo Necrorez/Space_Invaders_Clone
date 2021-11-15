@@ -16,19 +16,6 @@ public class Wall {
         this.y = builder.y;
         this.placement = builder.placement;
     }
-    public WallBlockTriangle getTriangle(){
-        return triangle;
-    }
-    public WallBlockSquare getSquare(){return square;}
-    public int getX(){
-        return x;
-    }
-    public int getY(){
-        return y;
-    }
-    public int[][] getPlacement(){
-        return placement;
-    }
 
     public ArrayList<WallBlockSquare> getWallSquare(){
         ArrayList<WallBlockSquare> wallBlocks = new ArrayList<>();
