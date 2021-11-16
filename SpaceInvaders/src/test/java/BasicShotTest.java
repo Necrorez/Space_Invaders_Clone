@@ -1,10 +1,8 @@
-package SpaceX05;
-
-import SpaceX05.Aliens.DefensiveUfo;
+import SpaceX05.AbstractFactory.DefensiveAliensFactory;
+import SpaceX05.Alien;
 import SpaceX05.Strategy.BasicShot;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
