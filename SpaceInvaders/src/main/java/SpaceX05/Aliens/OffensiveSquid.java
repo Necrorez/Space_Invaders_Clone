@@ -1,6 +1,7 @@
 package SpaceX05.Aliens;
 
 import SpaceX05.Alien;
+import SpaceX05.PowerUps.PowerUp;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ public class OffensiveSquid extends Squid {
 
 
     public OffensiveSquid(String src, int id, int PosX, int PosY){
+        super(PosX, PosY);
         this.id = id;
         this.damagePoints = 15;
         this.healthPoints=5;
@@ -20,6 +22,15 @@ public class OffensiveSquid extends Squid {
         Image newimg = image.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());
+    }
+
+    public OffensiveSquid() {
+
+    }
+
+    @Override
+    public PowerUp rollPower() {
+        return super.rollPower();
     }
     public int getDamage(){return this.damagePoints;}
     public int getHealth() {return this.healthPoints;}

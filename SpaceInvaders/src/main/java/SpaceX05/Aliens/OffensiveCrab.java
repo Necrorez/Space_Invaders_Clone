@@ -24,6 +24,9 @@ public class OffensiveCrab extends Crab {
         setImage(ii.getImage());
     }
 
+    public OffensiveCrab(int i, int id) {
+    }
+
     public int getDamage(){return this.damagePoints;}
     public int getHealth() {return this.healthPoints;}
 

@@ -15,4 +15,14 @@ public class MovementSpeed extends PowerUp  {
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());
     }
+    public MovementSpeed(String src , int PosX, int PosY){
+        this.PosX = PosX;
+        this.PosY = PosY;
+
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
+        Image image = ii.getImage();
+        Image newimg = image.getScaledInstance(17, 17, Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newimg);
+        setImage(ii.getImage());
+    }
 }

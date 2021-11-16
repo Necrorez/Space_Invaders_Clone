@@ -4,6 +4,8 @@ package SpaceX05;
 import SpaceX05.AbstractFactory.BalancedAliensFactory;
 import SpaceX05.AbstractFactory.DefensiveAliensFactory;
 import SpaceX05.AbstractFactory.OffensiveAliensFactory;
+import SpaceX05.Aliens.*;
+import SpaceX05.Decorator.CrabDamagePointsDecorator;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
@@ -32,6 +34,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Player player1, player2;
 
     private PowerUp powerUp1;
+    private BalancedSquid squid = new BalancedSquid();
+    private OffensiveSquid squid2 = new OffensiveSquid();
+    private DefensiveSquid squid3 = new DefensiveSquid();
+    private PowerUp pw;
     private ArrayList aliens;
     private Alien alien0;
     private Alien shallowcopy;
@@ -144,6 +150,19 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         }
 
+        Crab c = new OffensiveCrab(10, 10);
+        System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
+        Crab dmg = new CrabDamagePointsDecorator(new CrabDamagePointsDecorator(c));
+        System.out.println("Added damage" + dmg.getDamage() + " " + dmg.getHealth());
+        dmg.setImage(3);
+        aliens.add(dmg);
+
+        Squid newAl = new BalancedSquid(20, 50);
+        System.out.println(newAl.getClass());
+        aliens.add(newAl);
+
+
+
 
         alien0 = balanced.spawnSquid("Crab", id,200,200);
         id++;
@@ -157,6 +176,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
        // powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
         // powerUp1 = factory.factoryMethod("MovementSpeed",160,160) ;
          powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
+
+         pw = factory.factoryMethod("ExtraLife", 50, 50);
 
         // Set up player input and socket
         player1 = new Player("/Images/player.png",false,new Location());
@@ -277,8 +298,28 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             if (alien.isVisible()){
                 g.drawImage(alien.getImage(), alien.PosX, alien.PosY, this);
             }
+            else if (!alien.isVisible())
+            {
+                if (alien.getClass().equals(squid.getClass()))
+                {
+                    PowerUp p = ((BalancedSquid) alien).rollPower();
+                    g.drawImage(p.getImage(), alien.PosX, alien.PosY, this);
+                }
+                if (alien.getClass().equals(squid2.getClass()))
+                {
+                    PowerUp p = ((OffensiveSquid) alien).rollPower();
+                    g.drawImage(p.getImage(), alien.PosX, alien.PosY, this);
+                }
+                if (alien.getClass().equals(squid3.getClass()))
+                {
+                    PowerUp p = ((DefensiveSquid) alien).rollPower();
+                    g.drawImage(p.getImage(), alien.PosX, alien.PosY, this);
+                }
+
+            }
             if (alien.isDying()){
                 alien.die();
+
 
                 g.drawImage(powerUp1.getImage(),alien.PosX, alien.PosY,this);
 

@@ -23,4 +23,5 @@ public abstract class Alien extends Sprite implements  Cloneable {
         }
     }
 
+
 }
