@@ -5,95 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_8_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_launcher_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_runner_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_suite_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_vintage_junit_vintage_engine_5_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_21_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_2_23_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/OPProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OPProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/AlienMover.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/DownCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/IAlienMove.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/LeftCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/RightCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/AlienMover.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/DownCommand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/IAlienMove.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/LeftCommand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/RightCommand.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Alien.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Alien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedCrab.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedCrab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedSquid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedSquid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveSquid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveSquid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveCrab.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveCrab.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveSquid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveSquid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/Squid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/Squid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Decorator/CrabHealthPointsDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Decorator/CrabHealthPointsDecorator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/PowerUps/MovementSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/PowerUps/MovementSpeed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/BasicShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/BasicShot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/PowerShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/PowerShot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedCrab.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedCrab.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedSquid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedSquid.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveSquid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveSquid.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveCrab.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveCrab.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveSquid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveSquid.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/Squid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/Squid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/PowerUps/MovementSpeed.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/PowerUps/MovementSpeed.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/BasicShot.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/BasicShot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/PowerShot.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/PowerShot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Alien.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/BalancedCrab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/BalancedSquid.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/BalancedUfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/Crab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/DefensiveCrab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/DefensiveSquid.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/DefensiveUfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/OffensiveCrab.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/OffensiveSquid.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/OffensiveUfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/Squid.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Aliens/Ufo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Client$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Client$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Client$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Commons.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Decorator/CrabDamagePointsDecorator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Decorator/CrabHealthPointsDecorator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Decorator/Decorator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/AbstractFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/BalancedAliensFactory$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/BalancedAliensFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/DefensiveAliensFactory$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/DefensiveAliensFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/OffensiveAliensFactory$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Factory/OffensiveAliensFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/GameCanvas$TAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/GameCanvas.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Observer/ClientListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Observer/ServerCaster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Observer/ServerCommandObserver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Observer/ServerCommander.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Server$Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Shot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Sprite.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Strategy/BasicShot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Strategy/PowerShot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Strategy/ShootingContext.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/OPProject/SpaceX05/Strategy/ShootingStrategy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server$Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server$Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server.class" afterDir="false" />
     </list>
     <list id="b5dd98c5-5ecd-48d3-9e74-55c4a31be29b" name="Changes by K" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -185,6 +113,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
+      <module name="SpaceInvaders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SpaceX05.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Server" />
       <module name="SpaceInvaders" />
@@ -238,8 +179,8 @@
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server (1)" />
         <item itemvalue="Application.Client" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="JUnit.BasicShotTest.shotTest" />
       </list>
     </recent_temporary>
   </component>
