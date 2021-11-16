@@ -5,23 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/AlienMover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/DownCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/IAlienMove.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/LeftCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Command/RightCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/AlienMover.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/DownCommand.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/IAlienMove.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/LeftCommand.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/RightCommand.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Adapter/BasicWall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Adapter/SquareWall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Adapter/TriangleWall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Adapter/WallAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/WallBuilder/WallBlockSquare.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/WallBuilder/WallBlockTriangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/resources/Images/WallBlockBlueTriangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/resources/Images/WallBlockPurpleTriangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/resources/Images/WallBlockTriangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/WallTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/Images/WallBlockBlueTriangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/Images/WallBlockPurpleTriangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/Images/WallBlockTriangle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/WallBlockSquare.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/WallBlockTriangle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/WallBuilder/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/WallBuilder/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/WallBuilder/WallBlock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/test/java/PowerShotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/PowerShotTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server$Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server$Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall$WallBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall$WallBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/WallBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/WallBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/PowerShotTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/PowerShotTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/tests/Testas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/Testas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/tests/java/SpaceX05/BasicShotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/BasicShotTest.java" afterDir="false" />
     </list>
     <list id="b5dd98c5-5ecd-48d3-9e74-55c4a31be29b" name="Changes by K" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,9 +59,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/SpaceInvaders/tests/java/SpaceX05/BasicShotTest.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="ProjectId" id="1yOuQq2M61QQ6qCy5140kkYXG0m" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -75,7 +83,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -90,6 +98,19 @@
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
       <module name="OPProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SpaceX05.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
+      <module name="SpaceInvaders" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="SpaceX05.*" />
@@ -180,7 +201,7 @@
         <item itemvalue="Application.Server (1)" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
   </component>
