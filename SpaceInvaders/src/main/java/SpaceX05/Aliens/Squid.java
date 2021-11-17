@@ -9,11 +9,9 @@ import java.awt.*;
 
 public abstract class Squid extends Alien {
 
-    private String attackSpeedImg = "/Images/PowerUps/AttackSpeed.png";
-    private String extraLifeImg = "/Images/PowerUps/ExtraLife.png";
     private String movementSpeedImg = "/Images/PowerUps/MovementSpeed.png";
     private String squidImg;
-    private static final String squidImg1 = "/Images/Squid.jpeg";
+    private static final String squidImg1 = "/Images/Squid.jpg";
     private static final String squidImg2 = "/Images/DefensiveSquid.jpg";
     private static final String squidImg3 = "/Images/OffensiveSquid.jpg";
 

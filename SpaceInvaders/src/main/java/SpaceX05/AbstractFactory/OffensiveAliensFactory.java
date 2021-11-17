@@ -27,10 +27,4 @@ public class OffensiveAliensFactory extends AbstractFactory {
         return new OffensiveUfo(ufoImg, alienId, PosX, PosY);
     }
 
-    @Override
-    public Alien getAlienShip(String param){
-        return new Alien() {
-        };
-    }
-
 }
