@@ -24,8 +24,7 @@ public class PowerUpFactory extends Factory {
                 powerUpId++;
                 return new MovementSpeed(movementSpeedImg,powerUpId,PosX,PosY);
             default:
-                System.out.print("x");
-                return null;
+                throw new RuntimeException("Invalid entry");
         }
     }
     @Override

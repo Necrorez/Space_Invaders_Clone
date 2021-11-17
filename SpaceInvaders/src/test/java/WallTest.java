@@ -26,6 +26,7 @@ public class WallTest {
         underTest = new Wall.WallBuilder();
         wallBlockTriangle = new ArrayList<>();
         wallBlockSquare  = new ArrayList<>();
+
     }
 
     @ParameterizedTest

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Adapter/BasicWall.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Adapter/SquareWall.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Adapter/TriangleWall.java" afterDir="false" />
@@ -33,6 +34,10 @@
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/PowerShotTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/PowerShotTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/tests/Testas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/Testas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/tests/java/SpaceX05/BasicShotTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/BasicShotTest.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/test/java/FactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/FactoryTest.java" afterDir="false" />
+>>>>>>> origin/Saulius
     </list>
     <list id="b5dd98c5-5ecd-48d3-9e74-55c4a31be29b" name="Changes by K" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +84,11 @@
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/OOP_MD_CODES" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+>>>>>>> origin/Saulius
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -92,9 +101,15 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="SpaceX05" />
       <recent name="SpaceX05.Strategy" />
+<<<<<<< HEAD
+=======
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+>>>>>>> origin/Saulius
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="JUnit.All in SpaceInvaders">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
       <module name="OPProject" />
@@ -148,6 +163,7 @@
       </method>
     </configuration>
     <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+<<<<<<< HEAD
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Server" />
       <module name="SpaceInvaders" />
       <extension name="coverage">
@@ -161,8 +177,10 @@
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+=======
+>>>>>>> origin/Saulius
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Server" />
-      <module name="OPProject" />
+      <module name="SpaceInvaders" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="SpaceX05.*" />
@@ -173,6 +191,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <configuration name="BasicShotTest.shotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="OPProject" />
       <extension name="coverage">
@@ -185,23 +204,60 @@
       <option name="MAIN_CLASS_NAME" value="SpaceX05.BasicShotTest" />
       <option name="METHOD_NAME" value="shotTest" />
       <option name="TEST_OBJECT" value="method" />
+=======
+    <configuration name="All in SpaceInvaders" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpaceInvaders" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpaceInvaders" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FactoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PrototypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpaceInvaders" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PrototypeTest" />
+      <option name="TEST_OBJECT" value="class" />
+>>>>>>> origin/Saulius
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
       <item itemvalue="Application.Client" />
+<<<<<<< HEAD
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Server (1)" />
       <item itemvalue="JUnit.BasicShotTest.shotTest" />
+=======
+      <item itemvalue="Application.Server (1)" />
+      <item itemvalue="JUnit.All in SpaceInvaders" />
+      <item itemvalue="JUnit.FactoryTest" />
+      <item itemvalue="JUnit.PrototypeTest" />
+>>>>>>> origin/Saulius
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in SpaceInvaders" />
+        <item itemvalue="JUnit.PrototypeTest" />
+        <item itemvalue="JUnit.FactoryTest" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server (1)" />
+<<<<<<< HEAD
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Client" />
+=======
+>>>>>>> origin/Saulius
       </list>
     </recent_temporary>
   </component>
@@ -245,5 +301,8 @@
     <SUITE FILE_PATH="coverage/Space_Invaders_Clone$Client.ic" NAME="Client Coverage Results" MODIFIED="1633987524400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>SpaceX05.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$FactoryTest.ic" NAME="FactoryTest Coverage Results" MODIFIED="1637161508462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$PrototypeTest.ic" NAME="PrototypeTest Coverage Results" MODIFIED="1637161571360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$All_in_SpaceInvaders.ic" NAME="All in SpaceInvaders Coverage Results" MODIFIED="1637161611245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

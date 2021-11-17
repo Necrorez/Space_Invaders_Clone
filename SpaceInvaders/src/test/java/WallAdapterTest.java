@@ -4,6 +4,7 @@ import SpaceX05.Adapter.WallAdapter;
 import SpaceX05.WallBuilder.Wall;
 import SpaceX05.WallBuilder.WallBlockSquare;
 import SpaceX05.WallBuilder.WallBlockTriangle;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
