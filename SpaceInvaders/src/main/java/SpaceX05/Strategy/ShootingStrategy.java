@@ -7,7 +7,7 @@ import SpaceX05.Shot;
 import java.util.ArrayList;
 
 public interface ShootingStrategy {
-    public int shoot(ArrayList<Alien> aliens);
-    public int type();
-    public Shot returnShot();
+    int shoot(ArrayList<Alien> aliens);
+    int type();
+    Shot returnShot();
 }

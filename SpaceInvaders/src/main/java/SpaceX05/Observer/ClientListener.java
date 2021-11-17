@@ -4,9 +4,6 @@ import java.io.PrintWriter;
 
 public class ClientListener implements ServerCommandObserver{
     private  PrintWriter writer;
-    public ClientListener(){
-
-    }
     public ClientListener(PrintWriter writer){
         this.writer = writer;
     }
