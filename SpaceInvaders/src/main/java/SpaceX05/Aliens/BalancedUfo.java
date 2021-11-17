@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BalancedUfo extends Ufo {
-
+    private String ufoImg = "/Images/UFO.jpeg";
 
     public BalancedUfo(String src, int id, int PosX, int PosY){
         this.id = id;
@@ -21,6 +21,24 @@ public class BalancedUfo extends Ufo {
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());
     }
+
+    public BalancedUfo(int PosX, int PosY){
+        this.damagePoints = 10;
+        this.healthPoints=10;
+        this.PosX = PosX;
+        this.PosY = PosY;
+
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(ufoImg));
+        Image image = ii.getImage();
+        Image newimg = image.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newimg);
+        setImage(ii.getImage());
+    }
+
+    public BalancedUfo() {
+
+    }
+
     public int getDamage(){return this.damagePoints;}
     public int getHealth() {return this.healthPoints;}
 
