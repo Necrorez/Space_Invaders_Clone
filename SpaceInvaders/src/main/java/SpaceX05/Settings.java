@@ -3,7 +3,7 @@ package SpaceX05;
 import javax.swing.*;
 import java.awt.*;
 
-class Settings {
+public class Settings {
 
     private static Settings single_instance = null;
 
