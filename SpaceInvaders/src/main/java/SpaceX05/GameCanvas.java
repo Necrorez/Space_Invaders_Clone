@@ -5,6 +5,8 @@ import SpaceX05.AbstractFactory.BalancedAliensFactory;
 import SpaceX05.AbstractFactory.DefensiveAliensFactory;
 import SpaceX05.AbstractFactory.OffensiveAliensFactory;
 import SpaceX05.Aliens.*;
+import SpaceX05.Composite.GroupedAlien;
+import SpaceX05.Composite.Swarm;
 import SpaceX05.Decorator.CrabDamagePointsDecorator;
 import SpaceX05.Command.AlienMover;
 import SpaceX05.Command.DownCommand;
@@ -57,6 +59,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private int rightMostAlien = 0;
     private int leftMostAlien = 400;
     private int lowestAlien=0;
+
+    Swarm ufoSwarm = new Swarm();
+    Swarm crabSwarm = new Swarm();
+    Swarm squidSwarm = new Swarm();
 
     private Alien alien0;
     private Alien shallowcopy;
@@ -140,34 +146,44 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         int i;
         int id = 0;
         for (i = 0; i<3; i++){
-                Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
-                id++;
-                Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
-                id++;
-                Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
-                id++;
-                Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
-                id++;
-                Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
-                id++;
-                Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
-                id++;
-                Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
-                id++;
-                Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
-                id++;
-                Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
-                id++;
+            Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
+            id++;
+            Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
+            id++;
+            Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
+            id++;
+            Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
+            id++;
+            Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
+            id++;
+            Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
+            id++;
+            Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
+            id++;
+            Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
+            id++;
+            Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
+            id++;
 
-                aliens.add(alien);
-                aliens.add(alien1);
-                aliens.add(alien2);
-                aliens.add(alien3);
-                aliens.add(alien4);
-                aliens.add(alien5);
-                aliens.add(alien6);
-                aliens.add(alien7);
-                aliens.add(alien8);
+            aliens.add(alien);
+            aliens.add(alien1);
+            aliens.add(alien2);
+            aliens.add(alien3);
+            aliens.add(alien4);
+            aliens.add(alien5);
+            aliens.add(alien6);
+            aliens.add(alien7);
+            aliens.add(alien8);
+
+            squidSwarm.add(alien);
+            crabSwarm.add(alien1);
+            ufoSwarm.add(alien2);
+            squidSwarm.add(alien3);
+            crabSwarm.add(alien4);
+            ufoSwarm.add(alien5);
+            squidSwarm.add(alien6);
+            crabSwarm.add(alien7);
+            ufoSwarm.add(alien8);
 
         }
 
@@ -282,30 +298,13 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         context2.executeShoot(aliens);
         shot1 = context1.rShot();
         shot2 = context2.rShot();
-        for (Alien alien:aliens) {
-            if (sideMove){
-                if (dir){
-                    alienMoves.run(new RightCommand(alien));
-                    if(alien.PosX>rightMostAlien){
-                        rightMostAlien = alien.PosX;
-                    }
 
-                }
-                else {
-                    alienMoves.run(new LeftCommand(alien));
-                    if(alien.PosX<leftMostAlien){
-                        leftMostAlien = alien.PosX;
-                    }
-                }
-            }
-            else {
-                alienMoves.run(new DownCommand(alien));
-                alienDownMove--;
-            }
-            if(alien.PosY > lowestAlien){
-                lowestAlien = alien.PosY;
-            }
-        }
+        Swarm tempswarm = new Swarm();
+        tempswarm.add(squidSwarm);
+        tempswarm.add(crabSwarm);
+        tempswarm.add(ufoSwarm);
+        GroupedAlien swarm = tempswarm;
+        moveAlienFromSwarm(swarm);
         if (sideMove){
             if (dir){
                 if (rightMostAlien >= 320){
@@ -331,6 +330,43 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         }
         if(lowestAlien>=270)
             gameOver();
+    }
+
+    private void moveAlienFromSwarm(GroupedAlien swarm){
+        if (swarm.isAlien()){
+            movementWCommand((Alien) swarm);
+        }
+        else {
+            Swarm swarm1 = (Swarm)swarm;
+            for (GroupedAlien smallerSwarm: swarm1.getSwarm()) {
+                moveAlienFromSwarm(smallerSwarm);
+            }
+        }
+    }
+
+    private void movementWCommand(Alien alien){
+        if (sideMove){
+            if (dir){
+                alienMoves.run(new RightCommand(alien));
+                if(alien.PosX>rightMostAlien){
+                    rightMostAlien = alien.PosX;
+                }
+
+            }
+            else {
+                alienMoves.run(new LeftCommand(alien));
+                if(alien.PosX<leftMostAlien){
+                    leftMostAlien = alien.PosX;
+                }
+            }
+        }
+        else {
+            alienMoves.run(new DownCommand(alien));
+            alienDownMove--;
+        }
+        if(alien.PosY > lowestAlien){
+            lowestAlien = alien.PosY;
+        }
     }
 
     public void paint(Graphics g) {

@@ -26,5 +26,4 @@ public class OffensiveAliensFactory extends AbstractFactory {
     {
         return new OffensiveUfo(ufoImg, alienId, PosX, PosY);
     }
-
 }

@@ -1,10 +1,12 @@
 package SpaceX05;
 
+import SpaceX05.Composite.GroupedAlien;
+
 import javax.swing.*;
 import java.awt.*;
 
 
-public abstract class Alien extends Sprite implements  Cloneable {
+public abstract class Alien extends Sprite implements  Cloneable, GroupedAlien {
 
     public int id ;
     public int damagePoints;
@@ -23,5 +25,8 @@ public abstract class Alien extends Sprite implements  Cloneable {
         }
     }
 
-
+    @Override
+    public boolean isAlien() {
+        return true;
+    }
 }
