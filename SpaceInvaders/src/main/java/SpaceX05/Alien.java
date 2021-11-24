@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public abstract class Alien extends Sprite implements  Cloneable {
+public  class Alien extends Sprite implements  Cloneable {
 
     public int id ;
     public int damagePoints;
@@ -24,4 +24,8 @@ public abstract class Alien extends Sprite implements  Cloneable {
     }
 
 
+    public void setCoords(int posX, int posY) {
+        this.PosX = posX;
+        this.PosY = posY;
+    }
 }

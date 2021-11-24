@@ -38,6 +38,14 @@ public class DefensiveCrab extends Crab {
 
     }
 
+    public DefensiveCrab(String img) {
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(img));
+        Image image = ii.getImage();
+        Image newimg = image.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newimg);
+        setImage(ii.getImage());
+    }
+
     public int getDamage(){return this.damagePoints;}
     public int getHealth() {return this.healthPoints;}
 }

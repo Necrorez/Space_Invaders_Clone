@@ -14,6 +14,8 @@ import SpaceX05.Adapter.BasicWall;
 import SpaceX05.Adapter.SquareWall;
 import SpaceX05.Adapter.TriangleWall;
 import SpaceX05.Adapter.WallAdapter;
+import SpaceX05.Flyweight.AlienFactory;
+import SpaceX05.Flyweight.ShotFactory;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
@@ -30,10 +32,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -43,12 +42,15 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Dimension d;
     private Player player1, player2;
 
+    ShotFactory shotFactory = new ShotFactory();
+
     private PowerUp powerUp1;
     private BalancedSquid squid = new BalancedSquid();
     private OffensiveSquid squid2 = new OffensiveSquid();
     private DefensiveSquid squid3 = new DefensiveSquid();
     private PowerUp pw;
     private ArrayList<Alien> aliens;
+    private ArrayList<Alien> newAls;
 
     private AlienMover alienMoves;
     private boolean sideMove = true;
@@ -98,8 +100,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     public boolean gameStart(){
         // SET UP: this a context strategy setup for shooting
 
-        shot1 = new BasicShot();
-        shot2 = new BasicShot();
+//        shot1 = new BasicShot();
+//        shot2 = new BasicShot();
+        shot1 = ShotFactory.getShot("Basic");
+        shot2 = ShotFactory.getShot("Basic");
         context1 = new ShootingContext(new BasicShot());
         context2 = new ShootingContext(new BasicShot());
 
@@ -170,6 +174,14 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 aliens.add(alien8);
 
         }
+        newAls =  new ArrayList<Alien>();
+        AlienFactory aFactory = new AlienFactory();
+        for (i = 0; i < 1; i++)
+        {
+            Alien crab = aFactory.getAlien("bCrab");
+            crab.setCoords(80, 80);
+            aliens.add(crab);
+        }
 
         Crab c = new OffensiveCrab(10, 10);
         System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
@@ -181,6 +193,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         Squid newAl = new BalancedSquid(20, 50);
         System.out.println(newAl.getClass());
         aliens.add(newAl);
+
+        //Add shot types
+       // shot1 = shotFactory.getShot("Basic");
+       // shot2 = shotFactory.getShot("Power");
 
 
 
@@ -252,15 +268,22 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         player1.update();
         player2.update();
 
+
         //Creating shots
         if (!shot1.isVisible() && player1.getShoot() == 1) {
             if (context1.whichType() == 1){
-                shot1 = new BasicShot(player1.getX(), player1.getY());
+                shot1 = ShotFactory.getShot("Basic");
+                shot1.setCoords(player1.getX(), player1.getY());
+                shot1.setVisible(true);
+                //shot1 = new BasicShot(player1.getX(), player1.getY());
                 context1 = new ShootingContext((BasicShot)shot1);
 
             }
             if (context1.whichType() == 2){
-                shot1 = new PowerShot(player1.getX(), player1.getY());
+                shot1 = ShotFactory.getShot("Power");
+                shot1.setCoords(player1.getX(), player1.getY());
+                shot1.setVisible(true);
+                //shot1 = new PowerShot(player1.getX(), player1.getY());
                 context1 = new ShootingContext((PowerShot)shot1);
 
             }
@@ -269,11 +292,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         if (nplayers>1){
             if (!shot2.isVisible() && player2.getShoot() == 1) {
                 if (context2.whichType() == 1){
-                    shot2 = new BasicShot(player2.getX(), player2.getY());
+                    shot2 = ShotFactory.getShot("Basic");
+                    shot2.setCoords(player2.getX(), player2.getY());
+                    shot2.setVisible(true);
+                    //shot2 = new BasicShot(player2.getX(), player2.getY());
                     context2 = new ShootingContext((BasicShot)shot2);
                 }
                 if (context2.whichType() == 2){
-                    shot2 = new PowerShot(player2.getX(), player2.getY());
+                    shot2 = ShotFactory.getShot("Power");
+                    shot2.setCoords(player2.getX(), player2.getY());
+                    shot2.setVisible(true);
+                    //shot2 = new PowerShot(player2.getX(), player2.getY());
                     context2 = new ShootingContext((PowerShot)shot2);
                 }
             }
@@ -507,11 +536,16 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             int shoot = Integer.parseInt(mes[2]);
             player2.setDirection(direction);
             if (player2.getShoot() == 2){
-                context2 = new ShootingContext(new BasicShot());
+                //context2 = new ShootingContext(new BasicShot());
+                Shot sh = ShotFactory.getShot("Basic");
+                //sh.setCoords(player2.getX(), player2.getY());
+                context2 = new ShootingContext((BasicShot)sh);
+
                 shoot = 0;
             }
             if (player2.getShoot() == 3){
-                context2 = new ShootingContext(new PowerShot());
+                //context2 = new ShootingContext(new PowerShot());
+                context2 = new ShootingContext((BasicShot)ShotFactory.getShot("Power"));
                 shoot = 0;
             }
             player2.setShoot(shoot);
@@ -535,11 +569,13 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
             if (e.getKeyCode() == KeyEvent.VK_S) {
                 player1.setShoot(2);
-                context1 = new ShootingContext(new BasicShot());
+                //context1 = new ShootingContext(new BasicShot());
+                context1 = new ShootingContext((BasicShot)ShotFactory.getShot("Basic"));
             }
             if (e.getKeyCode() == KeyEvent.VK_D) {
                 player1.setShoot(3);
-                context1 = new ShootingContext(new PowerShot());
+                //context1 = new ShootingContext(new PowerShot());
+                context1 = new ShootingContext((PowerShot)ShotFactory.getShot("Basic"));
             }
         }
         public void keyReleased(KeyEvent e) {

@@ -23,6 +23,16 @@ public class PowerShot  extends Shot implements ShootingStrategy, Commons {
         Image newimg = image.getScaledInstance(10, 10,  java.awt.Image.SCALE_SMOOTH);
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());
+    }
+    public PowerShot(String img){
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(img));
+        Image image = ii.getImage();
+        Image newimg = image.getScaledInstance(10, 10,  java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newimg);
+        setImage(ii.getImage());
+    }
+    public void setCoords(int x, int y)
+    {
         setX(x + H_SPACE - 5);
         setY(y - V_SPACE);
     }
