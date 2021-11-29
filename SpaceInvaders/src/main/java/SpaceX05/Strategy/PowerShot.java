@@ -3,6 +3,9 @@ package SpaceX05.Strategy;
 import SpaceX05.Alien;
 import SpaceX05.Commons;
 import SpaceX05.Shot;
+import SpaceX05.Template.PowerShotCollision;
+import SpaceX05.Template.ShotCollision;
+import SpaceX05.Template.Collision;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,24 +33,12 @@ public class PowerShot  extends Shot implements ShootingStrategy, Commons {
     public int shoot(ArrayList<Alien> aliens) {
         int kills = 0;
         Iterator it = aliens.iterator();
-        int X = getX();
-        int Y = getY();
         while (it.hasNext()){
             Alien alien = (Alien) it.next();
-            int alienX = alien.PosX;
-            int alienY = alien.PosY;
-            if (alien.isVisible() && isVisible()){
-                if(X >= alienX && X <= (alienX + ALIEN_WIDTH)&& Y >= (alienY) && Y <= (alienY + ALIEN_HEIGHT)){
-                    ImageIcon ii = new ImageIcon(getClass().getResource(explosion));
-                    Image image = ii.getImage();
-                    Image imageScaled = image.getScaledInstance(20,20, Image.SCALE_SMOOTH);
-                    ii = new ImageIcon(imageScaled);
-                    alien.setImage(ii.getImage());
-                    alien.setDying(true);
-                    this.die();
-                    kills++;
-                }
-            }
+            Collision collision = new PowerShotCollision();
+            collision.checkHit(alien,this);
+            if (!this.isVisible() && !alien.isVisible())
+                kills++;
 
         }
         int y = getY();
