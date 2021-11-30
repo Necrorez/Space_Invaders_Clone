@@ -5,16 +5,13 @@ import SpaceX05.Shot;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 import static SpaceX05.Commons.ALIEN_HEIGHT;
 import static SpaceX05.Commons.ALIEN_WIDTH;
 
 public class PowerShotCollision extends Collision {
 
-
-    /**
-     * @param thisItem, nextItem
-     */
     @Override
     void gotHit(Object thisItem, Object nextItem) {
         Alien alien = (Alien) thisItem;
@@ -31,19 +28,12 @@ public class PowerShotCollision extends Collision {
     }
 
 
-
-    int testing() {
-        return 0;
-    }
-
-
-
     @Override
     void doAction(Object first, Object second) {
         String explosion = "/Images/Explosion.png";
         Alien alien = (Alien) first;
         Shot sprite = (Shot) second;
-        ImageIcon ii = new ImageIcon(getClass().getResource(explosion));
+        ImageIcon ii = new ImageIcon(Objects.requireNonNull(getClass().getResource(explosion)));
         Image image = ii.getImage();
         Image imageScaled = image.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         ii = new ImageIcon(imageScaled);

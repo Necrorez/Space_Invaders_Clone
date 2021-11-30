@@ -1,27 +1,32 @@
 package SpaceX05;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferStrategy;
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
 
 public class Client extends JFrame implements Commons
 {
-    BufferStrategy strategy;
-    Container c = getContentPane();
 
-    public static void main(String[] args) throws IOException
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Main method to start the game window
+     * @param args
+     */
+    @SuppressWarnings("SSDoc")
+    public static void main(String[] args)
     {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Client().setVisible(true);
-            }
-        });
+        SwingUtilities.invokeLater(() -> new Client().setVisible(true));
     }
 
-    public Client(){
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for the Client
+     */
+    @SuppressWarnings("SSDoc")
+    public Client() {
         //Set up panel
         super("Space Invaders");
         final JPanel panel = new JPanel();
@@ -39,65 +44,27 @@ public class Client extends JFrame implements Commons
         setResizable(true);
         setIgnoreRepaint(true);
 
-        start.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GameCanvas canvas = new GameCanvas(2);
-                if (!canvas.isWorked()) {
-                    dispose();
-                } else {
-                    remove(panel);
-                    add(canvas);
-                    setTitle("Space Invaders");
-                    setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-                    setSize(BOARD_WIDTH, BOARD_WIDTH);
-                    setLocationRelativeTo(null);
-                    setVisible(true);
-                    setResizable(false);
-                }
+        start.addActionListener(e -> {
+            GameCanvas canvas = new GameCanvas(2);
+            if (!canvas.isWorked()) {
+                dispose();
+            } else {
+                remove(panel);
+                add(canvas);
+                setTitle("Space Invaders");
+                setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                setSize(BOARD_WIDTH, BOARD_WIDTH);
+                setLocationRelativeTo(null);
+                setVisible(true);
+                setResizable(false);
             }
         });
 
-        exit.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
+        exit.addActionListener(e -> System.exit(0));
 
 
 
     }
-   /* public JPanel multiplayer() {
-        JPanel panel = new JPanel();
-        JLabel jlabel = new JLabel("This is a label");
-        jlabel.setFont(new Font("Verdana",1,20));
-        panel.add(jlabel);
-        panel.setBackground(Color.BLACK);
-        this.add(panel);
-        return panel;
-    }
-    private static void networkSetup(){
-        try {
-            sock = new Socket("localhost", 4444);
-            InputStreamReader streamReader = new InputStreamReader(sock.getInputStream());
-            reader = new BufferedReader(streamReader);
-            writer = new PrintWriter(sock.getOutputStream());
-            System.out.println("Networking Established");
 
-        } catch (IOException ex) {System.out.println("No network access");}
-    }
-    public static class IncomingReader implements Runnable {
-        public void run() {
-            try {
-                while (reader.readLine() != null) {
-                    System.out.println(reader.readLine());
-                    writer.println("Test");
-                }
-            } catch (Exception ex) {ex.printStackTrace();}
-        }
-    }*/
 
 }

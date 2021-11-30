@@ -14,31 +14,61 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-import static SpaceX05.Server.Game.kickPlayer;
 
 public class Server
 {
     // TODO: add more stuff
-    public class Game implements Runnable{
+    public static class Game implements Runnable{
         Socket socket1;
         Socket socket2;
         private String command;
-        public Game(Socket socket1,Socket socket2){
-            this.socket1=socket1;
-            this.socket2=socket2;
-            command = "";
+
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * Constructor for the server
+         * @param socket1,socket2
+         */
+        @SuppressWarnings("SSDoc")
+        public Game(Socket socket1, Socket socket2) {
+                this.socket1=socket1;
+                this.socket2=socket2;
+                command = "";
         }
 
-        public static Expression kickPlayer(String playerID){
-            Expression kick = new TerminalExpression("KICK");
-            Expression player = new TerminalExpression(playerID);
-            return new AndExpression(kick,player);
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * Rule for kicking players for the Interpreter pattern
+         * @param playerID
+         * @return AndExpression
+         */
+        @SuppressWarnings("SSDoc")
+        public static Expression kickPlayer(String playerID) {
+                Expression kick = new TerminalExpression("KICK");
+                Expression player = new TerminalExpression(playerID);
+                return new AndExpression(kick,player);
         }
+
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * Rule for pausing the game for the Interpreter pattern
+         * @return OrExpression
+         */
+        @SuppressWarnings("SSDoc")
         public static Expression pauseAll(){
             Expression kick = new TerminalExpression("PAUSE");
             Expression player = new TerminalExpression("STOP");
             return new OrExpression(kick,player);
         }
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * Rule for un-pausing the game for the Interpreter pattern
+         * @return OrExpression
+         */
+        @SuppressWarnings("SSDoc")
         public static Expression unpauseALL(){
             Expression kick = new TerminalExpression("RELEASE");
             Expression player = new TerminalExpression("UNDO");
@@ -59,14 +89,11 @@ public class Server
                 Expression kickPlayer2 = kickPlayer(Integer.toString(socket2.getPort()));
                 Expression pauseForAll = pauseAll();
                 Expression unpauseForAll = unpauseALL();// Command reading logic goes here
-                Thread inputThread = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Scanner scan = new Scanner(System.in);
-                        command = "";
-                        while (true) {
-                            command = scan.nextLine();
-                        }
+                Thread inputThread = new Thread(() -> {
+                    Scanner scan = new Scanner(System.in);
+                    command = "";
+                    while (true) {
+                        command = scan.nextLine();
                     }
                 });
 
@@ -124,19 +151,30 @@ public class Server
         }
     }
 
-    public static void main(String[] args) throws Exception
-    {
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Starts the server
+     * @param args
+     */
+    @SuppressWarnings("SSDoc")
+    public static void main(String[] args) {
         new Server().start();
     }
 
 
-    public void start(){
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Waits for players to connect then starts a new thread for the server
+     */
+    @SuppressWarnings("SSDoc")
+    public void start() {
         try {
             ServerSocket serverSocket = new ServerSocket(4000);
-            while (true){
-                Game game = new Game(serverSocket.accept(),serverSocket.accept());
+            while (true) {
+                Game game = new Game(serverSocket.accept(), serverSocket.accept());
                 Thread t = new Thread(game);
-
                 t.start();
             }
         }catch (Exception e){

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ServerCaster implements ServerCommander{
-    private List<ServerCommandObserver> observerList = new ArrayList<ServerCommandObserver>();
+    private final List<ServerCommandObserver> observerList = new ArrayList<>();
 
     @Override
     public void addObserver(ServerCommandObserver observer) {

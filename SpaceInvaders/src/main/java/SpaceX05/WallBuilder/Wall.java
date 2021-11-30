@@ -9,6 +9,13 @@ public class Wall {
     private final int x;
     private final int y;
     private final int[][] placement;
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for the wall object
+     * @param builder
+     */
+    @SuppressWarnings("SSDoc")
     public Wall(WallBuilder builder) {
         this.triangle = builder.triangle;
         this.square = builder.square;
@@ -17,7 +24,15 @@ public class Wall {
         this.placement = builder.placement;
     }
 
-    public ArrayList<WallBlockSquare> getWallSquare(){
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Creates an array of square walls
+     * @param
+     * @return array of square walls
+     */
+    @SuppressWarnings("SSDoc")
+    public ArrayList<WallBlockSquare> getWallSquare() {
         ArrayList<WallBlockSquare> wallBlocks = new ArrayList<>();
         int offset = 10;
         int i = 0;
@@ -38,6 +53,14 @@ public class Wall {
         }
         return wallBlocks;
     }
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Creates an array of triangle walls
+     * @param
+     * @return array of triangle walls
+     */
+    @SuppressWarnings("SSDoc")
     public ArrayList<WallBlockTriangle> getWallTriangle(){
         ArrayList<WallBlockTriangle> wallBlocks = new ArrayList<>();
         int offset = 10;
@@ -66,32 +89,79 @@ public class Wall {
         private int y;
         private int[][] placement;
 
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * default constructor
+         */
+        @SuppressWarnings("SSDoc")
         public WallBuilder() {
         }
+
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * creation of WallBlockTriangle object
+         * @return this
+         */
+        @SuppressWarnings("SSDoc")
         public WallBuilder triangle(WallBlockTriangle c){
             this.triangle = c;
             return this;
         }
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * creation of WallBlockSquare object
+         * @return this
+         */
+        @SuppressWarnings("SSDoc")
         public WallBuilder square(WallBlockSquare c){
             this.square = c;
             return this;
         }
-
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * creation of x coordinate
+         * @return this
+         */
+        @SuppressWarnings("SSDoc")
         public WallBuilder x(int x){
             this.x = x;
             return this;
         }
-
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * creation of y coordinate
+         * @return this
+         */
+        @SuppressWarnings("SSDoc")
         public WallBuilder y(int y){
             this.y=y;
             return this;
         }
 
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * creation of placement array
+         * @return this
+         */
+        @SuppressWarnings("SSDoc")
         public WallBuilder placement(int[][] placement){
             this.placement = placement;
             return this;
         }
 
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * builds the entire Wall object
+         * @return this
+         */
+        @SuppressWarnings("SSDoc")
         public Wall build(){
             Wall wall = new Wall(this);
             return wall;

@@ -5,19 +5,46 @@ import SpaceX05.Shot;
 
 import java.util.ArrayList;
 
-public class ShootingContext {
-    private  ShootingStrategy strategy;
-
-    public ShootingContext(ShootingStrategy strategy) {
-        this.strategy = strategy;
+public record ShootingContext(ShootingStrategy strategy) {
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for Shooting context
+     * @param strategy
+     */
+    @SuppressWarnings("SSDoc")
+    public ShootingContext {
     }
-    public int executeShoot(ArrayList<Alien> aliens){
+
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Method that executes the shoot method in strategy pattern
+     * @param aliens
+     * @return strategy.shoot() method
+     */
+    @SuppressWarnings("SSDoc")
+    public int executeShoot(ArrayList<Alien> aliens) {
         return strategy.shoot(aliens);
     }
-    public int whichType(){
+
+    /**
+     * TODO | DOING | DONE
+     * Method that returns the type of shot used
+     * @return type
+     */
+    @SuppressWarnings("SSDoc")
+    public int whichType() {
         return strategy.type();
     }
-    public Shot rShot(){
+
+    /**
+     * TODO | DOING | DONE
+     * Method that returns the type of shot used
+     * @return returnShot()
+     */
+    @SuppressWarnings("SSDoc")
+    public Shot rShot() {
         return strategy.returnShot();
     }
 }

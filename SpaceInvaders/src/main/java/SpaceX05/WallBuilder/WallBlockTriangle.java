@@ -4,22 +4,36 @@ import SpaceX05.Sprite;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class WallBlockTriangle extends Sprite   {
-    public WallBlockTriangle(String color){
-        String toSet = "";
-        switch (color){
-            case "White": toSet = "/Images/WallBlockTriangle.png"; break;
-            case "Blue": toSet= "/Images/WallBlockBlueTriangle.png"; break;
-            case "Purple": toSet= "/Images/WallBlockPurpleTriangle.png"; break;
-            default: throw new RuntimeException("Invalid entry");
-        }
-        ImageIcon ii = new ImageIcon(this.getClass().getResource(toSet));
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for the WallBlockTriangle Object
+     * @param color
+     */
+    @SuppressWarnings("SSDoc")
+    public WallBlockTriangle(String color) {
+        String toSet = switch (color) {
+            case "White" -> "/Images/WallBlockTriangle.png";
+            case "Blue" -> "/Images/WallBlockBlueTriangle.png";
+            case "Purple" -> "/Images/WallBlockPurpleTriangle.png";
+            default -> throw new RuntimeException("Invalid entry");
+        };
+        ImageIcon ii = new ImageIcon(Objects.requireNonNull(this.getClass().getResource(toSet)));
         Image image = ii.getImage();
-        Image newimg = image.getScaledInstance(10, 10,  java.awt.Image.SCALE_SMOOTH);
-        ii = new ImageIcon(newimg);
+        Image newImage = image.getScaledInstance(10, 10,  Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newImage);
         setImage(ii.getImage());
     }
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for the WallBlockTriangle Object
+     * @param color
+     */
+    @SuppressWarnings("SSDoc")
     public WallBlockTriangle(int x, int y,Image img){
 
         setImage(img);

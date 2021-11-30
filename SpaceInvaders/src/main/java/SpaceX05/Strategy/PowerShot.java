@@ -4,39 +4,49 @@ import SpaceX05.Alien;
 import SpaceX05.Commons;
 import SpaceX05.Shot;
 import SpaceX05.Template.PowerShotCollision;
-import SpaceX05.Template.ShotCollision;
 import SpaceX05.Template.Collision;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Objects;
 
 public class PowerShot  extends Shot implements ShootingStrategy, Commons {
-    private String shot = "/Images/PowerShot.png";
-    private String explosion = "/Images/Explosion.png";
-    private final int H_SPACE = 6;
-    private final int V_SPACE = 1;
 
-    public PowerShot(){
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * default Constructor
+     */
+    @SuppressWarnings("SSDoc")
+    public PowerShot() {
     }
+
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor
+     * @param x, y
+     */
+    @SuppressWarnings("SSDoc")
     public PowerShot(int x, int y){
-        ImageIcon ii = new ImageIcon(this.getClass().getResource(shot));
+        String shot = "/Images/PowerShot.png";
+        ImageIcon ii = new ImageIcon(Objects.requireNonNull(this.getClass().getResource(shot)));
         Image image = ii.getImage();
-        Image newimg = image.getScaledInstance(10, 10,  java.awt.Image.SCALE_SMOOTH);
-        ii = new ImageIcon(newimg);
+        Image newImage = image.getScaledInstance(10, 10,  Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newImage);
         setImage(ii.getImage());
-        setX(x + H_SPACE - 5);
-        setY(y - V_SPACE);
+        int h_SPACE = 6;
+        setX(x + h_SPACE - 5);
+        int v_SPACE = 1;
+        setY(y - v_SPACE);
     }
     @Override
     public int shoot(ArrayList<Alien> aliens) {
         int kills = 0;
-        Iterator it = aliens.iterator();
-        while (it.hasNext()){
-            Alien alien = (Alien) it.next();
+        for (Alien alien : aliens) {
             Collision collision = new PowerShotCollision();
-            collision.checkHit(alien,this);
+            collision.checkHit(alien, this);
             if (!this.isVisible() && !alien.isVisible())
                 kills++;
 

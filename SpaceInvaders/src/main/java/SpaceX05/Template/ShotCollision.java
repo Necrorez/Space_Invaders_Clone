@@ -2,11 +2,7 @@ package SpaceX05.Template;
 
 import SpaceX05.Alien;
 import SpaceX05.Shot;
-import SpaceX05.Sprite;
-import SpaceX05.Strategy.PowerShot;
 
-import javax.swing.*;
-import java.awt.*;
 
 import static SpaceX05.Commons.ALIEN_HEIGHT;
 import static SpaceX05.Commons.ALIEN_WIDTH;

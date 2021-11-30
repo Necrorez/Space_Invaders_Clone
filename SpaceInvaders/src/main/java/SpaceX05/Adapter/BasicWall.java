@@ -1,20 +1,28 @@
 package SpaceX05.Adapter;
 
 import SpaceX05.Sprite;
-import SpaceX05.WallBuilder.Wall;
-import SpaceX05.WallBuilder.WallBlockSquare;
-
-import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class BasicWall extends Sprite{
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for BasicWall object
+     * @param x, y, img
+     */
+    @SuppressWarnings("SSDoc")
     public BasicWall(int x, int y, Image img){
         setImage(img);
         setX(x);
         setY(y);
     }
+
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Default constructor
+     */
+    @SuppressWarnings("SSDoc")
     public BasicWall(){
     }
 }

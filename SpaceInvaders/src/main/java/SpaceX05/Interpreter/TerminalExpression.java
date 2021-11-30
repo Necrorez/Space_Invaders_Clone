@@ -1,18 +1,22 @@
 package SpaceX05.Interpreter;
 
 public class TerminalExpression implements Expression {
-    private String data;
+    private  String data;
 
-    public TerminalExpression(String data){
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for the TerminalExpression object
+     * @param data
+     */
+    @SuppressWarnings("SSDoc")
+    public TerminalExpression(String data) {
         this.data = data;
     }
 
     @Override
     public boolean interpret(String context) {
 
-        if(context.contains(data)){
-            return true;
-        }
-        return false;
+        return context.contains(data);
     }
 }

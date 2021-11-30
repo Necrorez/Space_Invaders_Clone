@@ -1,7 +1,5 @@
 package SpaceX05;
 
-import javax.swing.*;
-import java.awt.*;
 
 
 public abstract class Alien extends Sprite implements  Cloneable {
@@ -13,7 +11,14 @@ public abstract class Alien extends Sprite implements  Cloneable {
     public int PosY;
 
 
-    public Alien copyShallow( )
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Deep copy for the allien model
+     * @return player
+     */
+    @SuppressWarnings("SSDoc")
+    public Alien copyShallow()
     {
         try {
             return (Alien)this.clone();

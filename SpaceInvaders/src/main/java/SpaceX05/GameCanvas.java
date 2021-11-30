@@ -18,7 +18,6 @@ import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
 import SpaceX05.Template.Collision;
-import SpaceX05.Template.ShotCollision;
 import SpaceX05.Template.WallCollision;
 import SpaceX05.WallBuilder.Wall;
 import SpaceX05.WallBuilder.WallBlockSquare;
@@ -43,14 +42,12 @@ import java.util.Iterator;
 
 
 public class GameCanvas extends JPanel implements Runnable,Commons {
-    private Dimension d;
+    private final Dimension d;
     private Player player1, player2;
 
-    private PowerUp powerUp1;
-    private BalancedSquid squid = new BalancedSquid();
-    private OffensiveSquid squid2 = new OffensiveSquid();
-    private DefensiveSquid squid3 = new DefensiveSquid();
-    private PowerUp pw;
+    private final BalancedSquid squid = new BalancedSquid();
+    private final OffensiveSquid squid2 = new OffensiveSquid();
+    private final DefensiveSquid squid3 = new DefensiveSquid();
     private ArrayList<Alien> aliens;
 
     private AlienMover alienMoves;
@@ -62,12 +59,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private int lowestAlien=0;
 
     private Alien alien0;
-    private Alien shallowcopy;
-    private final int nplayers;
-    private int deaths = 0;
-    private int direction = -1;
-    private boolean ingame1 = true, ingame2 = false; //player1 e player2
-    private String message = "Game Over";
+    private Alien shallowCopy;
+    private final int nPlayers;
+    private boolean inGame1 = true, inGame2 = false; //player1 e player2
 
     private Shot shot1;
     private Shot shot2;
@@ -76,28 +70,37 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
     private  ArrayList<BasicWall> walls;
 
-    private String HOST = "1ocalhost";
-    private int PORT = 4000;
-    private boolean worked;
+    private final boolean worked;
 
     private Thread animator;
-    private Socket socket;
     private BufferedReader input;
     private PrintWriter output;
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * initialize frame for the game
+     * @param n
+     */
+    @SuppressWarnings("SSDoc")
     public GameCanvas(int n) {
-        nplayers = n;
+        nPlayers = n;
         setFocusable(true);
         addKeyListener(new TAdapter());
 
-        d = new Dimension(BOARD_WIDTH, BOARD_HEIGTH);
+        d = new Dimension(BOARD_WIDTH, BOARD_HEIGHT);
         setBackground(Color.black);
-        worked = true;
-        if (!gameStart()) {
-            worked = false;
-        }
+        worked = gameStart();
         setDoubleBuffered(true);
     }
 
+    /**
+     * TODO | DOING | DONE
+     * DOING: add more patterns if need be
+     * Method for initializing objects for the game
+     * @param
+     * @return true if both players connected successfully
+     */
+    @SuppressWarnings("SSDoc")
     public boolean gameStart(){
         // SET UP: this a context strategy setup for shooting
 
@@ -109,7 +112,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
 
 
-        walls = new ArrayList<BasicWall>();
+        walls = new ArrayList<>();
         Wall wall = new Wall.WallBuilder()
                 .square(new WallBlockSquare("Blue"))
                 .placement(new int[][]{
@@ -139,7 +142,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         BalancedAliensFactory balanced = new BalancedAliensFactory();
         DefensiveAliensFactory defensive = new DefensiveAliensFactory();
         OffensiveAliensFactory offensive = new OffensiveAliensFactory();
-        aliens = new ArrayList<Alien>();
+        aliens = new ArrayList<>();
         int i;
         int id = 0;
         for (i = 0; i<3; i++){
@@ -185,14 +188,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         System.out.println(newAl.getClass());
         aliens.add(newAl);
 
-
-
-
         alien0 = balanced.spawnSquid("Crab", id,200,200);
-        id++;
-        shallowcopy = alien0.copyShallow();
-        shallowcopy.PosX=220;
-        shallowcopy.PosY=220;
+        shallowCopy = alien0.copyShallow();
+        shallowCopy.PosX=220;
+        shallowCopy.PosY=220;
 
         //Comand
 
@@ -203,57 +202,51 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         //powerup
         PowerUpFactory factory = new PowerUpFactory();
 
-       // powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
-        // powerUp1 = factory.factoryMethod("MovementSpeed",160,160) ;
-         powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
 
-         pw = factory.factoryMethod("ExtraLife", 50, 50);
 
         // Set up player input and socket
         player1 = new Player("/Images/player.png",false,new Location());
 
         player2 = null;
 
-        if (nplayers == 2){
-           // player2 = player1.copyShallow();
+        if (nPlayers == 2){
             player2 = player1.copyDeep();
             player2.changeImg("/Images/player2.png");
             player2.controlled = true;
 //            player2.setLoc(150,280);
-            ingame2 = true;
+            inGame2 = true;
             try {
-                socket = new Socket("localhost",4000);
+                Socket socket = new Socket("localhost", 4000);
                 InputStreamReader reader = new InputStreamReader(socket.getInputStream());
                 input = new BufferedReader(reader);
                 output = new PrintWriter(socket.getOutputStream(),true);
                 input.readLine();
             }catch (IOException ioException){
                 return false;
-
-                //ioException.printStackTrace();
             }
         }
         //TODO: Set up shooting system
 
         //Set up for animation
-        if (animator == null || (!ingame1 && !ingame2)){
+        if (animator == null || (!inGame1 && !inGame2)){
             animator = new Thread(this);
             animator.start();
         }
         return true;
     }
 
-    public void animationCycle() throws IOException {
-
-        /*if (deaths == NUMBER_OF_ALIENS_TO_DESTROY) {
-            ingame1 = false;
-            ingame2 = false;
-            message = "Game won!";
-        }*/
+    /**
+     * TODO | DOING | DONE
+     * Method responsible for game animation updates
+     * @param
+     */
+    @SuppressWarnings("SSDoc")
+    public void animationCycle() {
 
         // player
         player1.update();
         player2.update();
+
         //Creating shots
         if (!shot1.isVisible() && player1.getShoot() == 1) {
             if (context1.whichType() == 1){
@@ -268,7 +261,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
 
         }
-        if (nplayers>1){
+        if (nPlayers >1){
             if (!shot2.isVisible() && player2.getShoot() == 1) {
                 if (context2.whichType() == 1){
                     shot2 = new BasicShot(player2.getX(), player2.getY());
@@ -339,6 +332,15 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             gameOver(this.getGraphics());
     }
 
+
+    /**
+     * TODO | DOING | DONE
+     * DOING: add more models to draw if need be
+     * Method responsible for Calling other drawing methods
+     * @param g
+     * @return
+     */
+    @SuppressWarnings("SSDoc")
     public void paint(Graphics g) {
         super.paint(g);
 
@@ -346,7 +348,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         g.fillRect(0, 0, d.width, d.height);
         g.setColor(Color.green);
 
-        if (ingame1 || ingame2) {
+        if (inGame1 || inGame2) {
 
             g.drawLine(0, GROUND, BOARD_WIDTH, GROUND);
             drawAliens(g);
@@ -360,6 +362,13 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         g.dispose();
     }
 
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Method responsible for drawing shot model
+     * @param g
+     */
+    @SuppressWarnings("SSDoc")
     public void drawShot(Graphics g) {
         if (shot1.isVisible()) {
             g.drawImage(shot1.getImage(), shot1.getX(), shot1.getY(), this);
@@ -369,14 +378,21 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         }
     }
 
-    public  void drawAliens(Graphics g){
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Method responsible for drawing alien model
+     * @param g
+     */
+    @SuppressWarnings("SSDoc")
+    public void drawAliens(Graphics g) {
 
-        Iterator it = aliens.iterator();
+        Iterator<Alien> it = aliens.iterator();
 
-        g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
+        g.drawImage(shallowCopy.getImage(), shallowCopy.PosX, shallowCopy.PosY, this);
         g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
         while (it.hasNext()){
-            Alien alien = (Alien) it.next();
+            Alien alien = it.next();
             if (alien.isVisible()){
                 g.drawImage(alien.getImage(), alien.PosX, alien.PosY, this);
             }
@@ -401,71 +417,84 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
             if (alien.isDying()){
                 alien.die();
-                //g.drawImage(powerUp1.getImage(),alien.PosX, alien.PosY,this);
 
             }
         }
 
     }
 
-    public void drawWall(Graphics g){
-        Iterator it = walls.iterator();
-        while (it.hasNext()){
-            BasicWall wall = (BasicWall) it.next();
-            if(wall.isVisible()){
-                g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
+
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Method responsible for drawing wall model
+     * @param g
+     */
+    @SuppressWarnings("SSDoc")
+    public void drawWall(Graphics g) {
+        for (BasicWall wall : walls) {
+            if (wall.isVisible()) {
+                g.drawImage(wall.getImage(), wall.getX(), wall.getY(), this);
             }
         }
 
     }
 
+
+
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Method responsible for drawing the player model
+     * @param g
+     */
+    @SuppressWarnings("SSDoc")
     public void drawPlayers(Graphics g) {
 
         if (player1.isVisible()) {
             g.drawImage(player1.getImage(), player1.getX(), player1.getY(), this);
         }
-        if (nplayers > 1 && player2.isVisible()) {
+        if (nPlayers > 1 && player2.isVisible()) {
             g.drawImage(player2.getImage(), player2.getX(), player2.getY(), this);
         }
         if (player1.isDying()) {
             player1.die();
-            ingame1 = false;
+            inGame1 = false;
         }
-        if (nplayers > 1 && player2.isDying()) {
+        if (nPlayers > 1 && player2.isDying()) {
             player2.die();
-            ingame2 = false;
+            inGame2 = false;
         }
     }
 
+
     @Override
-    public void run() {
+    public
+    void run() {
         long beforeTime, timeDiff, sleep;
         String action = "BEGIN";
         try {
             beforeTime = System.currentTimeMillis();
-            if (nplayers > 1) {
+            if (nPlayers > 1) {
                 output.println(action);
                 System.out.println(input.readLine());
             }
-            while (ingame1 || ingame2) {
+            while (inGame1 || inGame2) {
 
-                if (nplayers > 1) {
+                if (nPlayers > 1) {
 
-                    output.println(player1.getSocketmessage());
+                    output.println(player1.getSocketMessage());
                     output.flush();
                     action = input.readLine();
                     if (action.equals("QUIT")) {
                         break;
                     }
                     if (action.equals("PAUSE")){
-                        while(true){
+                        do {
                             output.println("PAUSE");
                             output.flush();
                             action = input.readLine();
-                            if (action.equals("UNPAUSE")) {
-                                break;
-                            }
-                        }
+                        } while (!action.equals("UNPAUSE"));
                     }
                     Player2command(action);
 
@@ -490,17 +519,24 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         } catch (IOException ex) {
             System.out.println("Player 2 closed connection");
         }
-        if (nplayers > 1) {
+        if (nPlayers > 1) {
             output.println("QUIT");
             output.flush();
         }
         gameOver(this.getGraphics());
     }
 
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Method to draw the game over screen
+     * @param g
+     */
+    @SuppressWarnings("SSDoc")
     public void gameOver(Graphics g) {
 
         g.setColor(Color.black);
-        g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGTH);
+        g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
 
         g.setColor(new Color(0, 32, 48));
         g.fillRect(50, BOARD_WIDTH / 2 - 30, BOARD_WIDTH - 100, 50);
@@ -512,9 +548,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         g.setColor(Color.white);
         g.setFont(small);
+        String message = "Game Over";
         g.drawString(message, (BOARD_WIDTH - metr.stringWidth(message)) / 2,
                 BOARD_WIDTH / 2);
     }
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Method for sending commands to second player
+     * @param action
+     */
+    @SuppressWarnings("SSDoc")
     private void Player2command(String action) {
         String[] mes = action.split(" ");
         if (mes[0].equals("MOVE")) {
@@ -534,50 +578,72 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     }
 
     private class TAdapter extends KeyAdapter {
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * Method for check keyboard key presses and sending them to the player object
+         * @param e
+         */
+        @SuppressWarnings("SSDoc")
         public void keyPressed(KeyEvent e) {
-            System.out.println(e.getKeyCode());
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                player1.setRight(1);
-            }
-            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                player1.setLeft(1);
-            }
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                output.println("QUIT");
-            }
-            if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                player1.setShoot(1);
-            }
-            if (e.getKeyCode() == KeyEvent.VK_S) {
-                player1.setShoot(2);
-                context1 = new ShootingContext(new BasicShot());
-            }
-            if (e.getKeyCode() == KeyEvent.VK_D) {
-                player1.setShoot(3);
-                context1 = new ShootingContext(new PowerShot());
-            }
-        }
-        public void keyReleased(KeyEvent e) {
-            if (ingame1) {
+                System.out.println(e.getKeyCode());
                 if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    player1.setRight(0);
+                    player1.setRight(1);
                 }
                 if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                    player1.setLeft(0);
+                    player1.setLeft(1);
+                }
+                if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    output.println("QUIT");
                 }
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    player1.setShoot(0);
+                    player1.setShoot(1);
                 }
                 if (e.getKeyCode() == KeyEvent.VK_S) {
-                    player1.setShoot(0);
+                    player1.setShoot(2);
+                    context1 = new ShootingContext(new BasicShot());
                 }
                 if (e.getKeyCode() == KeyEvent.VK_D) {
-                    player1.setShoot(0);
+                    player1.setShoot(3);
+                    context1 = new ShootingContext(new PowerShot());
                 }
             }
-        }
+
+        /**
+         * TODO | DOING | DONE
+         * DONE
+         * Method for check keyboard key release and sending them to the player object
+         * @param e
+         */
+        @SuppressWarnings("SSDoc")
+        public void keyReleased(KeyEvent e) {
+                if (inGame1) {
+                    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                        player1.setRight(0);
+                    }
+                    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+                        player1.setLeft(0);
+                    }
+                    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+                        player1.setShoot(0);
+                    }
+                    if (e.getKeyCode() == KeyEvent.VK_S) {
+                        player1.setShoot(0);
+                    }
+                    if (e.getKeyCode() == KeyEvent.VK_D) {
+                        player1.setShoot(0);
+                    }
+                }
+            }
 
     }
+
+    /**
+     * TODO | DOING | DONE
+     * DONE method to send back to the main menu if the game has started
+     * @return worked
+     */
+    @SuppressWarnings("SSDoc")
     public boolean isWorked() {
         return worked;
     }

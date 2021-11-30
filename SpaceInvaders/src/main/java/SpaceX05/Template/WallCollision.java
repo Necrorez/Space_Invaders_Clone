@@ -2,7 +2,6 @@ package SpaceX05.Template;
 
 import SpaceX05.Adapter.BasicWall;
 import SpaceX05.Alien;
-import SpaceX05.Sprite;
 
 import static SpaceX05.Commons.ALIEN_HEIGHT;
 import static SpaceX05.Commons.ALIEN_WIDTH;

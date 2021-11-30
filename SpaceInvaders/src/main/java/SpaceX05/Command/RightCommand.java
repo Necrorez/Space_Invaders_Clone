@@ -3,10 +3,18 @@ package SpaceX05.Command;
 import SpaceX05.Alien;
 
 public class RightCommand implements IAlienMove{
-    private Alien alien;
+    private final Alien alien;
 
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for RightCommand object
+     * @param al
+     * @return
+     */
+    @SuppressWarnings("SSDoc")
     public RightCommand(Alien al){
-        alien = al;
+        this.alien = al;
     }
 
     @Override

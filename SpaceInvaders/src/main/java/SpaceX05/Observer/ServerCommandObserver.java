@@ -1,7 +1,14 @@
 package SpaceX05.Observer;
 
-import java.io.PrintWriter;
 
 public interface ServerCommandObserver {
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Interface method for update method
+     * @param message
+     * @return
+     */
+    @SuppressWarnings("SSDoc")
     void update(String message);
 }

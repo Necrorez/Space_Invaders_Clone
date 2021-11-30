@@ -1,5 +1,10 @@
 package SpaceX05.Interpreter;
 
 public interface Expression {
-    public boolean interpret(String context);
+    /**
+     * TODO | DOING | DONE
+     * Interface method to interpret commands
+     * @param context
+     */
+    @SuppressWarnings("SSDoc") boolean interpret(String context);
 }

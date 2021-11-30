@@ -1,9 +1,14 @@
 package SpaceX05.Adapter;
 
-import SpaceX05.WallBuilder.Wall;
 
 import java.util.ArrayList;
 
 public interface WallAdapter {
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Interface Method to get adapted walls
+     */
+    @SuppressWarnings("SSDoc")
     ArrayList<BasicWall> getWall();
 }

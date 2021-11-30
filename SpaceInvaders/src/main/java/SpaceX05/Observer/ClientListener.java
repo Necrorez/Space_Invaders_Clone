@@ -3,8 +3,15 @@ package SpaceX05.Observer;
 import java.io.PrintWriter;
 
 public class ClientListener implements ServerCommandObserver{
-    private  PrintWriter writer;
-    public ClientListener(PrintWriter writer){
+    private final PrintWriter writer;
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor for the ClientListener object
+     * @param writer
+     */
+    @SuppressWarnings("SSDoc")
+    public ClientListener(PrintWriter writer) {
         this.writer = writer;
     }
     @Override

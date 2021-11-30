@@ -9,36 +9,46 @@ import SpaceX05.Template.ShotCollision;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Objects;
 
 public class BasicShot  extends Shot implements ShootingStrategy, Commons {
-    private String shot = "/Images/BasicShot.png";
-    private final int H_SPACE = 6;
-    private final int V_SPACE = 1;
 
+
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * default Constructor
+     */
+    @SuppressWarnings("SSDoc")
     public BasicShot(){
     }
+    /**
+     * TODO | DOING | DONE
+     * DONE
+     * Constructor
+     * @param x, y
+     */
+    @SuppressWarnings("SSDoc")
     public BasicShot(int x, int y){
-        ImageIcon ii = new ImageIcon(this.getClass().getResource(shot));
+        String shot = "/Images/BasicShot.png";
+        ImageIcon ii = new ImageIcon(Objects.requireNonNull(this.getClass().getResource(shot)));
         Image image = ii.getImage();
-        Image newimg = image.getScaledInstance(10, 10,  java.awt.Image.SCALE_SMOOTH);
-        ii = new ImageIcon(newimg);
+        Image newImage = image.getScaledInstance(10, 10,  java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newImage);
         setImage(ii.getImage());
-        setX(x + H_SPACE - 5);
-        setY(y - V_SPACE);
+        int h_SPACE = 6;
+        setX(x + h_SPACE - 5);
+        int v_SPACE = 1;
+        setY(y - v_SPACE);
     }
     @Override
     public int shoot(ArrayList<Alien> aliens) {
         int kills = 0;
-        Iterator it = aliens.iterator();
-        int X = getX();
-        int Y = getY();
-        while (it.hasNext()){
-            Alien alien = (Alien) it.next();
+        for (Alien alien : aliens) {
             Collision collision = new ShotCollision();
-            collision.checkHit(alien,this);
+            collision.checkHit(alien, this);
             if (!this.isVisible() && !alien.isVisible())
-            kills++;
+                kills++;
 
         }
         int y = getY();
