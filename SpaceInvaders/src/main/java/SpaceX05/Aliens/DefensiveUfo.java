@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DefensiveUfo extends Ufo {
-
+    private String ufoImg = "/Images/DefensiveUFO.jpg";
 
     public DefensiveUfo(String src, int id, int PosX, int PosY){
         this.id = id;
@@ -14,6 +14,7 @@ public class DefensiveUfo extends Ufo {
         this.healthPoints=15;
         this.PosX = PosX;
         this.PosY = PosY;
+        this.type ="DefensiveUfo";
 
         ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
         Image image = ii.getImage();
@@ -21,6 +22,23 @@ public class DefensiveUfo extends Ufo {
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());
     }
+
+    public DefensiveUfo() {
+
+    }
+    public DefensiveUfo(int PosX, int PosY){
+        this.damagePoints = 5;
+        this.healthPoints=15;
+        this.PosX = PosX;
+        this.PosY = PosY;
+
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(ufoImg));
+        Image image = ii.getImage();
+        Image newimg = image.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newimg);
+        setImage(ii.getImage());
+    }
+
     public int getDamage(){return this.damagePoints;}
     public int getHealth() {return this.healthPoints;}
 

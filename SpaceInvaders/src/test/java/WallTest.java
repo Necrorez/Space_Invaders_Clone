@@ -18,13 +18,15 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WallTest {
 
     @Mock
-    private static Wall.WallBuilder underTest;
-    private static ArrayList<WallBlockTriangle> wallBlockTriangle;
+    private  Wall.WallBuilder underTest;
+    private ArrayList<WallBlockTriangle> wallBlockTriangle;
     private ArrayList<WallBlockSquare> wallBlockSquare;
     @BeforeEach
     void innit(){
         underTest = new Wall.WallBuilder();
         wallBlockTriangle = new ArrayList<>();
+        wallBlockSquare  = new ArrayList<>();
+
     }
 
     @ParameterizedTest
@@ -61,8 +63,6 @@ public class WallTest {
 
     @Test
     public void Test_Bad_Wall_Creation() {
-
-
         Throwable exception = assertThrows(RuntimeException.class, () -> underTest.square(new WallBlockSquare("anyString()")));
         assertEquals("Invalid entry", exception.getMessage());
 

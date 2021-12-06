@@ -19,6 +19,7 @@ public class BalancedSquid extends Squid {
       this.healthPoints=10;
       this.PosX = PosX;
       this.PosY = PosY;
+      this.type ="BalancedSquid";
 
       ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
       Image image = ii.getImage();

@@ -32,6 +32,7 @@ class ShootingContextTest {
         @Test
         void executeShoot() {
             var aliens = new ArrayList();
+            var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
                 Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
@@ -39,7 +40,7 @@ class ShootingContextTest {
             }
 
             ShootingContext toTest = new ShootingContext(new SpaceX05.Strategy.PowerShot(3,3));
-            var shoot = toTest.executeShoot(aliens);
+            var shoot = toTest.executeShoot(aliens,players);
 
             assertEquals(0,shoot);
         }
@@ -47,6 +48,7 @@ class ShootingContextTest {
         @Test
         void executeShootWithKill() {
             var aliens = new ArrayList();
+            var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
                 Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
@@ -54,7 +56,7 @@ class ShootingContextTest {
             }
 
             ShootingContext toTest = new ShootingContext(new SpaceX05.Strategy.PowerShot(100,110));
-            var shoot = toTest.executeShoot(aliens);
+            var shoot = toTest.executeShoot(aliens,players);
 
             assertEquals(1,shoot);
         }
@@ -94,6 +96,7 @@ class ShootingContextTest {
         @Test
         void executeShoot() {
             var aliens = new ArrayList();
+            var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
                 Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
@@ -101,7 +104,7 @@ class ShootingContextTest {
             }
 
             ShootingContext toTest = new ShootingContext(new SpaceX05.Strategy.BasicShot(3,3));
-            var shoot = toTest.executeShoot(aliens);
+            var shoot = toTest.executeShoot(aliens,players);
 
             assertEquals(0,shoot);
         }
@@ -109,6 +112,7 @@ class ShootingContextTest {
         @Test
         void executeShootWithKill() {
             var aliens = new ArrayList();
+            var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
                 Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
@@ -116,7 +120,7 @@ class ShootingContextTest {
             }
 
             ShootingContext toTest = new ShootingContext(new SpaceX05.Strategy.BasicShot(100,110));
-            var shoot = toTest.executeShoot(aliens);
+            var shoot = toTest.executeShoot(aliens,players);
 
             assertEquals(1,shoot);
         }

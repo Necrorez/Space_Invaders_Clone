@@ -2,6 +2,7 @@ package SpaceX05.Strategy;
 
 import SpaceX05.Alien;
 import SpaceX05.Commons;
+import SpaceX05.Player;
 import SpaceX05.Shot;
 
 import javax.swing.*;
@@ -27,7 +28,7 @@ public class PowerShot  extends Shot implements ShootingStrategy, Commons {
         setY(y - V_SPACE);
     }
     @Override
-    public int shoot(ArrayList<Alien> aliens) {
+    public int shoot(ArrayList<Alien> aliens, ArrayList<Player> players) {
         int kills = 0;
         Iterator it = aliens.iterator();
         int X = getX();

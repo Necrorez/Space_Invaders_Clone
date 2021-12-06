@@ -30,10 +30,5 @@ public class BalancedAliensFactory extends AbstractFactory {
         return new BalancedUfo(ufoImg,alienId,PosX,PosY);
     }
 
-    @Override
-    public Alien getAlienShip(String param){
-        return new Alien() {
-        };
-    }
 
 }

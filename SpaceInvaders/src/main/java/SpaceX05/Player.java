@@ -1,11 +1,14 @@
 package SpaceX05;
 
 
+import SpaceX05.Visitor.Visitable;
+import SpaceX05.Visitor.Visitor;
+
 import javax.swing.*;
 import java.awt.*;
 
 
-public class Player extends Sprite implements Commons,Cloneable,IPrototype{
+public class Player extends Sprite implements Commons,Cloneable,IPrototype, Visitable {
    // private final int START_Y = 280;
   //  private final int START_X = 50;
     public Location location;
@@ -16,6 +19,9 @@ public class Player extends Sprite implements Commons,Cloneable,IPrototype{
     private int right;
     private int shoot;
     public  boolean controlled;
+    public int damagepoints= 10;
+    public int healthpoints= 30;
+    public String type="Player1";
 
     public Player(String p, boolean controlled,Location loc) {
         player = p;
@@ -32,6 +38,10 @@ public class Player extends Sprite implements Commons,Cloneable,IPrototype{
         setY(location.START_Y);
     }
 
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+
+    }
    public void setLoc(int x, int y){
         setX(x);
         setY(y);

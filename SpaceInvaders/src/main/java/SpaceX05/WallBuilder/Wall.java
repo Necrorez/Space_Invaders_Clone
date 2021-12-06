@@ -1,8 +1,11 @@
 package SpaceX05.WallBuilder;
 
+import SpaceX05.Visitor.Visitable;
+import SpaceX05.Visitor.Visitor;
+
 import java.util.ArrayList;
 
-public class Wall {
+public class Wall  {
 
     private final WallBlockTriangle triangle;
     private final WallBlockSquare square;

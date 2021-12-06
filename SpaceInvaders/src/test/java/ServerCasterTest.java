@@ -2,6 +2,7 @@ import SpaceX05.Observer.ClientListener;
 import SpaceX05.Observer.ServerCaster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,7 +24,7 @@ class ServerCasterTest {
     void setUp() {
         underTest = new ServerCaster();
     }
-
+    @DisplayName("Test for Observer pattern add and update")
     @Test
     void ServerCasterTestUpdateAndAdd() {
         StringWriter expectedStringWriter = new StringWriter();
@@ -35,6 +36,7 @@ class ServerCasterTest {
         assertEquals("START\n", expected);
     }
 
+    @DisplayName("Test for Observer pattern remove")
     @Test
     void ServerCasterTestRemove() {
         StringWriter expectedStringWriter = new StringWriter();

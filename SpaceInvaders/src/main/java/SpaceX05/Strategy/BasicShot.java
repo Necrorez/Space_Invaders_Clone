@@ -2,7 +2,11 @@ package SpaceX05.Strategy;
 
 import SpaceX05.Alien;
 import SpaceX05.Commons;
+import SpaceX05.Player;
 import SpaceX05.Shot;
+import SpaceX05.Visitor.EntityCountVisitor;
+import SpaceX05.Visitor.EntityNameVisitor;
+import SpaceX05.Visitor.EntityWinConditionVIsitor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +17,9 @@ public class BasicShot  extends Shot implements ShootingStrategy, Commons {
     private String shot = "/Images/BasicShot.png";
     private final int H_SPACE = 6;
     private final int V_SPACE = 1;
+    EntityCountVisitor countCalc = new EntityCountVisitor();
+    EntityNameVisitor nameCalc = new EntityNameVisitor();
+    EntityWinConditionVIsitor winDmgCalc = new EntityWinConditionVIsitor();
 
     public BasicShot(){
     }
@@ -26,7 +33,7 @@ public class BasicShot  extends Shot implements ShootingStrategy, Commons {
         setY(y - V_SPACE);
     }
     @Override
-    public int shoot(ArrayList<Alien> aliens) {
+    public int shoot(ArrayList<Alien> aliens,ArrayList<Player> players) {
         int kills = 0;
         Iterator it = aliens.iterator();
         int X = getX();
@@ -37,9 +44,12 @@ public class BasicShot  extends Shot implements ShootingStrategy, Commons {
             int alienY = alien.PosY;
             if (alien.isVisible() && isVisible()){
                 if(X >= alienX && X <= (alienX + ALIEN_WIDTH)&& Y >= (alienY) && Y <= (alienY + ALIEN_HEIGHT)){
+
                     alien.die();
                     this.die();
+                    it.remove();
                     kills++;
+                    calc(aliens,players);
                 }
             }
 
@@ -52,6 +62,35 @@ public class BasicShot  extends Shot implements ShootingStrategy, Commons {
             setY(y);
         }
         return kills;
+    }
+    public void calc(ArrayList<Alien> aliens,ArrayList<Player> players ){
+
+        Iterator<Alien> it= aliens.iterator();
+        while(it.hasNext()){
+            Alien next =it.next();
+            next.accept(countCalc);
+            next.accept(nameCalc);
+            next.accept(winDmgCalc);
+        }
+
+        Iterator<Player> iterPlayers = players.iterator();
+
+        while(iterPlayers.hasNext()){
+            Player next =iterPlayers.next();
+            next.accept(countCalc);
+            next.accept(nameCalc);
+            next.accept(winDmgCalc);
+        }
+
+
+        System.out.println("EntityCounterReport");
+        System.out.println(countCalc.report());
+
+        System.out.println("EntityNameReport");
+        System.out.println(nameCalc.report());
+
+        System.out.println("EntityWinConditionReport");
+        System.out.println(winDmgCalc.report());
     }
 
     @Override

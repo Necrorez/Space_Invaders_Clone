@@ -5,8 +5,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/State/BeginningGameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/State/DuringGameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/State/EndingGameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/State/GameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/State/GameStateContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/State/NextLevelGameState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Visitor/EntityCountVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Visitor/EntityNameVisitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Visitor/EntityWinConditionVIsitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Visitor/Visitable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Visitor/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/OPProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OPProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/test/java/FactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/FactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Alien.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Alien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedCrab.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedCrab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedSquid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedSquid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedUfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/BalancedUfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveCrab.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveCrab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveSquid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveSquid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveUfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/DefensiveUfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveCrab.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveCrab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveSquid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveSquid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveUfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/OffensiveUfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/Squid.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Aliens/Squid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/BasicShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/BasicShot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/PowerShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/PowerShot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/ShootingContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/ShootingContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/ShootingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Strategy/ShootingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/WallBuilder/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/WallBuilder/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/test/java/ShootingContextTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/test/java/ShootingContextTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/AbstractFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/AbstractFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Alien.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Alien.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedCrab.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedCrab.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedSquid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedSquid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedUfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/BalancedUfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveCrab.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveCrab.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveSquid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveSquid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveUfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/DefensiveUfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveCrab.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveCrab.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveSquid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveSquid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveUfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/OffensiveUfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/Squid.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Aliens/Squid.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Client$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Client$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Client$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Client$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/AlienMover.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/AlienMover.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Settings.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Settings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/BasicShot.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/BasicShot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/PowerShot.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/PowerShot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/ShootingContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/ShootingContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/ShootingStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Strategy/ShootingStrategy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall$WallBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall$WallBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/WallBuilder/Wall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/ShootingContextTest$BasicShot.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/ShootingContextTest$BasicShot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/ShootingContextTest$PowerShot.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/ShootingContextTest$PowerShot.class" afterDir="false" />
     </list>
     <list id="b5dd98c5-5ecd-48d3-9e74-55c4a31be29b" name="Changes by K" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,10 +81,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExportTestResults" outputFolder="$USER_HOME$/Desktop/MY_TESTS_FILES" userTempatePath="" />
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\Tomas\Desktop\UnitTestingGenerated" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -54,16 +126,18 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="SpaceX05.AbstractFactory" />
+      <recent name="" />
       <recent name="SpaceX05" />
       <recent name="SpaceX05.Strategy" />
     </key>
@@ -71,20 +145,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in SpaceInvaders">
-    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
-      <module name="OPProject" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="SpaceX05.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
       <module name="SpaceInvaders" />
@@ -124,7 +185,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SpaceX05.Client" />
+      <module name="SpaceInvaders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="SpaceX05.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SpaceX05.Server" />
       <module name="SpaceInvaders" />
       <extension name="coverage">
@@ -137,6 +211,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AbstractFactoryTest and 8 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpaceInvaders" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="AbstractFactoryTest" />
+        <pattern testClass="AliensTest" />
+        <pattern testClass="DecoratorTest" />
+        <pattern testClass="FactoryTest" />
+        <pattern testClass="PrototypeTest" />
+        <pattern testClass="ServerCasterTest" />
+        <pattern testClass="ShootingContextTest" />
+        <pattern testClass="WallAdapterTest" />
+        <pattern testClass="WallTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in SpaceInvaders" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SpaceInvaders" />
       <option name="PACKAGE_NAME" value="" />
@@ -145,38 +237,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="&lt;default&gt;" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="SpaceInvaders" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FactoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PrototypeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SpaceInvaders" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PrototypeTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Server" />
       <item itemvalue="Application.Client" />
-      <item itemvalue="Application.Server (1)" />
       <item itemvalue="JUnit.All in SpaceInvaders" />
-      <item itemvalue="JUnit.FactoryTest" />
-      <item itemvalue="JUnit.PrototypeTest" />
+      <item itemvalue="JUnit.AbstractFactoryTest and 8 more" />
+      <item itemvalue="TestNG.&lt;default&gt;" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in SpaceInvaders" />
-        <item itemvalue="JUnit.PrototypeTest" />
-        <item itemvalue="JUnit.FactoryTest" />
         <item itemvalue="Application.Client" />
-        <item itemvalue="Application.Server (1)" />
+        <item itemvalue="Application.Server" />
+        <item itemvalue="JUnit.All in SpaceInvaders" />
+        <item itemvalue="TestNG.&lt;default&gt;" />
+        <item itemvalue="JUnit.AbstractFactoryTest and 8 more" />
       </list>
     </recent_temporary>
   </component>
@@ -217,11 +301,24 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AbstractFactoryTest_and_2_more.ic" NAME="AbstractFactoryTest and 2 more Coverage Results" MODIFIED="1637179393260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AbstractFactoryTest.ic" NAME="AbstractFactoryTest Coverage Results" MODIFIED="1637165981244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$PrototypeTest.ic" NAME="PrototypeTest Coverage Results" MODIFIED="1637161571360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$BasicShotTest.ic" NAME="BasicShotTest Coverage Results" MODIFIED="1637142572100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AbstractFactoryTest_and_1_more.ic" NAME="AbstractFactoryTest and 1 more Coverage Results" MODIFIED="1637173893571" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$WallTest_and_6_more.ic" NAME="WallTest and 6 more Coverage Results" MODIFIED="1637179227670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AbstractFactoryTest_and_6_more.ic" NAME="AbstractFactoryTest and 6 more Coverage Results" MODIFIED="1637174658401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AliensTest_and_2_more.ic" NAME="AliensTest and 2 more Coverage Results" MODIFIED="1637178279129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AbstractFactoryTest_and_5_more.ic" NAME="AbstractFactoryTest and 5 more Coverage Results" MODIFIED="1637166938912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Space_Invaders_Clone$Client.ic" NAME="Client Coverage Results" MODIFIED="1633987524400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>SpaceX05.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Space_Invaders_Clone$FactoryTest.ic" NAME="FactoryTest Coverage Results" MODIFIED="1637161508462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$PrototypeTest.ic" NAME="PrototypeTest Coverage Results" MODIFIED="1637161571360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$All_in_SpaceInvaders.ic" NAME="All in SpaceInvaders Coverage Results" MODIFIED="1637161611245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$WallTest_and_6_more__1_.ic" NAME="WallTest and 6 more (1) Coverage Results" MODIFIED="1637179249242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$DecoratorTest.ic" NAME="DecoratorTest Coverage Results" MODIFIED="1637173337537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$_default_.ic" NAME="&lt;default&gt; Coverage Results" MODIFIED="1638105615421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AliensTest.ic" NAME="AliensTest Coverage Results" MODIFIED="1637168989473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$AliensTest_and_1_more.ic" NAME="AliensTest and 1 more Coverage Results" MODIFIED="1637174347083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Space_Invaders_Clone$All_in_SpaceInvaders.ic" NAME="All in SpaceInvaders Coverage Results" MODIFIED="1638105655478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

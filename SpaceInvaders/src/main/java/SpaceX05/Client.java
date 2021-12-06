@@ -28,8 +28,11 @@ public class Client extends JFrame implements Commons
         panel.setBackground(Color.BLACK);
         JButton start = new JButton("Begin Co-op");
         JButton exit = new JButton("Exit");
+      //  JLabel label1 = new JLabel("Game will begin in 5 seconds");
+       // label1.setForeground(Color.RED);
         panel.add(start);
         panel.add(exit);
+       // panel.add(label1);
         this.add(panel);
 
         //Set up more stuff
@@ -47,6 +50,7 @@ public class Client extends JFrame implements Commons
                 if (!canvas.isWorked()) {
                     dispose();
                 } else {
+
                     remove(panel);
                     add(canvas);
                     setTitle("Space Invaders");
