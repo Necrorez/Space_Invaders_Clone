@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class BalancedCrab extends Crab {
 
-    private String crabImg = "/Images/Crab.jpeg";
+    private final String crabImg = "/Images/Crab.jpeg";
 
 
     public BalancedCrab(String src , int id, int PosX, int PosY){

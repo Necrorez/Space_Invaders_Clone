@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DefensiveCrab extends Crab {
 
-    private String crabImg = "/Images/DefensiveCrab.jpg";
+    private final String crabImg = "/Images/DefensiveCrab.jpg";
 
     public DefensiveCrab(String src , int id, int PosX, int PosY){
         this.id = id;

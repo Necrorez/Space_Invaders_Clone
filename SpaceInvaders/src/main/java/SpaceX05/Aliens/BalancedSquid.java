@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class BalancedSquid extends Squid {
 
-    private String squidImg = "/Images/Squid.jpg";
+    private final String squidImg = "/Images/Squid.jpg";
 
 
 

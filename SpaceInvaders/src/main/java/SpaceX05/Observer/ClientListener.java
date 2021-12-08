@@ -3,7 +3,7 @@ package SpaceX05.Observer;
 import java.io.PrintWriter;
 
 public class ClientListener implements ServerCommandObserver{
-    private  PrintWriter writer;
+    private final PrintWriter writer;
     public ClientListener(PrintWriter writer){
         this.writer = writer;
     }

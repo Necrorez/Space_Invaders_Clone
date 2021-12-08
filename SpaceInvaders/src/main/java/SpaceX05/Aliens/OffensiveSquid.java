@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class OffensiveSquid extends Squid {
-    private String squidImg = "/Images/OffensiveSquid.jpg";
+    private final String squidImg = "/Images/OffensiveSquid.jpg";
 
     public OffensiveSquid(String src, int id, int PosX, int PosY){
         super(PosX, PosY);

@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class DefensiveSquid extends Squid {
 
-    private String squidImg = "/Images/DefensiveSquid.jpg";
+    private final String squidImg = "/Images/DefensiveSquid.jpg";
     public DefensiveSquid(String src, int id, int PosX, int PosY){
         super(PosX, PosY);
         this.id = id;

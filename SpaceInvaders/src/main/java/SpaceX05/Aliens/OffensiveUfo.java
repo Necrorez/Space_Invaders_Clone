@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class OffensiveUfo extends Ufo {
-    private String ufoImg = "/Images/OffensiveUFO.jpg";
+    private final String ufoImg = "/Images/OffensiveUFO.jpg";
 
 
     public OffensiveUfo(String src, int id, int PosX, int PosY){

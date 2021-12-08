@@ -1,8 +1,10 @@
 package SpaceX05.WallBuilder;
 
+import SpaceX05.Sprite;
+
 import java.util.ArrayList;
 
-public class Wall {
+public class Wall extends Sprite {
 
     private final WallBlockTriangle triangle;
     private final WallBlockSquare square;

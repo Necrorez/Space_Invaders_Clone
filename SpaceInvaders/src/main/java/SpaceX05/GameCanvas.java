@@ -16,6 +16,10 @@ import SpaceX05.Adapter.TriangleWall;
 import SpaceX05.Adapter.WallAdapter;
 import SpaceX05.Flyweight.AlienFactory;
 import SpaceX05.Flyweight.ShotFactory;
+import SpaceX05.Iterator.AlienAndWallIterator;
+import SpaceX05.Proxy.BalancedCrabProxy;
+import SpaceX05.Proxy.DefensiveCrabProxy;
+import SpaceX05.Proxy.OffensiveCrabProxy;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
@@ -39,18 +43,14 @@ import java.util.Iterator;
 
 
 public class GameCanvas extends JPanel implements Runnable,Commons {
-    private Dimension d;
+    private final Dimension d;
     private Player player1, player2;
-
-    ShotFactory shotFactory = new ShotFactory();
-
     private PowerUp powerUp1;
-    private BalancedSquid squid = new BalancedSquid();
-    private OffensiveSquid squid2 = new OffensiveSquid();
-    private DefensiveSquid squid3 = new DefensiveSquid();
+    private final BalancedSquid squid = new BalancedSquid();
+    private final OffensiveSquid squid2 = new OffensiveSquid();
+    private final DefensiveSquid squid3 = new DefensiveSquid();
     private PowerUp pw;
     private ArrayList<Alien> aliens;
-    private ArrayList<Alien> newAls;
 
     private AlienMover alienMoves;
     private boolean sideMove = true;
@@ -63,10 +63,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Alien alien0;
     private Alien shallowcopy;
     private final int nplayers;
-    private int deaths = 0;
-    private int direction = -1;
+    private final int deaths = 0;
+    private final int direction = -1;
     private boolean ingame1 = true, ingame2 = false; //player1 e player2
-    private String message = "Game Over";
+    private final String message = "Game Over";
 
     private Shot shot1;
     private Shot shot2;
@@ -75,14 +75,16 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
     private  ArrayList walls;
 
-    private String HOST = "1ocalhost";
-    private int PORT = 4000;
+    private final String HOST = "1ocalhost";
+    private final int PORT = 4000;
     private boolean worked;
 
     private Thread animator;
     private Socket socket;
     private BufferedReader input;
     private PrintWriter output;
+    private BalancedCrab cr;
+
     public GameCanvas(int n) {
         nplayers = n;
         setFocusable(true);
@@ -90,10 +92,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         d = new Dimension(BOARD_WIDTH, BOARD_HEIGTH);
         setBackground(Color.black);
-        worked = true;
-        if (!gameStart()) {
-            worked = false;
-        }
+        worked = gameStart();
         setDoubleBuffered(true);
     }
 
@@ -146,22 +145,20 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         for (i = 0; i<3; i++){
                 Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
                 id++;
-                Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
-                id++;
                 Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
                 id++;
                 Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
-                id++;
-                Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
                 id++;
                 Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
                 id++;
                 Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
                 id++;
-                Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
-                id++;
                 Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
                 id++;
+
+                Alien alien1 = new BalancedCrabProxy(100 + 20 * i,120);
+                Alien alien4 = new DefensiveCrabProxy(40 + 20 * i,120);
+                Alien alien7 = new OffensiveCrabProxy(160 + 20 * i,120);
 
                 aliens.add(alien);
                 aliens.add(alien1);
@@ -174,11 +171,12 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 aliens.add(alien8);
 
         }
-        newAls =  new ArrayList<Alien>();
+
+
         AlienFactory aFactory = new AlienFactory();
         for (i = 0; i < 1; i++)
         {
-            Alien crab = aFactory.getAlien("bCrab");
+            Alien crab = AlienFactory.getAlien("bCrab");
             crab.setCoords(80, 80);
             aliens.add(crab);
         }
@@ -193,13 +191,6 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         Squid newAl = new BalancedSquid(20, 50);
         System.out.println(newAl.getClass());
         aliens.add(newAl);
-
-        //Add shot types
-       // shot1 = shotFactory.getShot("Basic");
-       // shot2 = shotFactory.getShot("Power");
-
-
-
 
         alien0 = balanced.spawnSquid("Crab", id,200,200);
         id++;
@@ -253,7 +244,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             animator = new Thread(this);
             animator.start();
         }
-        return true;
+   return true;
     }
 
     public void animationCycle() throws IOException {
@@ -394,13 +385,25 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
     public  void drawAliens(Graphics g){
 
-        Iterator it = aliens.iterator();
+        AlienAndWallIterator it = new AlienAndWallIterator(aliens);
 
         g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
         g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
         while (it.hasNext()){
-            Alien alien = (Alien) it.next();
+            Alien alien = it.getNextAlien();
             if (alien.isVisible()){
+                if (alien.getClass().equals(BalancedCrabProxy.class))
+                {
+                    aliens.set(aliens.indexOf(alien), ((BalancedCrabProxy) alien).setToBCrabWithImage());
+                }
+                if (alien.getClass().equals(DefensiveCrabProxy.class))
+                {
+                    aliens.set(aliens.indexOf(alien), ((DefensiveCrabProxy) alien).setToBCrabWithImage());
+                }
+                if (alien.getClass().equals(OffensiveCrabProxy.class))
+                {
+                    aliens.set(aliens.indexOf(alien), ((OffensiveCrabProxy) alien).setToBCrabWithImage());
+                }
                 g.drawImage(alien.getImage(), alien.PosX, alien.PosY, this);
             }
             else if (!alien.isVisible())
@@ -434,9 +437,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     }
 
     public void drawWall(Graphics g){
-        Iterator it = walls.iterator();
+        AlienAndWallIterator it = new AlienAndWallIterator((ArrayList<BasicWall>) walls);
         while (it.hasNext()){
-            BasicWall wall = (BasicWall) it.next();
+            BasicWall wall = it.getNextWall();
             g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
         }
 
