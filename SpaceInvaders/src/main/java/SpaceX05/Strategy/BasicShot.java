@@ -46,7 +46,7 @@ public class BasicShot  extends Shot implements ShootingStrategy, Commons {
         int X = getX();
         int Y = getY();
         while (it.hasNext()){
-            Alien alien = it.getNextAlien();
+            Alien alien = (Alien) it.getNext();
             int alienX = alien.PosX;
             int alienY = alien.PosY;
             if (alien.isVisible() && isVisible()){

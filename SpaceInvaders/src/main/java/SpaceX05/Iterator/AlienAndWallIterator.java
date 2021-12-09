@@ -2,6 +2,7 @@ package SpaceX05.Iterator;
 
 import SpaceX05.Adapter.BasicWall;
 import SpaceX05.Alien;
+import SpaceX05.Sprite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,23 +37,22 @@ public class AlienAndWallIterator implements SpriteIterator {
                 return false;
         }
     }
-
-    public Alien getNextAlien() {
+    public Sprite getNext() {
         if (!hasNext()) {
             return null;
         }
-        Alien al = alienList.get(currentPositionAlien);
-        currentPositionAlien++;
-        return al;
-    }
-
-    public BasicWall getNextWall() {
-        if (!hasNext()) {
-            return null;
+        switch (type) {
+            case "alien":
+                Alien al = alienList.get(currentPositionAlien);
+                currentPositionAlien++;
+                return al;
+            case "wall":
+                BasicWall wall = wallList.get(currentPositionWall);
+                currentPositionWall++;
+                return wall;
+            default:
+                return null;
         }
-        BasicWall al = wallList.get(currentPositionWall);
-        currentPositionWall++;
-        return al;
     }
 
     public void reset() {

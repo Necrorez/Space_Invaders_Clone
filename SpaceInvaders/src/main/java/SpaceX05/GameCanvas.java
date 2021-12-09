@@ -390,7 +390,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
         g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
         while (it.hasNext()){
-            Alien alien = it.getNextAlien();
+            Alien alien = (Alien) it.getNext();
             if (alien.isVisible()){
                 if (alien.getClass().equals(BalancedCrabProxy.class))
                 {
@@ -439,7 +439,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     public void drawWall(Graphics g){
         AlienAndWallIterator it = new AlienAndWallIterator((ArrayList<BasicWall>) walls);
         while (it.hasNext()){
-            BasicWall wall = it.getNextWall();
+            BasicWall wall = (BasicWall) it.getNext();
             g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
         }
 

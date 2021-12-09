@@ -5,8 +5,7 @@ import SpaceX05.Sprite;
 public interface SpriteIterator {
     boolean hasNext();
 
-    Sprite getNextAlien();
-    Sprite getNextWall();
+    Sprite getNext();
 
     void reset();
 
