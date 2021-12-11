@@ -1,4 +1,6 @@
 package SpaceX05;
+import SpaceX05.Mediator.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferStrategy;
@@ -23,7 +25,14 @@ public class Client extends JFrame implements Commons
 
     public Client(){
         //Set up panel
-        super("Space Invaders");
+        Mediator mediator = new GamePanel(this);
+
+        mediator.registerComponent(new StartButton());
+        mediator.registerComponent(new SettingsButton());
+        mediator.registerComponent(new ExitButton());
+
+        mediator.createMainGui();
+        /*super("Space Invaders");
         final JPanel panel = new JPanel();
         panel.setBackground(Color.BLACK);
         JButton start = new JButton("Begin Co-op");
@@ -65,7 +74,7 @@ public class Client extends JFrame implements Commons
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
-        });
+        });*/
 
 
 
