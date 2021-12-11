@@ -75,6 +75,7 @@ public class Server
                 var clientListener = new ServerCaster();
                 clientListener.addObserver(new ClientListener(writer1));
                 clientListener.addObserver(new ClientListener(writer2));
+                Thread.sleep(1000);
                 clientListener.notifyPlayers("START");
                 boolean stop = false;
                 while (!stop){

@@ -17,6 +17,7 @@ public class GamePanel implements Mediator{
     private JFrame frame;
 
     private JPanel panel;
+    public static JTextArea editTextArea = new JTextArea(GameCanvas.SERVER_IP.get());
     public GamePanel (JFrame jFrame){
         this.frame = jFrame;
         this.panel = new JPanel();
@@ -54,28 +55,32 @@ public class GamePanel implements Mediator{
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         frame.setSize(BOARD_WIDTH, BOARD_WIDTH);
         frame.setLocationRelativeTo(null);
-
+        JPanel settingsPanel = new JPanel();
         String settings = String.format("Height: %d",Settings.getInstance().Board_Height);
         JLabel setting = new JLabel(settings);
         setting.setPreferredSize(new Dimension(85,25));
-        panel.add(setting);
+        settingsPanel.add(setting);
 
         settings = String.format("Width: %d",Settings.getInstance().Board_Width);
         JLabel setting2 = new JLabel(settings);
         setting2.setPreferredSize(new Dimension(85,25));
-        panel.add(setting2);
+        settingsPanel.add(setting2);
 
         JButton returnToMain = new JButton("Return");
-        panel.add(returnToMain);
-        frame.add(panel);
+        settingsPanel.add(returnToMain);
+
+        editTextArea.setBackground(Color.white);
+        editTextArea.setForeground(Color.black);
+        editTextArea.setLocation(new Point(200,50));
+
+        editTextArea.setPreferredSize(new Dimension(85,25));
+        settingsPanel.add(editTextArea, BorderLayout.CENTER);
+        frame.add(settingsPanel);
         frame.setVisible(true);
         returnToMain.addActionListener(e -> {
-            frame.remove(panel);
-            panel.remove(setting);
-            panel.remove(setting2);
-            panel.remove(returnToMain);
-            frame.add(panel);
-            frame.setVisible(true);
+            settingsPanel.setVisible(false);
+            GameCanvas.SERVER_IP.set(editTextArea.getText());
+            createMainGui();
             });
 
     }

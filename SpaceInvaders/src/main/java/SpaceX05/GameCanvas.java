@@ -14,9 +14,7 @@ import SpaceX05.Adapter.BasicWall;
 import SpaceX05.Adapter.SquareWall;
 import SpaceX05.Adapter.TriangleWall;
 import SpaceX05.Adapter.WallAdapter;
-import SpaceX05.State.GameState;
 import SpaceX05.State.GameStateContext;
-import SpaceX05.Flyweight.AlienFactory;
 import SpaceX05.Flyweight.ShotFactory;
 import SpaceX05.Iterator.AlienAndWallIterator;
 import SpaceX05.Proxy.BalancedCrabProxy;
@@ -26,7 +24,6 @@ import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
 import SpaceX05.Template.Collision;
-import SpaceX05.Template.ShotCollision;
 import SpaceX05.Template.WallCollision;
 import SpaceX05.Visitor.EntityCountVisitor;
 import SpaceX05.Visitor.EntityNameVisitor;
@@ -48,12 +45,6 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 
 public class GameCanvas extends JPanel implements Runnable,Commons {
@@ -257,7 +248,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 //            player2.setLoc(150,280);
                         ingame2 = true;
                         try {
-                            socket = new Socket("localhost",4000);
+                            socket = new Socket(SERVER_IP.get(),4000);
                             InputStreamReader reader = new InputStreamReader(socket.getInputStream());
                             input = new BufferedReader(reader);
                             output = new PrintWriter(socket.getOutputStream(),true);
@@ -589,7 +580,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 sleep = DELAY - timeDiff;
 
                 if (sleep < 0) {
-                    sleep = 2;
+                    sleep = 10;
                 }
                 try {
                     Thread.sleep(sleep);
