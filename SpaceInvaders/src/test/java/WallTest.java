@@ -60,7 +60,6 @@ public class WallTest {
         assertNotNull(wallBlockSquare);
     }
 
-
     @Test
     public void Test_Bad_Wall_Creation() {
         Throwable exception = assertThrows(RuntimeException.class, () -> underTest.square(new WallBlockSquare("anyString()")));

@@ -3,6 +3,8 @@ package SpaceX05.Strategy;
 import SpaceX05.Alien;
 import SpaceX05.Commons;
 import SpaceX05.Shot;
+import SpaceX05.Template.Collision;
+import SpaceX05.Template.ShotCollision;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,15 +35,10 @@ public class BasicShot  extends Shot implements ShootingStrategy, Commons {
         int Y = getY();
         while (it.hasNext()){
             Alien alien = (Alien) it.next();
-            int alienX = alien.PosX;
-            int alienY = alien.PosY;
-            if (alien.isVisible() && isVisible()){
-                if(X >= alienX && X <= (alienX + ALIEN_WIDTH)&& Y >= (alienY) && Y <= (alienY + ALIEN_HEIGHT)){
-                    alien.die();
-                    this.die();
-                    kills++;
-                }
-            }
+            Collision collision = new ShotCollision();
+            collision.checkHit(alien,this);
+            if (!this.isVisible() && !alien.isVisible())
+            kills++;
 
         }
         int y = getY();

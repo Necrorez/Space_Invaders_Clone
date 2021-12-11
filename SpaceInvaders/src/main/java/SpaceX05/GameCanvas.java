@@ -17,6 +17,9 @@ import SpaceX05.Adapter.WallAdapter;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
+import SpaceX05.Template.Collision;
+import SpaceX05.Template.ShotCollision;
+import SpaceX05.Template.WallCollision;
 import SpaceX05.WallBuilder.Wall;
 import SpaceX05.WallBuilder.WallBlockSquare;
 
@@ -71,7 +74,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private ShootingContext context1;
     private ShootingContext context2;
 
-    private  ArrayList walls;
+    private  ArrayList<BasicWall> walls;
 
     private String HOST = "1ocalhost";
     private int PORT = 4000;
@@ -106,7 +109,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
 
 
-        walls = new ArrayList();
+        walls = new ArrayList<BasicWall>();
         Wall wall = new Wall.WallBuilder()
                 .square(new WallBlockSquare("Blue"))
                 .placement(new int[][]{
@@ -251,7 +254,6 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         // player
         player1.update();
         player2.update();
-
         //Creating shots
         if (!shot1.isVisible() && player1.getShoot() == 1) {
             if (context1.whichType() == 1){
@@ -283,6 +285,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         shot1 = context1.rShot();
         shot2 = context2.rShot();
         for (Alien alien:aliens) {
+            for (BasicWall wall:walls){
+                Collision collision = new WallCollision();
+                collision.checkHit(alien,wall);
+            }
             if (sideMove){
                 if (dir){
                     alienMoves.run(new RightCommand(alien));
@@ -330,7 +336,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
         }
         if(lowestAlien>=270)
-            gameOver();
+            gameOver(this.getGraphics());
     }
 
     public void paint(Graphics g) {
@@ -395,9 +401,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
             if (alien.isDying()){
                 alien.die();
-
-
-                g.drawImage(powerUp1.getImage(),alien.PosX, alien.PosY,this);
+                //g.drawImage(powerUp1.getImage(),alien.PosX, alien.PosY,this);
 
             }
         }
@@ -408,7 +412,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         Iterator it = walls.iterator();
         while (it.hasNext()){
             BasicWall wall = (BasicWall) it.next();
-            g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
+            if(wall.isVisible()){
+                g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
+            }
         }
 
     }
@@ -451,9 +457,20 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                     if (action.equals("QUIT")) {
                         break;
                     }
+                    if (action.equals("PAUSE")){
+                        while(true){
+                            output.println("PAUSE");
+                            output.flush();
+                            action = input.readLine();
+                            if (action.equals("UNPAUSE")) {
+                                break;
+                            }
+                        }
+                    }
                     Player2command(action);
 
                 }
+
                 animationCycle();
                 repaint();
 
@@ -477,12 +494,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             output.println("QUIT");
             output.flush();
         }
-        gameOver();
+        gameOver(this.getGraphics());
     }
 
-    public void gameOver() {
-
-        Graphics g = this.getGraphics();
+    public void gameOver(Graphics g) {
 
         g.setColor(Color.black);
         g.fillRect(0, 0, BOARD_WIDTH, BOARD_HEIGTH);
