@@ -14,6 +14,7 @@ public class BalancedUfo extends Ufo {
         this.healthPoints=10;
         this.PosX = PosX;
         this.PosY = PosY;
+        this.type ="BalancedUfo";
 
         ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
         Image image = ii.getImage();

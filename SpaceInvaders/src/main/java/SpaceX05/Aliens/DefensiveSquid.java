@@ -16,6 +16,7 @@ public class DefensiveSquid extends Squid {
         this.healthPoints=15;
         this.PosX = PosX;
         this.PosY = PosY;
+        this.type ="DefensiveSquid";
 
         ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
         Image image = ii.getImage();

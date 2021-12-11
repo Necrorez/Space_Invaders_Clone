@@ -15,6 +15,7 @@ public class OffensiveUfo extends Ufo {
         this.healthPoints=5;
         this.PosX = PosX;
         this.PosY = PosY;
+        this.type ="OffensiveUfo";
 
         ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
         Image image = ii.getImage();

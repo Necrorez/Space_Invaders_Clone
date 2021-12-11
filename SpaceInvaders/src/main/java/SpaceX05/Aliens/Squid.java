@@ -3,6 +3,8 @@ package SpaceX05.Aliens;
 import SpaceX05.Alien;
 import SpaceX05.PowerUps.MovementSpeed;
 import SpaceX05.PowerUps.PowerUp;
+import SpaceX05.Visitor.Visitable;
+import SpaceX05.Visitor.Visitor;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +21,7 @@ public abstract class Squid extends Alien {
 
     }
 
+
     public abstract int getDamage();
     public abstract int getHealth();
 
@@ -30,6 +33,8 @@ public abstract class Squid extends Alien {
         this.squidImg = squidImg1;
 
     }
+
+
 
     public PowerUp rollPower()
     {

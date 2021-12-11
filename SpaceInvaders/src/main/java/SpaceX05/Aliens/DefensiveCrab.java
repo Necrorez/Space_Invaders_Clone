@@ -13,6 +13,7 @@ public class DefensiveCrab extends Crab {
         this.healthPoints=15;
         this.PosX = PosX;
         this.PosY = PosY;
+        this.type ="DefensiveCrab";
 
         ImageIcon ii = new ImageIcon(this.getClass().getResource(src));
         Image image = ii.getImage();

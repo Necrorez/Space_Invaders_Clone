@@ -14,12 +14,17 @@ import SpaceX05.Adapter.BasicWall;
 import SpaceX05.Adapter.SquareWall;
 import SpaceX05.Adapter.TriangleWall;
 import SpaceX05.Adapter.WallAdapter;
+import SpaceX05.State.GameState;
+import SpaceX05.State.GameStateContext;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
 import SpaceX05.Template.Collision;
 import SpaceX05.Template.ShotCollision;
 import SpaceX05.Template.WallCollision;
+import SpaceX05.Visitor.EntityCountVisitor;
+import SpaceX05.Visitor.EntityNameVisitor;
+import SpaceX05.Visitor.EntityWinConditionVIsitor;
 import SpaceX05.WallBuilder.Wall;
 import SpaceX05.WallBuilder.WallBlockSquare;
 
@@ -40,9 +45,21 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 public class GameCanvas extends JPanel implements Runnable,Commons {
+    GameStateContext gameState  = new GameStateContext();
+    EntityCountVisitor countCalc = new EntityCountVisitor();
+    EntityNameVisitor  nameCalc = new EntityNameVisitor();
+    EntityWinConditionVIsitor winDmgCalc = new EntityWinConditionVIsitor();
+
+
     private Dimension d;
     private Player player1, player2;
 
@@ -52,7 +69,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private DefensiveSquid squid3 = new DefensiveSquid();
     private PowerUp pw;
     private ArrayList<Alien> aliens;
-
+    private ArrayList<Player> players;
     private AlienMover alienMoves;
     private boolean sideMove = true;
     private boolean dir;
@@ -101,146 +118,201 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     public boolean gameStart(){
         // SET UP: this a context strategy setup for shooting
 
-        shot1 = new BasicShot();
-        shot2 = new BasicShot();
-        context1 = new ShootingContext(new BasicShot());
-        context2 = new ShootingContext(new BasicShot());
+
+        while (true){
+            switch (gameState.getState()) {
+                case "begin" -> {
+                    shot1 = new BasicShot();
+                    shot2 = new BasicShot();
+                    context1 = new ShootingContext(new BasicShot());
+                    context2 = new ShootingContext(new BasicShot());
+
+                    walls = new ArrayList();
+                    Wall wall = new Wall.WallBuilder()
+                            .square(new WallBlockSquare("Blue"))
+                            .placement(new int[][]{
+                                    {0,0,1,0},
+                                    {0,1,1,0},
+                                    {1,1,1,1}})
+                            .y(50)
+                            .x(230)
+                            .build();
+                    WallAdapter target = new SquareWall(wall.getWallSquare());
+                    walls.addAll(target.getWall());
+
+                    wall = new Wall.WallBuilder()
+                            .triangle(new WallBlockTriangle("Purple"))
+                            .placement(new int[][]{
+                                    {1,0,1,1},
+                                    {1,0,1,1},
+                                    {1,1,1,1}})
+                            .y(250)
+                            .x(230)
+                            .build();
+                    target = new TriangleWall(wall.getWallTriangle());
+                    walls.addAll(target.getWall());
+
+
+                    /*Iterator<Wall> iterWalls = walls.iterator();
+
+                    while(iterWalls.hasNext()){
+                        iterWalls.next().accept(countCalc);
+                    }*/
 
 
 
+                    // TODO: Set up enemy spawner
+                    BalancedAliensFactory balanced = new BalancedAliensFactory();
+                    DefensiveAliensFactory defensive = new DefensiveAliensFactory();
+                    OffensiveAliensFactory offensive = new OffensiveAliensFactory();
+                    aliens = new ArrayList<Alien>();
+                    int i;
+                    int id = 0;
+                    for (i = 0; i<3; i++){
+                        Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
+                        id++;
+                        Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
+                        id++;
+                        Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
+                        id++;
+                        Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
+                        id++;
+                        Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
+                        id++;
+                        Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
+                        id++;
+                        Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
+                        id++;
+                        Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
+                        id++;
+                        Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
+                        id++;
 
-        walls = new ArrayList<BasicWall>();
-        Wall wall = new Wall.WallBuilder()
-                .square(new WallBlockSquare("Blue"))
-                .placement(new int[][]{
-                        {0,0,1,0},
-                        {0,1,1,0},
-                        {1,1,1,1}})
-                .y(50)
-                .x(230)
-                .build();
-        WallAdapter target = new SquareWall(wall.getWallSquare());
-        walls.addAll(target.getWall());
+                        aliens.add(alien);
+                        aliens.add(alien1);
+                        aliens.add(alien2);
+                        aliens.add(alien3);
+                        aliens.add(alien4);
+                        aliens.add(alien5);
+                        aliens.add(alien6);
+                        aliens.add(alien7);
+                        aliens.add(alien8);
 
-        wall = new Wall.WallBuilder()
-                .triangle(new WallBlockTriangle("Purple"))
-                .placement(new int[][]{
-                        {1,0,1,1},
-                        {1,0,1,1},
-                        {1,1,1,1}})
-                .y(250)
-                .x(230)
-                .build();
-        target = new TriangleWall(wall.getWallTriangle());
-        walls.addAll(target.getWall());
+                    }
 
+                    Crab c = new OffensiveCrab(10, 10);
+                    System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
+                    Crab dmg = new CrabDamagePointsDecorator(new CrabDamagePointsDecorator(c));
+                    System.out.println("Added damage" + dmg.getDamage() + " " + dmg.getHealth());
+                    dmg.setImage(3);
+                    aliens.add(dmg);
 
-        // TODO: Set up enemy spawner
-        BalancedAliensFactory balanced = new BalancedAliensFactory();
-        DefensiveAliensFactory defensive = new DefensiveAliensFactory();
-        OffensiveAliensFactory offensive = new OffensiveAliensFactory();
-        aliens = new ArrayList<Alien>();
-        int i;
-        int id = 0;
-        for (i = 0; i<3; i++){
-                Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
-                id++;
-                Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
-                id++;
-                Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
-                id++;
-                Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
-                id++;
-                Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
-                id++;
-                Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
-                id++;
-                Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
-                id++;
-                Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
-                id++;
-                Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
-                id++;
+                    Squid newAl = new BalancedSquid(20, 50);
+                    System.out.println(newAl.getClass());
+                    aliens.add(newAl);
 
-                aliens.add(alien);
-                aliens.add(alien1);
-                aliens.add(alien2);
-                aliens.add(alien3);
-                aliens.add(alien4);
-                aliens.add(alien5);
-                aliens.add(alien6);
-                aliens.add(alien7);
-                aliens.add(alien8);
+                    Iterator<Alien> iter = aliens.iterator();
 
-        }
+                    while(iter.hasNext()){
+                        Alien next =iter.next();
+                        next.accept(countCalc);
+                        next.accept(nameCalc);
+                        next.accept(winDmgCalc);
+                    }
 
-        Crab c = new OffensiveCrab(10, 10);
-        System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
-        Crab dmg = new CrabDamagePointsDecorator(new CrabDamagePointsDecorator(c));
-        System.out.println("Added damage" + dmg.getDamage() + " " + dmg.getHealth());
-        dmg.setImage(3);
-        aliens.add(dmg);
+                    //Comand
 
-        Squid newAl = new BalancedSquid(20, 50);
-        System.out.println(newAl.getClass());
-        aliens.add(newAl);
+                    alienMoves = new AlienMover();
+                    sideMove = true;
+                    dir = true;
 
+                    //powerup
+                    PowerUpFactory factory = new PowerUpFactory();
 
+                    // powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
+                    // powerUp1 = factory.factoryMethod("MovementSpeed",160,160) ;
+                    powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
 
+                    pw = factory.factoryMethod("ExtraLife", 50, 50);
 
-        alien0 = balanced.spawnSquid("Crab", id,200,200);
-        id++;
-        shallowcopy = alien0.copyShallow();
-        shallowcopy.PosX=220;
-        shallowcopy.PosY=220;
+                    // Set up player input and socket
+                    players = new ArrayList<Player>();
+                    player1 = new Player("/Images/player.png",false,new Location());
 
-        //Comand
+                    player2 = null;
 
-        alienMoves = new AlienMover();
-        sideMove = true;
-        dir = true;
-
-        //powerup
-        PowerUpFactory factory = new PowerUpFactory();
-
-       // powerUp1 = factory.factoryMethod("ExtraLife",160,160) ;
-        // powerUp1 = factory.factoryMethod("MovementSpeed",160,160) ;
-         powerUp1 = factory.factoryMethod("AttackSpeed",160,160) ;
-
-         pw = factory.factoryMethod("ExtraLife", 50, 50);
-
-        // Set up player input and socket
-        player1 = new Player("/Images/player.png",false,new Location());
-
-        player2 = null;
-
-        if (nplayers == 2){
-           // player2 = player1.copyShallow();
-            player2 = player1.copyDeep();
-            player2.changeImg("/Images/player2.png");
-            player2.controlled = true;
+                    if (nplayers == 2){
+                        // player2 = player1.copyShallow();
+                        player2 = player1.copyDeep();
+                        player2.changeImg("/Images/player2.png");
+                        player2.controlled = true;
+                        player2.type="Player2";
 //            player2.setLoc(150,280);
-            ingame2 = true;
-            try {
-                socket = new Socket("localhost",4000);
-                InputStreamReader reader = new InputStreamReader(socket.getInputStream());
-                input = new BufferedReader(reader);
-                output = new PrintWriter(socket.getOutputStream(),true);
-                input.readLine();
-            }catch (IOException ioException){
-                return false;
+                        ingame2 = true;
+                        try {
+                            socket = new Socket("localhost",4000);
+                            InputStreamReader reader = new InputStreamReader(socket.getInputStream());
+                            input = new BufferedReader(reader);
+                            output = new PrintWriter(socket.getOutputStream(),true);
+                            input.readLine();
+                        }catch (IOException ioException){
+                            return false;
 
-                //ioException.printStackTrace();
+                            //ioException.printStackTrace();
+                        }
+                    }
+                    players.add(player1);
+                    players.add(player2);
+                    Iterator<Player> iterPlayers = players.iterator();
+
+                    while(iterPlayers.hasNext()){
+                        Player next =iterPlayers.next();
+                        next.accept(countCalc);
+                        next.accept(nameCalc);
+                        next.accept(winDmgCalc);
+                    }
+
+
+                    System.out.println("EntityCounterReport");
+                    System.out.println(countCalc.report());
+
+                    System.out.println("EntityNameReport");
+                    System.out.println(nameCalc.report());
+
+                    System.out.println("EntityWinConditionReport");
+                    System.out.println(winDmgCalc.report());
+
+                    gameState.operate();
+                }
+                case "during" -> {
+
+                    if (animator == null || (!ingame1 && !ingame2)){
+                        animator = new Thread(this);
+                        animator.start();
+
+                    }
+                    return true;
+                }
+                case "nextlevel" -> {
+                    //load next lvl
+                }
+                case "ending" -> {
+                    gameOver(this.getGraphics());
+                    System.out.println("Game over");
+                 //   gameState.operate();
+
+                }
             }
         }
-        //TODO: Set up shooting system
 
-        //Set up for animation
-        if (animator == null || (!ingame1 && !ingame2)){
-            animator = new Thread(this);
-            animator.start();
-        }
-        return true;
+
+
+
+
+    }
+
+    public  void TimeOut(){
+
     }
 
     public void animationCycle() throws IOException {
@@ -280,8 +352,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 }
             }
         }
-        context1.executeShoot(aliens);
-        context2.executeShoot(aliens);
+        context1.executeShoot(aliens,players);
+        context2.executeShoot(aliens,players);
         shot1 = context1.rShot();
         shot2 = context2.rShot();
         for (Alien alien:aliens) {
@@ -335,8 +407,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 rightMostAlien = 0;
             }
         }
-        if(lowestAlien>=270)
-            gameOver(this.getGraphics());
+
+        if(lowestAlien>=270){
+           // gameOver();
+            gameState.operate();}
     }
 
     public void paint(Graphics g) {
@@ -373,8 +447,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         Iterator it = aliens.iterator();
 
-        g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
-        g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
+
+       // g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
+      //  g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
         while (it.hasNext()){
             Alien alien = (Alien) it.next();
             if (alien.isVisible()){
@@ -401,7 +476,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
             if (alien.isDying()){
                 alien.die();
-                //g.drawImage(powerUp1.getImage(),alien.PosX, alien.PosY,this);
+
 
             }
         }
@@ -471,9 +546,13 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
                 }
 
-                animationCycle();
-                repaint();
-
+                if(lowestAlien<270) {
+                    animationCycle();
+                    repaint();
+                }else{
+                    gameOver(this.getGraphics());
+                    break;
+                }
                 timeDiff = System.currentTimeMillis() - beforeTime;
                 sleep = DELAY - timeDiff;
 
