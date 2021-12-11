@@ -16,6 +16,12 @@ import SpaceX05.Adapter.TriangleWall;
 import SpaceX05.Adapter.WallAdapter;
 import SpaceX05.State.GameState;
 import SpaceX05.State.GameStateContext;
+import SpaceX05.Flyweight.AlienFactory;
+import SpaceX05.Flyweight.ShotFactory;
+import SpaceX05.Iterator.AlienAndWallIterator;
+import SpaceX05.Proxy.BalancedCrabProxy;
+import SpaceX05.Proxy.DefensiveCrabProxy;
+import SpaceX05.Proxy.OffensiveCrabProxy;
 import SpaceX05.Strategy.BasicShot;
 import SpaceX05.Strategy.PowerShot;
 import SpaceX05.Strategy.ShootingContext;
@@ -38,10 +44,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -62,11 +65,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
     private Dimension d;
     private Player player1, player2;
-
     private PowerUp powerUp1;
-    private BalancedSquid squid = new BalancedSquid();
-    private OffensiveSquid squid2 = new OffensiveSquid();
-    private DefensiveSquid squid3 = new DefensiveSquid();
+    private final BalancedSquid squid = new BalancedSquid();
+    private final OffensiveSquid squid2 = new OffensiveSquid();
+    private final DefensiveSquid squid3 = new DefensiveSquid();
     private PowerUp pw;
     private ArrayList<Alien> aliens;
     private ArrayList<Player> players;
@@ -81,10 +83,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Alien alien0;
     private Alien shallowcopy;
     private final int nplayers;
-    private int deaths = 0;
-    private int direction = -1;
+    private final int deaths = 0;
+    private final int direction = -1;
     private boolean ingame1 = true, ingame2 = false; //player1 e player2
-    private String message = "Game Over";
+    private final String message = "Game Over";
 
     private Shot shot1;
     private Shot shot2;
@@ -93,14 +95,16 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
     private  ArrayList<BasicWall> walls;
 
-    private String HOST = "1ocalhost";
-    private int PORT = 4000;
+    private final String HOST = "1ocalhost";
+    private final int PORT = 4000;
     private boolean worked;
 
     private Thread animator;
     private Socket socket;
     private BufferedReader input;
     private PrintWriter output;
+    private BalancedCrab cr;
+
     public GameCanvas(int n) {
         nplayers = n;
         setFocusable(true);
@@ -108,10 +112,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
         d = new Dimension(BOARD_WIDTH, BOARD_HEIGTH);
         setBackground(Color.black);
-        worked = true;
-        if (!gameStart()) {
-            worked = false;
-        }
+        worked = gameStart();
         setDoubleBuffered(true);
     }
 
@@ -122,8 +123,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         while (true){
             switch (gameState.getState()) {
                 case "begin" -> {
-                    shot1 = new BasicShot();
-                    shot2 = new BasicShot();
+                    shot1 = ShotFactory.getShot("Basic");
+                    shot2 = ShotFactory.getShot("Basic");
+
                     context1 = new ShootingContext(new BasicShot());
                     context2 = new ShootingContext(new BasicShot());
 
@@ -158,6 +160,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                     while(iterWalls.hasNext()){
                         iterWalls.next().accept(countCalc);
                     }*/
+
 
 
 
@@ -213,6 +216,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
                     Iterator<Alien> iter = aliens.iterator();
 
+
                     while(iter.hasNext()){
                         Alien next =iter.next();
                         next.accept(countCalc);
@@ -220,7 +224,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                         next.accept(winDmgCalc);
                     }
 
-                    //Comand
+
+
+
 
                     alienMoves = new AlienMover();
                     sideMove = true;
@@ -238,6 +244,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                     // Set up player input and socket
                     players = new ArrayList<Player>();
                     player1 = new Player("/Images/player.png",false,new Location());
+
 
                     player2 = null;
 
@@ -307,11 +314,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
 
 
-
-
     }
 
     public  void TimeOut(){
+
 
     }
 
@@ -326,15 +332,22 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         // player
         player1.update();
         player2.update();
+
         //Creating shots
         if (!shot1.isVisible() && player1.getShoot() == 1) {
             if (context1.whichType() == 1){
-                shot1 = new BasicShot(player1.getX(), player1.getY());
+                shot1 = ShotFactory.getShot("Basic");
+                shot1.setCoords(player1.getX(), player1.getY());
+                shot1.setVisible(true);
+                //shot1 = new BasicShot(player1.getX(), player1.getY());
                 context1 = new ShootingContext((BasicShot)shot1);
 
             }
             if (context1.whichType() == 2){
-                shot1 = new PowerShot(player1.getX(), player1.getY());
+                shot1 = ShotFactory.getShot("Power");
+                shot1.setCoords(player1.getX(), player1.getY());
+                shot1.setVisible(true);
+                //shot1 = new PowerShot(player1.getX(), player1.getY());
                 context1 = new ShootingContext((PowerShot)shot1);
 
             }
@@ -343,11 +356,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         if (nplayers>1){
             if (!shot2.isVisible() && player2.getShoot() == 1) {
                 if (context2.whichType() == 1){
-                    shot2 = new BasicShot(player2.getX(), player2.getY());
+                    shot2 = ShotFactory.getShot("Basic");
+                    shot2.setCoords(player2.getX(), player2.getY());
+                    shot2.setVisible(true);
+                    //shot2 = new BasicShot(player2.getX(), player2.getY());
                     context2 = new ShootingContext((BasicShot)shot2);
                 }
                 if (context2.whichType() == 2){
-                    shot2 = new PowerShot(player2.getX(), player2.getY());
+                    shot2 = ShotFactory.getShot("Power");
+                    shot2.setCoords(player2.getX(), player2.getY());
+                    shot2.setVisible(true);
+                    //shot2 = new PowerShot(player2.getX(), player2.getY());
                     context2 = new ShootingContext((PowerShot)shot2);
                 }
             }
@@ -445,14 +464,26 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
     public  void drawAliens(Graphics g){
 
-        Iterator it = aliens.iterator();
+        AlienAndWallIterator it = new AlienAndWallIterator(aliens);
 
 
        // g.drawImage(shallowcopy.getImage(), shallowcopy.PosX, shallowcopy.PosY, this);
       //  g.drawImage(alien0.getImage(), alien0.PosX, alien0.PosY, this);
         while (it.hasNext()){
-            Alien alien = (Alien) it.next();
+            Alien alien = (Alien) it.getNext();
             if (alien.isVisible()){
+                if (alien.getClass().equals(BalancedCrabProxy.class))
+                {
+                    aliens.set(aliens.indexOf(alien), ((BalancedCrabProxy) alien).setToBCrabWithImage());
+                }
+                if (alien.getClass().equals(DefensiveCrabProxy.class))
+                {
+                    aliens.set(aliens.indexOf(alien), ((DefensiveCrabProxy) alien).setToBCrabWithImage());
+                }
+                if (alien.getClass().equals(OffensiveCrabProxy.class))
+                {
+                    aliens.set(aliens.indexOf(alien), ((OffensiveCrabProxy) alien).setToBCrabWithImage());
+                }
                 g.drawImage(alien.getImage(), alien.PosX, alien.PosY, this);
             }
             else if (!alien.isVisible())
@@ -484,12 +515,13 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     }
 
     public void drawWall(Graphics g){
-        Iterator it = walls.iterator();
+        AlienAndWallIterator it = new AlienAndWallIterator((ArrayList<BasicWall>) walls);
         while (it.hasNext()){
-            BasicWall wall = (BasicWall) it.next();
+            BasicWall wall = (BasicWall) it.getNext();
             if(wall.isVisible()){
                 g.drawImage(wall.getImage(),wall.getX(),wall.getY(),this);
             }
+
         }
 
     }
@@ -601,11 +633,16 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             int shoot = Integer.parseInt(mes[2]);
             player2.setDirection(direction);
             if (player2.getShoot() == 2){
-                context2 = new ShootingContext(new BasicShot());
+                //context2 = new ShootingContext(new BasicShot());
+                Shot sh = ShotFactory.getShot("Basic");
+                //sh.setCoords(player2.getX(), player2.getY());
+                context2 = new ShootingContext((BasicShot)sh);
+
                 shoot = 0;
             }
             if (player2.getShoot() == 3){
-                context2 = new ShootingContext(new PowerShot());
+                //context2 = new ShootingContext(new PowerShot());
+                context2 = new ShootingContext((BasicShot)ShotFactory.getShot("Power"));
                 shoot = 0;
             }
             player2.setShoot(shoot);
@@ -629,11 +666,13 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
             if (e.getKeyCode() == KeyEvent.VK_S) {
                 player1.setShoot(2);
-                context1 = new ShootingContext(new BasicShot());
+                //context1 = new ShootingContext(new BasicShot());
+                context1 = new ShootingContext((BasicShot)ShotFactory.getShot("Basic"));
             }
             if (e.getKeyCode() == KeyEvent.VK_D) {
                 player1.setShoot(3);
-                context1 = new ShootingContext(new PowerShot());
+                //context1 = new ShootingContext(new PowerShot());
+                context1 = new ShootingContext((PowerShot)ShotFactory.getShot("Basic"));
             }
         }
         public void keyReleased(KeyEvent e) {

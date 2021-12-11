@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 public class TriangleWall extends BasicWall implements WallAdapter {
 
-    private ArrayList<WallBlockTriangle> Temporary;
+    private final ArrayList<WallBlockTriangle> Temporary;
 
     public TriangleWall(ArrayList<WallBlockTriangle> temporary){
         this.Temporary = temporary;

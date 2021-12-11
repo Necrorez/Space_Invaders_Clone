@@ -37,5 +37,10 @@ public class Crab extends Alien {
         ii = new ImageIcon(newimg);
         setImage(ii.getImage());
     }
+    public void setCoords(int PosX, int PosY)
+    {
+        this.PosX = PosX;
+        this.PosY = PosY;
+    }
 
 }

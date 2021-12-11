@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class DefensiveSquid extends Squid {
 
-    private String squidImg = "/Images/DefensiveSquid.jpg";
+    private final String squidImg = "/Images/DefensiveSquid.jpg";
     public DefensiveSquid(String src, int id, int PosX, int PosY){
         super(PosX, PosY);
         this.id = id;
@@ -40,6 +40,14 @@ public class DefensiveSquid extends Squid {
     }
     public DefensiveSquid() {
 
+    }
+
+    public DefensiveSquid(String img) {
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(img));
+        Image image = ii.getImage();
+        Image newimg = image.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newimg);
+        setImage(ii.getImage());
     }
 
     @Override

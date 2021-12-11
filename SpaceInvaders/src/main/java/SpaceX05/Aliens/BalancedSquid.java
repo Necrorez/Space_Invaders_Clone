@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class BalancedSquid extends Squid {
 
-    private String squidImg = "/Images/Squid.jpg";
+    private final String squidImg = "/Images/Squid.jpg";
 
 
 
@@ -45,6 +45,14 @@ public class BalancedSquid extends Squid {
 
     public BalancedSquid() {
         super();
+    }
+
+    public BalancedSquid(String img) {
+        ImageIcon ii = new ImageIcon(this.getClass().getResource(img));
+        Image image = ii.getImage();
+        Image newimg = image.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH);
+        ii = new ImageIcon(newimg);
+        setImage(ii.getImage());
     }
 
     @Override

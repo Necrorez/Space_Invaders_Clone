@@ -9,7 +9,7 @@ import java.util.Iterator;
 
 public class SquareWall extends BasicWall implements WallAdapter{
 
-    private ArrayList<WallBlockSquare> Temporary;
+    private final ArrayList<WallBlockSquare> Temporary;
 
     public SquareWall(ArrayList<WallBlockSquare> temporary){
         this.Temporary = temporary;

@@ -3,7 +3,7 @@ package SpaceX05.Command;
 import SpaceX05.Alien;
 
 public class RightCommand implements IAlienMove{
-    private Alien alien;
+    private final Alien alien;
 
     public RightCommand(Alien al){
         alien = al;

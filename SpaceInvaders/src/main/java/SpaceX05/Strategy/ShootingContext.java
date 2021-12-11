@@ -7,7 +7,7 @@ import SpaceX05.Shot;
 import java.util.ArrayList;
 
 public class ShootingContext {
-    private  ShootingStrategy strategy;
+    private final ShootingStrategy strategy;
 
     public ShootingContext(ShootingStrategy strategy) {
         this.strategy = strategy;

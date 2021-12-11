@@ -9,6 +9,7 @@ import java.awt.*;
 
 public abstract class Alien extends Sprite implements  Cloneable, Visitable {
 
+
     public int id ;
     public int damagePoints;
     public int healthPoints ;
@@ -33,4 +34,8 @@ public abstract class Alien extends Sprite implements  Cloneable, Visitable {
     }
 
 
+    public void setCoords(int posX, int posY) {
+        this.PosX = posX;
+        this.PosY = posY;
+    }
 }
