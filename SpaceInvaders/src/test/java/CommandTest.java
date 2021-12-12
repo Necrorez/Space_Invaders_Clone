@@ -19,7 +19,7 @@ class CommandTest {
     void innit(){
         alienMover = new AlienMover();
         BalancedAliensFactory balanced = new BalancedAliensFactory();
-        alien = balanced.spawnSquid("Squid", 0,120,100);
+        alien = balanced.spawnSquid("Squid", 120,100);
     }
 
     @Test

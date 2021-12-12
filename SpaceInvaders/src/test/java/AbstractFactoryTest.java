@@ -25,9 +25,9 @@ public class AbstractFactoryTest {
         var alienList = new ArrayList<>();
 
         AbstractFactory balanced = new BalancedAliensFactory();
-        Alien first = balanced.spawnCrab("Crab", 1, 100, 100);
-        Alien second = balanced.spawnSquid("Squid", 2, 100, 100);
-        Alien third = balanced.spawnUfo("Ufo", 3, 100, 100);
+        Alien first = balanced.spawnCrab("Crab", 100, 100);
+        Alien second = balanced.spawnSquid("Squid",  100, 100);
+        Alien third = balanced.spawnUfo("Ufo",  100, 100);
         alienList.add(first);
         alienList.add(second);
         alienList.add(third);
@@ -48,9 +48,9 @@ public class AbstractFactoryTest {
         var alienList = new ArrayList<>();
 
         AbstractFactory defensive = new DefensiveAliensFactory();
-        Alien first = defensive.spawnCrab("Crab", 1, 100, 100);
-        Alien second = defensive.spawnSquid("Squid", 2, 100, 100);
-        Alien third = defensive.spawnUfo("Ufo", 3, 100, 100);
+        Alien first = defensive.spawnCrab("Crab",  100, 100);
+        Alien second = defensive.spawnSquid("Squid",  100, 100);
+        Alien third = defensive.spawnUfo("Ufo",  100, 100);
         alienList.add(first);
         alienList.add(second);
         alienList.add(third);
@@ -71,9 +71,9 @@ public class AbstractFactoryTest {
         var alienList = new ArrayList<>();
 
         AbstractFactory offensive = new OffensiveAliensFactory();
-        Alien first = offensive.spawnCrab("Crab", 1, 100, 100);
-        Alien second = offensive.spawnSquid("Squid", 2, 100, 100);
-        Alien third = offensive.spawnUfo("Ufo", 3, 100, 100);
+        Alien first = offensive.spawnCrab("Crab",  100, 100);
+        Alien second = offensive.spawnSquid("Squid",  100, 100);
+        Alien third = offensive.spawnUfo("Ufo",  100, 100);
         alienList.add(first);
         alienList.add(second);
         alienList.add(third);

@@ -8,8 +8,7 @@ public class BalancedCrab extends Crab {
     private final String crabImg = "/Images/Crab.jpeg";
 
 
-    public BalancedCrab(String src , int id, int PosX, int PosY){
-        this.id = id;
+    public BalancedCrab(String src , int PosX, int PosY){
         this.damagePoints = 10;
         this.healthPoints=10;
         this.PosX = PosX;

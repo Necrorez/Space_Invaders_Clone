@@ -7,8 +7,7 @@ public class DefensiveCrab extends Crab {
 
     private final String crabImg = "/Images/DefensiveCrab.jpg";
 
-    public DefensiveCrab(String src , int id, int PosX, int PosY){
-        this.id = id;
+    public DefensiveCrab(String src ,int PosX, int PosY){
         this.damagePoints = 5;
         this.healthPoints=15;
         this.PosX = PosX;

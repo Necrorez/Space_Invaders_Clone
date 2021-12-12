@@ -14,6 +14,7 @@ public class GamePanel implements Mediator{
     private StartButton startButton;
     private ExitButton exitButton;
     private SettingsButton settingsButton;
+    private LevelButton levelButton;
     private JFrame frame;
 
     private JPanel panel;
@@ -24,7 +25,7 @@ public class GamePanel implements Mediator{
     }
     @Override
     public void startNewGame() {
-        GameCanvas canvas = new GameCanvas(2);
+        GameCanvas canvas = new GameCanvas(2, 1);
         if (!canvas.isWorked()) {
             frame.remove(panel);
             JPanel newPanel = new JPanel();
@@ -41,6 +42,96 @@ public class GamePanel implements Mediator{
             frame.setVisible(true);
             frame.setResizable(false);
         }
+    }
+    public void selectLevel()
+    {
+        frame.remove(panel);
+        frame.setTitle("Space Invaders");
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        frame.setSize(BOARD_WIDTH, BOARD_WIDTH);
+        frame.setLocationRelativeTo(null);
+
+        JPanel levelPanel = new JPanel();
+
+        JButton firstLevel = new JButton("First");
+        levelPanel.add(firstLevel);
+        JButton secondLevel = new JButton("Second");
+        levelPanel.add(secondLevel);
+        JButton thirdLevel = new JButton("Third");
+        levelPanel.add(thirdLevel);
+        JButton returnToMain = new JButton("Return");
+        levelPanel.add(returnToMain);
+
+        frame.add(levelPanel);
+        frame.setVisible(true);
+
+        firstLevel.addActionListener(e -> {
+            levelPanel.setVisible(false);
+            GameCanvas canvas = new GameCanvas(2, 1);
+            if (!canvas.isWorked()) {
+                frame.remove(panel);
+                JPanel newPanel = new JPanel();
+                JLabel newLabel = new JLabel("Waiting for players");
+                newPanel.add(newLabel);
+                frame.add(newPanel);
+            } else {
+                frame.remove(panel);
+                frame.add(canvas);
+                frame.setTitle("Space Invaders");
+                frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                frame.setSize(BOARD_WIDTH, BOARD_WIDTH);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                frame.setResizable(false);
+            }
+        });
+        secondLevel.addActionListener(e -> {
+            levelPanel.setVisible(false);
+            GameCanvas canvas = new GameCanvas(2, 2);
+            if (!canvas.isWorked()) {
+                frame.remove(panel);
+                JPanel newPanel = new JPanel();
+                JLabel newLabel = new JLabel("Waiting for players");
+                newPanel.add(newLabel);
+                frame.add(newPanel);
+            } else {
+                frame.remove(panel);
+                frame.add(canvas);
+                frame.setTitle("Space Invaders");
+                frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                frame.setSize(BOARD_WIDTH, BOARD_WIDTH);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                frame.setResizable(false);
+            }
+        });
+
+        thirdLevel.addActionListener(e -> {
+            levelPanel.setVisible(false);
+            GameCanvas canvas = new GameCanvas(2, 3);
+            if (!canvas.isWorked()) {
+                frame.remove(panel);
+                JPanel newPanel = new JPanel();
+                JLabel newLabel = new JLabel("Waiting for players");
+                newPanel.add(newLabel);
+                frame.add(newPanel);
+            } else {
+                frame.remove(panel);
+                frame.add(canvas);
+                frame.setTitle("Space Invaders");
+                frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                frame.setSize(BOARD_WIDTH, BOARD_WIDTH);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                frame.setResizable(false);
+            }
+        });
+        returnToMain.addActionListener(e -> {
+            levelPanel.setVisible(false);
+            createMainGui();
+        });
+
+
     }
 
     @Override
@@ -98,9 +189,11 @@ public class GamePanel implements Mediator{
         startButton.setPreferredSize(new Dimension(85,25));
         settingsButton.setPreferredSize(new Dimension(85,25));
         exitButton.setPreferredSize(new Dimension(85,25));
+        levelButton.setPreferredSize(new Dimension(170,25));
         panel.add(startButton);
         panel.add(settingsButton);
         panel.add(exitButton);
+        panel.add(levelButton);
         frame.add(panel);
     }
 
@@ -109,6 +202,7 @@ public class GamePanel implements Mediator{
         startButton.setVisible(flag);
         exitButton.setVisible(flag);
         settingsButton.setVisible(flag);
+        levelButton.setVisible(flag);
     }
 
     @Override
@@ -123,6 +217,9 @@ public class GamePanel implements Mediator{
                 break;
             case "SettingsButton":
                 settingsButton = (SettingsButton) component;
+                break;
+            case "LevelButton":
+                levelButton = (LevelButton) component;
                 break;
 
         }

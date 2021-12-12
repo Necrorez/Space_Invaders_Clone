@@ -9,8 +9,7 @@ public class OffensiveUfo extends Ufo {
     private final String ufoImg = "/Images/OffensiveUFO.jpg";
 
 
-    public OffensiveUfo(String src, int id, int PosX, int PosY){
-        this.id = id;
+    public OffensiveUfo(String src, int PosX, int PosY){
         this.damagePoints = 15;
         this.healthPoints=5;
         this.PosX = PosX;

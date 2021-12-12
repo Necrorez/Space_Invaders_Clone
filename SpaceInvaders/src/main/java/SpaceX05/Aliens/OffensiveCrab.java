@@ -8,8 +8,7 @@ public class OffensiveCrab extends Crab {
     private final String crabImg = "/Images/OffensiveCrab.jpg";
 
 
-    public OffensiveCrab(String src , int id, int PosX, int PosY){
-        this.id = id;
+    public OffensiveCrab(String src , int PosX, int PosY){
         this.damagePoints = 15;
         this.healthPoints=5;
         this.PosX = PosX;

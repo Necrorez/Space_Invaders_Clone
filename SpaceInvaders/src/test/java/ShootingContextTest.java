@@ -35,7 +35,7 @@ class ShootingContextTest {
             var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
-                Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
+                Alien alien = balanced.spawnSquid("Squid", 100 + 20 * i,100);
                 aliens.add(alien);
             }
 
@@ -51,7 +51,7 @@ class ShootingContextTest {
             var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
-                Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
+                Alien alien = balanced.spawnSquid("Squid", 100 + 20 * i,100);
                 aliens.add(alien);
             }
 
@@ -99,7 +99,7 @@ class ShootingContextTest {
             var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
-                Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
+                Alien alien = balanced.spawnSquid("Squid", 100 + 20 * i,100);
                 aliens.add(alien);
             }
 
@@ -115,7 +115,7 @@ class ShootingContextTest {
             var players = new ArrayList();
             BalancedAliensFactory balanced = new BalancedAliensFactory();
             for (int i = 0; i<3; i++){
-                Alien alien = balanced.spawnSquid("Squid", i,100 + 20 * i,100);
+                Alien alien = balanced.spawnSquid("Squid", 100 + 20 * i,100);
                 aliens.add(alien);
             }
 

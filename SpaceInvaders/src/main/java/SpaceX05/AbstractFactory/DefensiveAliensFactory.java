@@ -10,21 +10,21 @@ public class DefensiveAliensFactory extends AbstractFactory {
     private final String ufoImg = "/Images/DefensiveUFO.jpg";
 
     @Override
-    public Alien spawnCrab(String param, int alienId, int PosX, int PosY)
+    public Alien spawnCrab(String param, int PosX, int PosY)
     {
-        return new DefensiveCrab(crabImg,alienId,PosX,PosY);
+        return new DefensiveCrab(crabImg,PosX,PosY);
     }
 
     @Override
-    public Alien spawnSquid(String param, int alienId, int PosX, int PosY)
+    public Alien spawnSquid(String param, int PosX, int PosY)
     {
-        return new DefensiveSquid(squidImg,alienId,PosX,PosY);
+        return new DefensiveSquid(squidImg,PosX,PosY);
     }
 
     @Override
-    public Alien spawnUfo(String param, int alienId, int PosX, int PosY)
+    public Alien spawnUfo(String param, int PosX, int PosY)
     {
-        return new DefensiveUfo(ufoImg, alienId, PosX, PosY);
+        return new DefensiveUfo(ufoImg, PosX, PosY);
     }
 
 

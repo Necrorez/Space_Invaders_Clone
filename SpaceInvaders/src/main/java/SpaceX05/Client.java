@@ -30,6 +30,7 @@ public class Client extends JFrame implements Commons
         mediator.registerComponent(new StartButton());
         mediator.registerComponent(new SettingsButton());
         mediator.registerComponent(new ExitButton());
+        mediator.registerComponent(new LevelButton());
 
         mediator.createMainGui();
         /*super("Space Invaders");

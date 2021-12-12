@@ -8,8 +8,7 @@ import java.awt.*;
 public class BalancedUfo extends Ufo {
     private final String ufoImg = "/Images/UFO.jpeg";
 
-    public BalancedUfo(String src, int id, int PosX, int PosY){
-        this.id = id;
+    public BalancedUfo(String src, int PosX, int PosY){
         this.damagePoints = 10;
         this.healthPoints=10;
         this.PosX = PosX;

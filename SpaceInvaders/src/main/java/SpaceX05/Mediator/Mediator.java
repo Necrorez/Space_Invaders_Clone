@@ -8,5 +8,6 @@ public interface Mediator {
     void saveChanges();
     void createMainGui();
     void hideElements(boolean flag);
+    void selectLevel();
     void registerComponent(Component component);
 }

@@ -12,9 +12,8 @@ public class BalancedSquid extends Squid {
 
 
 
-  public BalancedSquid(String src, int id, int PosX, int PosY){
+  public BalancedSquid(String src,int PosX, int PosY){
       super(PosX, PosY);
-      this.id = id;
       this.damagePoints = 10;
       this.healthPoints=10;
       this.PosX = PosX;

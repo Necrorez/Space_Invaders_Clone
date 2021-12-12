@@ -9,9 +9,8 @@ import java.awt.*;
 public class OffensiveSquid extends Squid {
     private final String squidImg = "/Images/OffensiveSquid.jpg";
 
-    public OffensiveSquid(String src, int id, int PosX, int PosY){
+    public OffensiveSquid(String src, int PosX, int PosY){
         super(PosX, PosY);
-        this.id = id;
         this.damagePoints = 15;
         this.healthPoints=5;
         this.PosX = PosX;

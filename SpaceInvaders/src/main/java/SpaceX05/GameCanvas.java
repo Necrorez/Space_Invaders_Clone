@@ -96,19 +96,238 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private PrintWriter output;
     private BalancedCrab cr;
 
-    public GameCanvas(int n) {
+    public GameCanvas(int n, int level) {
         nplayers = n;
         setFocusable(true);
         addKeyListener(new TAdapter());
 
         d = new Dimension(BOARD_WIDTH, BOARD_HEIGTH);
         setBackground(Color.black);
-        worked = gameStart();
+        worked = gameStart(level);
         setDoubleBuffered(true);
     }
 
-    public boolean gameStart(){
-        // SET UP: this a context strategy setup for shooting
+//    public GameCanvas(int n, int level) {
+//        nplayers = n;
+//        setFocusable(true);
+//        addKeyListener(new TAdapter());
+//
+//        d = new Dimension(BOARD_WIDTH, BOARD_HEIGTH);
+//        setBackground(Color.black);
+//        worked = gameStart(level);
+//        setDoubleBuffered(true);
+//    }
+
+    public void firstLevel()
+    {
+        walls = new ArrayList();
+        Wall wall = new Wall.WallBuilder()
+                .square(new WallBlockSquare("Blue"))
+                .placement(new int[][]{
+                        {0,0,1,0},
+                        {0,1,1,0},
+                        {1,1,1,1}})
+                .y(50)
+                .x(230)
+                .build();
+        WallAdapter target = new SquareWall(wall.getWallSquare());
+        walls.addAll(target.getWall());
+
+        wall = new Wall.WallBuilder()
+                .triangle(new WallBlockTriangle("Purple"))
+                .placement(new int[][]{
+                        {1,0,1,1},
+                        {1,0,1,1},
+                        {1,1,1,1}})
+                .y(250)
+                .x(230)
+                .build();
+        target = new TriangleWall(wall.getWallTriangle());
+        walls.addAll(target.getWall());
+
+        BalancedAliensFactory balanced = new BalancedAliensFactory();
+        DefensiveAliensFactory defensive = new DefensiveAliensFactory();
+        OffensiveAliensFactory offensive = new OffensiveAliensFactory();
+        aliens = new ArrayList<Alien>();
+        int i;
+        int id = 0;
+        for (i = 0; i<3; i++){
+            Alien alien = balanced.spawnSquid("Squid",100 + 20 * i,100);
+            Alien alien1 = balanced.spawnCrab("Crab",  100 + 20 * i,120);
+            Alien alien2 = balanced.spawnUfo("Ufo", 100 + 20 * i,140);
+            Alien alien3 = defensive.spawnSquid("Squid", 40 + 20 * i,100);
+            Alien alien4 = defensive.spawnCrab("Crab",  40 + 20 * i,120);
+            Alien alien5 = defensive.spawnUfo("Ufo", 40 + 20 * i,140);
+            Alien alien6 = offensive.spawnSquid("Squid", 160 + 20 * i,100);
+            Alien alien7 = offensive.spawnCrab("Crab",  160 + 20 * i,120);
+            Alien alien8 = offensive.spawnUfo("Ufo", 160 + 20 * i,140);
+
+            aliens.add(alien);
+            aliens.add(alien1);
+            aliens.add(alien2);
+            aliens.add(alien3);
+            aliens.add(alien4);
+            aliens.add(alien5);
+            aliens.add(alien6);
+            aliens.add(alien7);
+            aliens.add(alien8);
+
+        }
+    }
+
+    public void secondLevel()
+    {
+        walls = new ArrayList();
+        Wall wall = new Wall.WallBuilder()
+                .square(new WallBlockSquare("Purple"))
+                .placement(new int[][]{
+                        {1,0,1,1},
+                        {0,1,1,0},
+                        {0,1,1,0}})
+                .y(50)
+                .x(230)
+                .build();
+        WallAdapter target = new SquareWall(wall.getWallSquare());
+        walls.addAll(target.getWall());
+
+        wall = new Wall.WallBuilder()
+                .triangle(new WallBlockTriangle("Blue"))
+                .placement(new int[][]{
+                        {1,0,0,0},
+                        {1,1,1,0},
+                        {1,0,1,1}})
+                .y(250)
+                .x(230)
+                .build();
+        target = new TriangleWall(wall.getWallTriangle());
+        walls.addAll(target.getWall());
+
+        wall = new Wall.WallBuilder()
+                .triangle(new WallBlockTriangle("Purple"))
+                .placement(new int[][]{
+                        {0,1,0,1},
+                        {1,1,1,1},
+                        {1,0,1,0}})
+                .y(150)
+                .x(230)
+                .build();
+        target = new TriangleWall(wall.getWallTriangle());
+        walls.addAll(target.getWall());
+
+        BalancedAliensFactory balanced = new BalancedAliensFactory();
+        DefensiveAliensFactory defensive = new DefensiveAliensFactory();
+        OffensiveAliensFactory offensive = new OffensiveAliensFactory();
+        aliens = new ArrayList<Alien>();
+        int i;
+        for (i = 0; i<4; i++){
+
+            Alien alien = balanced.spawnSquid("Squid",20 + 20 * i,100);
+            Alien alien1 = balanced.spawnCrab("Crab",  20 + 20 * i,120);
+            Alien alien2 = balanced.spawnUfo("Ufo", 20 + 20 * i,140);
+            Alien alien3 = defensive.spawnSquid("Squid", 100 + 20 * i,100);
+            Alien alien4 = defensive.spawnCrab("Crab",  100 + 20 * i,120);
+            Alien alien5 = defensive.spawnUfo("Ufo", 100 + 20 * i,140);
+            Alien alien6 = offensive.spawnSquid("Squid", 180 + 20 * i,100);
+            Alien alien7 = offensive.spawnCrab("Crab",  180 + 20 * i,120);
+            Alien alien8 = offensive.spawnUfo("Ufo", 180 + 20 * i,140);
+
+            aliens.add(alien);
+            aliens.add(alien1);
+            aliens.add(alien2);
+            aliens.add(alien3);
+            aliens.add(alien4);
+            aliens.add(alien5);
+            aliens.add(alien6);
+            aliens.add(alien7);
+            aliens.add(alien8);
+
+        }
+
+    }
+
+    public void thirdLevel()
+    {
+        walls = new ArrayList();
+        Wall wall = new Wall.WallBuilder()
+                .square(new WallBlockSquare("Purple"))
+                .placement(new int[][]{
+                        {1,0,0,1},
+                        {0,1,1,0},
+                        {0,1,0,0}})
+                .y(50)
+                .x(230)
+                .build();
+        WallAdapter target = new SquareWall(wall.getWallSquare());
+        walls.addAll(target.getWall());
+
+        wall = new Wall.WallBuilder()
+                .triangle(new WallBlockTriangle("Blue"))
+                .placement(new int[][]{
+                        {1,0,0,0},
+                        {1,0,1,0},
+                        {1,0,1,1}})
+                .y(250)
+                .x(230)
+                .build();
+        target = new TriangleWall(wall.getWallTriangle());
+        walls.addAll(target.getWall());
+
+        wall = new Wall.WallBuilder()
+                .triangle(new WallBlockTriangle("Purple"))
+                .placement(new int[][]{
+                        {0,1,0,1},
+                        {0,1,0,1},
+                        {1,0,1,0}})
+                .y(130)
+                .x(230)
+                .build();
+        target = new TriangleWall(wall.getWallTriangle());
+        walls.addAll(target.getWall());
+
+        wall = new Wall.WallBuilder()
+                .square(new WallBlockSquare("Purple"))
+                .placement(new int[][]{
+                        {0,1,1,0},
+                        {0,1,1,1},
+                        {1,1,0,0}})
+                .y(180)
+                .x(230)
+                .build();
+        target = new SquareWall(wall.getWallSquare());
+        walls.addAll(target.getWall());
+
+        BalancedAliensFactory balanced = new BalancedAliensFactory();
+        DefensiveAliensFactory defensive = new DefensiveAliensFactory();
+        OffensiveAliensFactory offensive = new OffensiveAliensFactory();
+        aliens = new ArrayList<Alien>();
+        int i;
+        for (i = 0; i<5; i++){
+            Alien alien = balanced.spawnSquid("Squid",200 + 20 * i,100);
+            Alien alien1 = balanced.spawnCrab("Crab",  200 + 20 * i,120);
+            Alien alien2 = balanced.spawnUfo("Ufo", 200 + 20 * i,140);
+            Alien alien3 = defensive.spawnSquid("Squid", 20 * i,100);
+            Alien alien4 = defensive.spawnCrab("Crab", 20 * i,120);
+            Alien alien5 = defensive.spawnUfo("Ufo", 20 * i,140);
+            Alien alien6 = offensive.spawnSquid("Squid", 100 + 20 * i,100);
+            Alien alien7 = offensive.spawnCrab("Crab",  100 + 20 * i,120);
+            Alien alien8 = offensive.spawnUfo("Ufo", 100 + 20 * i,140);
+
+
+            aliens.add(alien);
+            aliens.add(alien1);
+            aliens.add(alien2);
+            aliens.add(alien3);
+            aliens.add(alien4);
+            aliens.add(alien5);
+            aliens.add(alien6);
+            aliens.add(alien7);
+            aliens.add(alien8);
+
+        }
+
+    }
+
+    public boolean gameStart(int level){
 
 
         while (true){
@@ -120,80 +339,16 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                     context1 = new ShootingContext(new BasicShot());
                     context2 = new ShootingContext(new BasicShot());
 
-                    walls = new ArrayList();
-                    Wall wall = new Wall.WallBuilder()
-                            .square(new WallBlockSquare("Blue"))
-                            .placement(new int[][]{
-                                    {0,0,1,0},
-                                    {0,1,1,0},
-                                    {1,1,1,1}})
-                            .y(50)
-                            .x(230)
-                            .build();
-                    WallAdapter target = new SquareWall(wall.getWallSquare());
-                    walls.addAll(target.getWall());
-
-                    wall = new Wall.WallBuilder()
-                            .triangle(new WallBlockTriangle("Purple"))
-                            .placement(new int[][]{
-                                    {1,0,1,1},
-                                    {1,0,1,1},
-                                    {1,1,1,1}})
-                            .y(250)
-                            .x(230)
-                            .build();
-                    target = new TriangleWall(wall.getWallTriangle());
-                    walls.addAll(target.getWall());
-
-
-                    /*Iterator<Wall> iterWalls = walls.iterator();
-
-                    while(iterWalls.hasNext()){
-                        iterWalls.next().accept(countCalc);
-                    }*/
-
-
-
-
-                    // TODO: Set up enemy spawner
-                    BalancedAliensFactory balanced = new BalancedAliensFactory();
-                    DefensiveAliensFactory defensive = new DefensiveAliensFactory();
-                    OffensiveAliensFactory offensive = new OffensiveAliensFactory();
-                    aliens = new ArrayList<Alien>();
-                    int i;
-                    int id = 0;
-                    for (i = 0; i<3; i++){
-                        Alien alien = balanced.spawnSquid("Squid", id,100 + 20 * i,100);
-                        id++;
-                        Alien alien1 = balanced.spawnCrab("Crab", id, 100 + 20 * i,120);
-                        id++;
-                        Alien alien2 = balanced.spawnUfo("Ufo", id,100 + 20 * i,140);
-                        id++;
-                        Alien alien3 = defensive.spawnSquid("Squid", id,40 + 20 * i,100);
-                        id++;
-                        Alien alien4 = defensive.spawnCrab("Crab", id, 40 + 20 * i,120);
-                        id++;
-                        Alien alien5 = defensive.spawnUfo("Ufo", id,40 + 20 * i,140);
-                        id++;
-                        Alien alien6 = offensive.spawnSquid("Squid", id,160 + 20 * i,100);
-                        id++;
-                        Alien alien7 = offensive.spawnCrab("Crab", id, 160 + 20 * i,120);
-                        id++;
-                        Alien alien8 = offensive.spawnUfo("Ufo", id,160 + 20 * i,140);
-                        id++;
-
-                        aliens.add(alien);
-                        aliens.add(alien1);
-                        aliens.add(alien2);
-                        aliens.add(alien3);
-                        aliens.add(alien4);
-                        aliens.add(alien5);
-                        aliens.add(alien6);
-                        aliens.add(alien7);
-                        aliens.add(alien8);
-
-                    }
-
+                    switch (level){
+                        case 2:
+                            secondLevel();
+                            break;
+                        case 3:
+                            thirdLevel();
+                            break;
+                        default:
+                            firstLevel();
+                }
                     Crab c = new OffensiveCrab(10, 10);
                     System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
                     Crab dmg = new CrabDamagePointsDecorator(new CrabDamagePointsDecorator(c));
