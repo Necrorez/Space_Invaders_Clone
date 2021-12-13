@@ -8,9 +8,11 @@ import java.util.List;
 public class Swarm implements GroupedAlien{
 
     List<GroupedAlien> swarm;
+    String swarmingWay;
 
-    public Swarm(){
+    public Swarm(String swarmingWay){
         swarm = new ArrayList<>();
+        this.swarmingWay = swarmingWay;
     }
 
     public void add(GroupedAlien alien){
@@ -23,6 +25,10 @@ public class Swarm implements GroupedAlien{
 
     public List<GroupedAlien> getSwarm(){
         return swarm;
+    }
+
+    public String getSwarmingWay() {
+        return swarmingWay;
     }
 
     @Override

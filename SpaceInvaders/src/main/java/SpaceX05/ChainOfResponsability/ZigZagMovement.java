@@ -10,10 +10,10 @@ public class ZigZagMovement extends Movement{
     private boolean zigUp;
     private int zigCount;
 
-    public ZigZagMovement(AlienMover alienMover) {
-        super(alienMover);
+    public ZigZagMovement(AlienMover alienMover,String movement) {
+        super(alienMover, movement);
         zigUp = true;
-        zigCount = 3;
+        zigCount = 7;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class ZigZagMovement extends Movement{
             if (sideMove){
             zigCount--;
             if (zigCount==0){
-                zigCount=3;
+                zigCount=7;
                 zigUp = !zigUp;
             }
             if (direction){

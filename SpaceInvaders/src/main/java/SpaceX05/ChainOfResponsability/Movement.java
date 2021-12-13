@@ -13,8 +13,9 @@ public abstract class Movement {
     protected int alienDownMove;
     protected AlienMover alienMoves;
 
-    public Movement(AlienMover alienMover){
+    public Movement(AlienMover alienMover,String movement){
         alienMoves = alienMover;
+        typeOfMovement = movement;
     }
 
     public abstract void UpdateDirection(String movementType);
