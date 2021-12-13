@@ -2,13 +2,13 @@ package SpaceX05;
 
 import SpaceX05.Visitor.Visitable;
 import SpaceX05.Visitor.Visitor;
+import SpaceX05.Composite.GroupedAlien;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-public abstract class Alien extends Sprite implements  Cloneable, Visitable {
-
+public abstract class Alien extends Sprite implements  Cloneable, Visitable, GroupedAlien {
 
     public int id ;
     public int damagePoints;
@@ -33,6 +33,10 @@ public abstract class Alien extends Sprite implements  Cloneable, Visitable {
         }
     }
 
+    @Override
+    public boolean isAlien() {
+        return true;
+    }
 
     public void setCoords(int posX, int posY) {
         this.PosX = posX;

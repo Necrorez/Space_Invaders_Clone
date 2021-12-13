@@ -5,11 +5,13 @@ import SpaceX05.AbstractFactory.BalancedAliensFactory;
 import SpaceX05.AbstractFactory.DefensiveAliensFactory;
 import SpaceX05.AbstractFactory.OffensiveAliensFactory;
 import SpaceX05.Aliens.*;
+import SpaceX05.ChainOfResponsability.LineMovement;
+import SpaceX05.ChainOfResponsability.Movement;
+import SpaceX05.ChainOfResponsability.ZigZagMovement;
+import SpaceX05.Composite.GroupedAlien;
+import SpaceX05.Composite.Swarm;
 import SpaceX05.Decorator.CrabDamagePointsDecorator;
 import SpaceX05.Command.AlienMover;
-import SpaceX05.Command.DownCommand;
-import SpaceX05.Command.LeftCommand;
-import SpaceX05.Command.RightCommand;
 import SpaceX05.Adapter.BasicWall;
 import SpaceX05.Adapter.SquareWall;
 import SpaceX05.Adapter.TriangleWall;
@@ -64,12 +66,13 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private ArrayList<Alien> aliens;
     private ArrayList<Player> players;
     private AlienMover alienMoves;
-    private boolean sideMove = true;
-    private boolean dir;
-    private int alienDownMove = 10;
-    private int rightMostAlien = 0;
-    private int leftMostAlien = 400;
-    private int lowestAlien=0;
+    private int lowestAlien = 0;
+
+    private Swarm ufoSwarm;
+    private Swarm crabSwarm;
+    private Swarm squidSwarm;
+
+    private Movement alienMove;
 
     private Alien alien0;
     private Alien shallowcopy;
@@ -172,6 +175,16 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             aliens.add(alien7);
             aliens.add(alien8);
 
+            squidSwarm.add(alien);
+            crabSwarm.add(alien1);
+            ufoSwarm.add(alien2);
+            squidSwarm.add(alien3);
+            crabSwarm.add(alien4);
+            ufoSwarm.add(alien5);
+            squidSwarm.add(alien6);
+            crabSwarm.add(alien7);
+            ufoSwarm.add(alien8);
+
         }
     }
 
@@ -241,8 +254,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             aliens.add(alien7);
             aliens.add(alien8);
 
-        }
+            squidSwarm.add(alien);
+            crabSwarm.add(alien1);
+            ufoSwarm.add(alien2);
+            squidSwarm.add(alien3);
+            crabSwarm.add(alien4);
+            ufoSwarm.add(alien5);
+            squidSwarm.add(alien6);
+            crabSwarm.add(alien7);
+            ufoSwarm.add(alien8);
 
+        }
     }
 
     public void thirdLevel()
@@ -323,8 +345,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             aliens.add(alien7);
             aliens.add(alien8);
 
-        }
+            squidSwarm.add(alien);
+            crabSwarm.add(alien1);
+            ufoSwarm.add(alien2);
+            squidSwarm.add(alien3);
+            crabSwarm.add(alien4);
+            ufoSwarm.add(alien5);
+            squidSwarm.add(alien6);
+            crabSwarm.add(alien7);
+            ufoSwarm.add(alien8);
 
+        }
     }
 
     public boolean gameStart(int level){
@@ -338,6 +369,26 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
                     context1 = new ShootingContext(new BasicShot());
                     context2 = new ShootingContext(new BasicShot());
+
+                    //create mover
+                    AlienMover alienMoves = new AlienMover();
+
+                    //create swarms
+                    ufoSwarm = new Swarm("Ufo");
+                    crabSwarm = new Swarm("Crab");
+                    squidSwarm = new Swarm("Squid");
+
+                    //create movements
+                    Movement ufoMove = new LineMovement(alienMoves,"Ufo");
+                    Movement crabMove = new ZigZagMovement(alienMoves,"Crab");
+                    Movement squidMove = new ZigZagMovement(alienMoves,"Squid");
+
+                    //chain movements
+                    squidMove.setNextChain(crabMove);
+                    crabMove.setNextChain(ufoMove);
+
+                    //set default
+                    alienMove = squidMove;
 
                     switch (level){
                         case 2:
@@ -373,10 +424,6 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
 
 
 
-
-                    alienMoves = new AlienMover();
-                    sideMove = true;
-                    dir = true;
 
                     //powerup
                     PowerUpFactory factory = new PowerUpFactory();
@@ -521,57 +568,20 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         context2.executeShoot(aliens,players);
         shot1 = context1.rShot();
         shot2 = context2.rShot();
-        for (Alien alien:aliens) {
-            for (BasicWall wall:walls){
-                Collision collision = new WallCollision();
-                collision.checkHit(alien,wall);
-            }
-            if (sideMove){
-                if (dir){
-                    alienMoves.run(new RightCommand(alien));
-                    if(alien.PosX>rightMostAlien){
-                        rightMostAlien = alien.PosX;
-                    }
 
-                }
-                else {
-                    alienMoves.run(new LeftCommand(alien));
-                    if(alien.PosX<leftMostAlien){
-                        leftMostAlien = alien.PosX;
-                    }
-                }
-            }
-            else {
-                alienMoves.run(new DownCommand(alien));
-                alienDownMove--;
-            }
-            if(alien.PosY > lowestAlien){
-                lowestAlien = alien.PosY;
+        for (Alien alien:aliens) {
+            for (BasicWall wall : walls) {
+                Collision collision = new WallCollision();
+                collision.checkHit(alien, wall);
             }
         }
-        if (sideMove){
-            if (dir){
-                if (rightMostAlien >= 320){
-                    dir = false;
-                    sideMove = false;
-                    alienDownMove = 10 * aliens.size();
-                }
-            }
-            else {
-                if (leftMostAlien <= 0){
-                    dir = true;
-                    sideMove = false;
-                    alienDownMove = 10*aliens.size();
-                }
-            }
-        }
-        else {
-            if (alienDownMove <= 0){
-                sideMove = true;
-                leftMostAlien =400;
-                rightMostAlien = 0;
-            }
-        }
+
+        Swarm tempswarm = new Swarm("Line");
+        tempswarm.add(squidSwarm);
+        tempswarm.add(crabSwarm);
+        tempswarm.add(ufoSwarm);
+        GroupedAlien swarm = tempswarm;
+        moveAlienFromSwarm(swarm, tempswarm.getSwarmingWay());
 
 
         if(lowestAlien>=270){
@@ -579,6 +589,23 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             gameState.operate();
         }
     }
+
+    private void moveAlienFromSwarm(GroupedAlien swarm, String swarming){
+        if (swarm.isAlien()){
+            alienMove.Move((Alien) swarm, swarming);
+            if (lowestAlien <((Alien) swarm).PosY){
+                lowestAlien = ((Alien) swarm).PosY;
+            }
+        }
+        else {
+            Swarm swarm1 = (Swarm)swarm;
+            for (GroupedAlien smallerSwarm: swarm1.getSwarm()) {
+                moveAlienFromSwarm(smallerSwarm,swarm1.getSwarmingWay());
+            }
+            alienMove.UpdateDirection(swarm1.getSwarmingWay());
+        }
+    }
+
 
     public void paint(Graphics g) {
         super.paint(g);
