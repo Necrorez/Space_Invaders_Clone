@@ -526,7 +526,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 Collision collision = new WallCollision();
                 collision.checkHit(alien,wall);
             }
-            if (sideMove){
+           /* if (sideMove){
                 if (dir){
                     alienMoves.run(new RightCommand(alien));
                     if(alien.PosX>rightMostAlien){
@@ -547,9 +547,9 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
             }
             if(alien.PosY > lowestAlien){
                 lowestAlien = alien.PosY;
-            }
+            }*/
         }
-        if (sideMove){
+       /* if (sideMove){
             if (dir){
                 if (rightMostAlien >= 320){
                     dir = false;
@@ -572,10 +572,12 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 rightMostAlien = 0;
             }
         }
+*/
 
         if(lowestAlien>=270){
            // gameOver();
-            gameState.operate();}
+            gameState.operate();
+        }
     }
 
     public void paint(Graphics g) {
