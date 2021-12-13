@@ -5,18 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_0_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_3_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_launcher_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_runner_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_suite_api_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_vintage_junit_vintage_engine_5_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Composite/GroupedAlien.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Composite/Swarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/AbstractFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Alien.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Command/AlienMover.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Composite/GroupedAlien.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Composite/Swarm.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Settings.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/CommandTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/SettingsTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mavenTest.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/AbstractFactory/OffensiveAliensFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/AbstractFactory/OffensiveAliensFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Alien.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Alien.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Alien.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Alien.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" afterDir="false" />
     </list>
     <list id="b5dd98c5-5ecd-48d3-9e74-55c4a31be29b" name="Changes by K" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +69,11 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_7_AbstractFactory.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1020_AbstractFactory.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_4_AbstractFactory.class" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1yOuQq2M61QQ6qCy5140kkYXG0m" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -73,6 +99,9 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
