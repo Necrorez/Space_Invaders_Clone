@@ -16,6 +16,8 @@ import SpaceX05.Adapter.BasicWall;
 import SpaceX05.Adapter.SquareWall;
 import SpaceX05.Adapter.TriangleWall;
 import SpaceX05.Adapter.WallAdapter;
+import SpaceX05.Memento.ExtraLife;
+import SpaceX05.Memento.LifeTracker;
 import SpaceX05.State.GameStateContext;
 import SpaceX05.Flyweight.ShotFactory;
 import SpaceX05.Iterator.AlienAndWallIterator;
@@ -73,6 +75,8 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Swarm squidSwarm;
 
     private Movement alienMove;
+
+    private LifeTracker tracker;
 
     private Alien alien0;
     private Alien shallowcopy;
@@ -387,8 +391,10 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                     squidMove.setNextChain(crabMove);
                     crabMove.setNextChain(ufoMove);
 
-                    //set default
+                    //set chain start
                     alienMove = squidMove;
+
+                    tracker = new LifeTracker();
 
                     switch (level){
                         case 2:
@@ -399,7 +405,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                             break;
                         default:
                             firstLevel();
-                }
+                    }
                     Crab c = new OffensiveCrab(10, 10);
                     System.out.println("Initial damage and health" + c.damagePoints + " " + c.healthPoints);
                     Crab dmg = new CrabDamagePointsDecorator(new CrabDamagePointsDecorator(c));
@@ -583,6 +589,23 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         GroupedAlien swarm = tempswarm;
         moveAlienFromSwarm(swarm, tempswarm.getSwarmingWay());
 
+        /*
+        for (Player player:players) {
+            for (PowerUp power:powerUps) {
+                if(player.y == power.y&&player.x == power.x){
+                    tracker.addLife(new ExtraLife(player.getPlayer(),player.getWidth(),player.getLeft(),player.getRight(),player.getShoot(),player.healthpoints,player.type));
+                }
+            }
+            if (player.healthpoints<=0){
+                ExtraLife life = (ExtraLife)tracker.getLife(player.getPlayer());
+                player.setWidth(life.getWidth());
+                player.setLeft(life.getLeft());
+                player.setRight(life.getRight());
+                player.setShoot(life.getShoot());
+                player.healthpoints = life.healthpoints;
+                player.type = life.type;
+            }
+        }//*/
 
         if(lowestAlien>=270){
            // gameOver();
