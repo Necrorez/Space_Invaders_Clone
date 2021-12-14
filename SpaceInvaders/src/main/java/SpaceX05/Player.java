@@ -125,5 +125,21 @@ public class Player extends Sprite implements Commons,Cloneable,IPrototype, Visi
     public void setShoot(int shoot) {
         this.shoot = shoot;
     }
+    public String getPlayer(){
+        return player;
+    }
+    public int getWidth(){
+        return width;
+    }
 
+    public int getLeft() {
+        return left;
+    }
+    public int getRight(){
+        return right;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
 }

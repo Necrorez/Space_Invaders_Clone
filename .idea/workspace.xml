@@ -5,25 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65882a05-981f-4407-896a-93651d10e5c0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Memento/ExtraLife.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Memento/INarrowMemento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Memento/IWideMemento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Memento/LifeTracker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/SpaceInvaders.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/ChainOfResponsability/LineMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/ChainOfResponsability/LineMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/ChainOfResponsability/Movement.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/ChainOfResponsability/Movement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/ChainOfResponsability/ZigZagMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/ChainOfResponsability/ZigZagMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Composite/Swarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Composite/Swarm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/GameCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/AbstractFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/AbstractFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/BalancedAliensFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/DefensiveAliensFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/AbstractFactory/OffensiveAliensFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Alien.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Alien.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Composite/Swarm.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/Composite/Swarm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas$TAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/classes/SpaceX05/GameCanvas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/CommandTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/target/test-classes/CommandTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mavenTest.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpaceInvaders/src/main/java/SpaceX05/Player.java" afterDir="false" />
     </list>
     <list id="b5dd98c5-5ecd-48d3-9e74-55c4a31be29b" name="Changes by K" comment="" />
     <option name="SHOW_DIALOG" value="false" />
