@@ -5,6 +5,7 @@ import SpaceX05.AbstractFactory.BalancedAliensFactory;
 import SpaceX05.AbstractFactory.DefensiveAliensFactory;
 import SpaceX05.AbstractFactory.OffensiveAliensFactory;
 import SpaceX05.Aliens.*;
+import SpaceX05.ChainOfResponsability.DropMovement;
 import SpaceX05.ChainOfResponsability.LineMovement;
 import SpaceX05.ChainOfResponsability.Movement;
 import SpaceX05.ChainOfResponsability.ZigZagMovement;
@@ -73,6 +74,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
     private Swarm ufoSwarm;
     private Swarm crabSwarm;
     private Swarm squidSwarm;
+    private Swarm powerUpSwarm;
 
     private Movement alienMove;
 
@@ -381,14 +383,17 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                     ufoSwarm = new Swarm("Ufo");
                     crabSwarm = new Swarm("Crab");
                     squidSwarm = new Swarm("Squid");
+                    powerUpSwarm = new Swarm("Power");
 
                     //create movements
                     Movement ufoMove = new LineMovement(alienMoves,"Ufo");
                     Movement crabMove = new ZigZagMovement(alienMoves,"Crab");
                     Movement squidMove = new ZigZagMovement(alienMoves,"Squid");
+                    Movement powerMove = new DropMovement(alienMoves,"Power");
 
                     //chain movements
-                    squidMove.setNextChain(crabMove);
+                    squidMove.setNextChain(powerMove);
+                    powerMove.setNextChain(crabMove);
                     crabMove.setNextChain(ufoMove);
 
                     //set chain start
@@ -589,10 +594,11 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
         GroupedAlien swarm = tempswarm;
         moveAlienFromSwarm(swarm, tempswarm.getSwarmingWay());
 
-        /*
+
         for (Player player:players) {
-            for (PowerUp power:powerUps) {
-                if(player.y == power.y&&player.x == power.x){
+            for (GroupedAlien power1:powerUpSwarm.getSwarm()) {
+                Alien power =(Alien) power1;
+                if(player.y == power.PosY &&player.x == power.PosX){
                     tracker.addLife(new ExtraLife(player.getPlayer(),player.getWidth(),player.getLeft(),player.getRight(),player.getShoot(),player.healthpoints,player.type));
                 }
             }
@@ -606,6 +612,7 @@ public class GameCanvas extends JPanel implements Runnable,Commons {
                 player.type = life.type;
             }
         }//*/
+
 
         if(lowestAlien>=270){
            // gameOver();
